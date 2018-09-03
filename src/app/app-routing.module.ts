@@ -13,6 +13,13 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent},
   { path: 'uploadagentcsv', component: DragDropAgentComponent},
   { path: 'uploadusercsv', component: DragDropUserComponent},
+  { path: '', component: HomepageComponent, pathMatch: 'full'},
+  { path: 'home', component: HomepageComponent},
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'tickets', component: TicketsComponent },
+  { path: 'tickets/view/:id', component: IndividualTicketComponent },
+  { path: 'newticket', component: NewTicketComponent },
+  { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
@@ -20,4 +27,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [LoginPageComponent, LandingPageComponent, SignUpComponent, DragDropAgentComponent, DragDropUserComponent];
+export const routingComponents = [LoginPageComponent, LandingPageComponent, SignUpComponent, DragDropAgentComponent, DragDropUserComponent, HomepageComponent, DashboardComponent, TicketsComponent, IndividualTicketComponent, NewTicketComponent, PageNotFoundComponent];

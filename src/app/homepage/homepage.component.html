@@ -1,0 +1,36 @@
+<section id="displaySection">
+  <mat-grid-list cols="2" rowHeight="2:1" gutterSize="150px">
+    <mat-grid-tile (click)="onClick()">
+      <mat-card class="total">
+        <mat-card-header>
+          <mat-card-title>Total Tickets</mat-card-title>
+        </mat-card-header>
+        <mat-card-content> {{numberOfTickets.total}} </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile (click)="onClick()">
+      <mat-card class="open">
+        <mat-card-header>
+          <mat-card-title>Open Tickets</mat-card-title>
+        </mat-card-header>
+        <mat-card-content> {{numberOfTickets.open}} </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile (click)="onClick()">
+      <mat-card class="closed">
+        <mat-card-header>
+          <mat-card-title>Closed Tickets</mat-card-title>
+        </mat-card-header>
+        <mat-card-content> {{numberOfTickets.closed}} </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile (click)="onClick()">
+      <mat-card class="due">
+        <mat-card-header>
+          <mat-card-title>Due Tickets</mat-card-title>
+        </mat-card-header>
+        <mat-card-content> {{numberOfTickets.due}} </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</section>

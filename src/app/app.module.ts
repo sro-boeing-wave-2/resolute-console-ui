@@ -6,10 +6,13 @@ import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { routingComponents, AppRoutingModule } from './app-routing.module';
+import { routingComponents, AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { SignupService } from './signup.service';
 import { LoginService } from './login.service';
-
+import { MaterialModule } from './material';
+import { TicketsService } from './tickets.service';
+import { NewTicketComponent } from './new-ticket/new-ticket.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,10 +26,13 @@ import { LoginService } from './login.service';
     FormsModule,
     HttpClientModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    RoutingComponents,
+    NewTicketComponent,
   ],
-
-  providers: [SignupService, LoginService],
+  providers: [SignupService, LoginService, TicketsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
