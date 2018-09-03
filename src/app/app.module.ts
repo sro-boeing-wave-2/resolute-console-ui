@@ -12,7 +12,6 @@ import { LoginService } from './login.service';
 import { MaterialModule } from './material';
 import { TicketsService } from './tickets.service';
 import { NewTicketComponent } from './new-ticket/new-ticket.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [

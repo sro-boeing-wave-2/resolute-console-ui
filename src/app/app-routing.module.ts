@@ -5,6 +5,12 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { DragDropAgentComponent } from './drag-drop-agent/drag-drop-agent.component';
 import { DragDropUserComponent } from './drag-drop-user/drag-drop-user.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { TicketsComponent } from './tickets/tickets.component';
+import { IndividualTicketComponent } from './individual-ticket/individual-ticket.component';
+import { NewTicketComponent } from './new-ticket/new-ticket.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 //This is my case
 const routes: Routes = [
@@ -27,4 +33,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [LoginPageComponent, LandingPageComponent, SignUpComponent, DragDropAgentComponent, DragDropUserComponent, HomepageComponent, DashboardComponent, TicketsComponent, IndividualTicketComponent, NewTicketComponent, PageNotFoundComponent];
+export const RoutingComponents = [LoginPageComponent, LandingPageComponent, SignUpComponent, DragDropAgentComponent, DragDropUserComponent];
+export const routingComponents = [HomepageComponent, DashboardComponent, TicketsComponent, IndividualTicketComponent, NewTicketComponent, PageNotFoundComponent];
