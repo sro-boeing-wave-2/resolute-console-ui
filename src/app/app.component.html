@@ -1,0 +1,41 @@
+<mat-toolbar color="primary" id="header">
+  <mat-toolbar-row>
+    <button type="button" mat-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span id="mainTitle">RESOLUTE</span>
+    <span class="spacer"></span>
+    <button type="button" mat-raised-button routerLink="/newticket"> Create </button>
+    <mat-icon class="icon">notifications</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" [mode]="side">
+    <section id="agentDetails">
+      <img src="../assets/images/def_user.png" alt="default user" id="userImage">
+      <mat-divider></mat-divider>
+      <h3> Name : </h3>
+      <p> Username : </p>
+      <p> Department : </p>
+    </section>
+    <section id="navigation">
+      <h1><a routerLink="/home" routerLinkActive="active"><mat-icon>home</mat-icon> Home </a></h1>
+      <h1><a routerLink="/dashboard" routerLinkActive="active"><mat-icon>dashboard</mat-icon> Dashboard </a></h1>
+      <h1><a routerLink="/tickets" routerLinkActive="active"><mat-icon>contact_mail</mat-icon> Tickets </a></h1>
+    </section>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<footer>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <p>Footer</p>
+    </mat-toolbar-row>
+  </mat-toolbar>
+<footer>
+
+
