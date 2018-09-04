@@ -1,0 +1,26 @@
+#tickets {
+  background-color: #f5f5f6;
+  color: #263238;
+}
+
+table {
+  width: 100%;
+  background-color: white;
+}
+
+td, th {
+  color : #263238;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+form, .mat-select {
+  color: black;
+}
