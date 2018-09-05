@@ -1,0 +1,61 @@
+body{
+  background-color: #f5f5f6;
+}
+.needs-validation{
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border: 3px solid #263238;
+  overflow: hidden;
+}
+
+
+.username-input, .password-input, .email-id-input, .confirm-password-input {
+  margin: 40px;
+  color: #000000;
+}
+
+.nav{
+  color: #ffffff;
+  background-color: #000a12;
+}
+
+.content{
+  margin-top: 40px;
+overflow: hidden;
+}
+
+.content h1{
+  margin-left: 40px;
+  color: #263238;
+}
+
+.btn{
+  margin: 0px 0px 0px 0px;
+  padding: 0px 40px 0px 40px;
+  width: 100%;
+
+}
+
+#buttonId {
+  width: 100%;
+  border-radius: .25rem;
+  outline: none;
+  background-color: #263238;
+  color: #f5f5f6;
+  padding: 10px 20px 10px 20px;
+  border: none;
+}
+
+#buttonId:hover{
+  cursor: pointer;
+}
+
+#validationCustom03, #validationCustom04, #validationCustom05, #validationCustom06{
+  border: 1px solid #263238;
+}
+
+#username-error, #email-error, #password-error{
+  padding: 5px;
+  color: red;
+}

@@ -1,5 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { LandingPageComponent} from './user-login/landing-page/landing-page.component';
+import { LoginPageComponent} from './user-login/login-page/login-page.component';
+import {SignUpComponent} from './user-login/sign-up/sign-up.component';
+import {DragDropUserComponent} from './user-login/drag-drop-user/drag-drop-user.component';
+import {DragDropAgentComponent} from './user-login/drag-drop-agent/drag-drop-agent.component';
+
+
+
+
 import { ConsoleUIComponent } from './console-ui/console-ui.component';
 import { DashboardComponent } from './console-ui/dashboard/dashboard.component';
 import { HomepageComponent } from './console-ui/homepage/homepage.component';
@@ -13,7 +23,18 @@ import { OpenticketsComponent } from './console-ui/tickets/opentickets/openticke
 import { DueticketsComponent } from './console-ui/tickets/duetickets/duetickets.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'console', pathMatch: 'full' },
+  { path: '', redirectTo: 'userlogin', pathMatch: 'full' },
+  {path: 'userlogin',
+    component: UserLoginComponent,
+    children: [
+      { path: '', redirectTo: 'landing', pathMatch: 'full' },
+      {path : 'landing', component: LandingPageComponent},
+      {path : 'signup', component: SignUpComponent},
+      {path : 'login', component: LoginPageComponent},
+      {path : 'addusers', component: DragDropUserComponent},
+      {path : 'addagents', component: DragDropAgentComponent},
+    ]
+  },
   { path: 'console',
     component: ConsoleUIComponent,
     children: [

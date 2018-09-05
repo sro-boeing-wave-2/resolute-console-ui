@@ -1,6 +1,11 @@
 #tickets {
-  background-color: #f5f5f6;
-  color: #263238;
+  background-color: #263238;
+  /* border: 1px solid #ffffff; */
+}
+
+#displayLinks {
+  color:white;
+
 }
 
 table {

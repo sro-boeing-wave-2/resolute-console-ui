@@ -38,7 +38,7 @@
 
 <section id="tickets">
   <nav mat-tab-nav-bar>
-    <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive"
+    <a mat-tab-link *ngFor="let link of navLinks" id="displayLinks" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive"
       [routerLinkActiveOptions]="{exact: false}">
       {{link.label}} ({{link.count == 'total' ? numberOfTickets.total : link.count == 'open' ? numberOfTickets.open : link.count
       == 'closed' ? numberOfTickets.closed : numberOfTickets.due}})

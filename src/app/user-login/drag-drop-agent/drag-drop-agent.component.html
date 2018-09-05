@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Resolute | Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark nav">
+    <div class="container">
+      <h1>Resolute</h1>
+    </div>
+  </nav>
+  <!-- <form id="drag-form">
+  <h3> Drag your Agent details CSV file and drop below</h3>
+  <div class="dropzone" id="dropzone"> +
+  </div>
+  </form>
+
+  <form enctype="multipart/form-data" method="post" name="fileinfo" id="choose-form">
+  <input type="file" name="file" required />
+  <input type="submit" value="Upload the CSV file" id="choose-submit" routerLink="/uploadusercsv"/>
+  </form>
+  <div></div> -->
+
+  <div class="container">
+    <h1 id="headline">Upload Agent Details File</h1>
+
+    <div id="iconDiv">
+      <i class="font far fa-file-alt"></i>
+    </div>
+
+    <div id="chooseFileDiv">
+      <input #file type="file" multiple (change)="upload(file.files)" />
+      <br/>
+      <span style="font-weight:bold;color:green; padding: 0px;" *ngIf="progress > 0 && progress < 100">
+        {{progress}}%
+      </span>
+
+      <span style="font-weight:bold;color:green;" *ngIf="message">
+        {{message}}
+      </span>
+    </div>
+    <div class="secondaryBtnDiv">
+      <button id="uploadbtn" (click)="OnPost()">Upload File</button>
+      <button id="nextbtn" routerLink="/userlogin/addusers">Next</button>
+    </div>
+  </div>
+  <script src="js/main.js"></script>
+</body>

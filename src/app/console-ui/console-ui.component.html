@@ -1,3 +1,5 @@
+<link href="node_modules/@angular/material/prebuilt-themes/pink-bluegrey.1.css" rel="stylesheet">
+
 <mat-toolbar color="primary" id="header">
   <mat-toolbar-row>
     <button type="button" mat-button (click)="drawer.toggle()">
@@ -5,7 +7,7 @@
     </button>
     <span id="mainTitle"><a routerLink="/console/home" routerLinkActive="active">RESOLUTE</a></span>
     <span class="spacer"></span>
-    <button type="button" mat-raised-button routerLink="/console/newticket"> Create </button>
+    <button type="button" id="createButton" mat-raised-button routerLink="/console/newticket"> Create </button>
     <mat-icon class="icon">notifications</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
