@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketsService } from '../../../tickets.service';
 import { Router } from '@angular/router';
+import { queryParams } from '../../../queryparams';
 
 @Component({
   selector: 'app-duetickets',
@@ -11,14 +12,30 @@ export class DueticketsComponent implements OnInit {
 
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
   dueTickets = [];
-  numberOfTickets = {};
   TicketId;
+  queryParams: queryParams;
 
   constructor(private service : TicketsService, private router : Router) { }
 
   ngOnInit() {
-    this.service.getDueTickets().subscribe(data => this.dueTickets = data.json());
-    this.service.getCount().subscribe(data => {this.numberOfTickets = data.json();});
+    // this.queryParams.status = "due";
+    // this.queryParams.source = "";
+    // this.queryParams.priority = "";
+    this.service.getByFilter(this.queryParams = {
+      status: "due",
+      source: "",
+      priority: ""
+    }).subscribe(tickets => {
+      this.dueTickets = tickets.json();
+    });
+    this.service.getModel().subscribe((data) => {
+      data.status = "due";
+      console.log(data);
+      this.service.getByFilter(data).subscribe(tickets => {
+        this.dueTickets = tickets.json();
+        console.log(this.dueTickets);
+      });
+    });
   }
 
   onClick(element) {

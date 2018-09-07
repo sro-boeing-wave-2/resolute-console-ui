@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketsService } from '../../../tickets.service';
 import { Route, Router } from '@angular/router';
+import { queryParams } from '../../../queryparams';
 
 @Component({
   selector: 'app-closedtickets',
@@ -11,14 +12,30 @@ export class ClosedticketsComponent implements OnInit {
 
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
   closedTickets = [];
-  numberOfTickets = {};
   TicketId;
+  queryParams: queryParams;
 
-  constructor(private service : TicketsService, private router : Router) { }
+  constructor(private service: TicketsService, private router: Router) { }
 
   ngOnInit() {
-    this.service.getClosedTickets().subscribe(data => this.closedTickets = data.json());
-    this.service.getCount().subscribe(data => {this.numberOfTickets = data.json();});
+    // this.queryParams.status = "close";
+    // this.queryParams.source = "";
+    // this.queryParams.priority = "";
+    this.service.getByFilter(this.queryParams = {
+      status: "close",
+      source: "",
+      priority: ""
+    }).subscribe(tickets => {
+      this.closedTickets = tickets.json();
+    });
+    this.service.getModel().subscribe((data) => {
+      data.status = "close";
+      console.log(data);
+      this.service.getByFilter(data).subscribe(tickets => {
+        this.closedTickets = tickets.json();
+        console.log(this.closedTickets);
+      });
+    });
   }
 
   onClick(element) {

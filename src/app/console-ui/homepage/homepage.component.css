@@ -13,6 +13,7 @@ margin: 0px;
 mat-grid-tile {
   border-style: solid;
   background-color: #263238;
+  color: #f5f5f6;
 }
 
 mat-grid-tile:hover{

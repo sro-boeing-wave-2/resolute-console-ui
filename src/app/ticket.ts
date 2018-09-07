@@ -13,5 +13,15 @@ export interface Ticket {
   updatedOn: Date;
   updatedBy: string;
   userid: number;
-  customerid: number;
+  customerId: number;
+  comment: Comment[];
+}
+
+export interface Comment {
+  id: number;
+  comment: string;
+  createdOn: Date;
+  createdBy: string;
+  updatedOn: Date;
+  updatedBy: string;
 }

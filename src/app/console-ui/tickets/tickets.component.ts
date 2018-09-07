@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TicketsService } from '../../tickets.service';
 import { FormBuilder } from '@angular/forms';
+import { queryParams } from '../../queryparams';
 
 export interface Sources {
-  value: number,
   source: string
 }
+
 export interface PriorityLevel {
-  value: number,
   priority: string
 }
 
@@ -24,24 +24,33 @@ export class TicketsComponent implements OnInit {
   numberOfTickets = {};
   filteredTickets;
 
+  queryParams: queryParams = {
+    status: "",
+    source: "",
+    priority: ""
+  }
+
+  //Form entries
   filterForm = this.formbuilder.group({
     sources: [''],
     priorityLevel: [''],
   });
 
-
+  //Menu options
   sources: Sources[] = [
-    { value: 0, source: 'twitter' },
-    { value: 1, source: 'chat' },
+    { source: 'twitter' },
+    { source: 'chat' },
   ]
 
   priorityLevel: PriorityLevel[] = [
-    { value: 0, priority: 'high' },
-    { value: 1, priority: 'medium' },
-    { value: 2, priority: 'low' }
+    { priority: 'high' },
+    { priority: 'medium' },
+    { priority: 'low' }
   ]
 
   constructor(private router: Router, private service: TicketsService, private formbuilder: FormBuilder) {
+
+    //Links for tabs
     this.navLinks = [
       {
         label: 'All Tickets',
@@ -65,9 +74,12 @@ export class TicketsComponent implements OnInit {
   }
   ngOnInit() {
     this.service.getCount().subscribe(data => { this.numberOfTickets = data.json(); });
+    this.service.updateModel(this.queryParams);
   }
 
   onSubmit() {
-    this.service.getByFilter(this.filterForm.value).subscribe(data => console.log(data));
+    this.queryParams.source = this.filterForm.value['sources'];
+    this.queryParams.priority = this.filterForm.value['priorityLevel'];
+    this.service.updateModel(this.queryParams);
   }
 }

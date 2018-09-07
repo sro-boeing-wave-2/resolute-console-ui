@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Http } from '@angular/http';
-import { map, filter } from 'rxjs/operators';
-import { Ticket } from './ticket';
+import { queryParams } from './queryparams';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,38 +16,35 @@ export class TicketsService {
   // http://35.189.155.116:8083/
   // ----------------------------------------
 
-  constructor(private http: Http, private http1: HttpClient) { }
+  constructor(private http: Http) { }
+
+  private querys = new Subject<queryParams>();
+
+  getModel() {
+    return this.querys.asObservable();
+  }
+
+  updateModel(queryParams: queryParams) {
+    console.log(queryParams);
+    this.querys.next(queryParams);
+  }
 
   getById(id) {
-    var k = this.http.get(this._url + '/detail/' + id);
-    return k;
+    return this.http.get(this._url + '/detail/' + id);
   }
 
-  getAllTickets() {
-    return this.http.get(this._url);
-  }
-
-  getByFilter(filterData) {
-    console.log(filterData);
-    return this.http1.get<Ticket[]>(this._url).pipe(map(res => res.filter((ticket) => (ticket.priority === filterData.priorityLevel) && (ticket.source === filterData.sources))));
-  }
-
-  getOpenTickets() {
-    return this.http.get(this._url + '/status/open');
-    // return this.http.get<Ticket[]>(this._url)
-    //  .pipe(map(res => res.filter((ticket) => ticket.status === 0)));
-  }
-
-  getClosedTickets() {
-    return this.http.get(this._url + '/status/close');
-    // return this.http.get<Ticket[]>(this._url)
-    //  .pipe(map(res => res.filter((ticket) => ticket.status === 1)));
-  }
-
-  getDueTickets() {
-    return this.http.get(this._url + '/status/due');
-    // return this.http.get<Ticket[]>(this._url)
-    //  .pipe(map(res => res.filter((ticket) => ticket.status === 2)));
+  getByFilter(queryParams: queryParams) {
+    console.log(queryParams);
+    if (queryParams != null) {
+      console.log(queryParams.status);
+      console.log(queryParams.source);
+      console.log(queryParams.priority);
+      console.log(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
+      return this.http.get(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
+    } else {
+      console.log(this._url + '/filter');
+      return this.http.get(this._url + '/filter');
+    }
   }
 
   getCount() {
@@ -57,6 +53,32 @@ export class TicketsService {
   }
 
   addNewTicket(ticket) {
+    console.log(ticket);
+    console.log(this._url);
     return this.http.post(this._url, ticket);
   }
+
+  getAllTickets() {
+    return this.http.get(this._url);
+  }
 }
+
+
+
+ // getOpenTickets() {
+  //   return this.http.get(this._url + '/status/open');
+  //   // return this.http.get<Ticket[]>(this._url)
+  //   //  .pipe(map(res => res.filter((ticket) => ticket.status === 0)));
+  // }
+
+  // getClosedTickets() {
+  //   return this.http.get(this._url + '/status/close');
+  //   // return this.http.get<Ticket[]>(this._url)
+  //   //  .pipe(map(res => res.filter((ticket) => ticket.status === 1)));
+  // }
+
+  // getDueTickets() {
+  //   return this.http.get(this._url + '/status/due');
+  //   // return this.http.get<Ticket[]>(this._url)
+  //   //  .pipe(map(res => res.filter((ticket) => ticket.status === 2)));
+  // }
