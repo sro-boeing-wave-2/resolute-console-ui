@@ -21,7 +21,7 @@ abupload(files) {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', 'http://172.23.238.225:5000/api/Upload', formData, {
+    const uploadReq = new HttpRequest('POST', 'http://172.23.238.225:5001/api/Upload', formData, {
       reportProgress: true,
     });
 
@@ -36,7 +36,7 @@ abupload(files) {
 
   OnPost()
   {
-    this.http.post('http://172.23.238.225:5000/api/endusers','').subscribe();
+    this.http.post('http://172.23.238.225:5001/api/endusers',{"OrganisationName":"stackroute","email":"stackroute@gmail.in","password":"stackroute1","logoUrl":"logo@stackroute.com"}).subscribe(result =>console.log(result));
   }
 
 }

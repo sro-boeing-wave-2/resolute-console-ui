@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import {LoginService} from '../../login.service';
@@ -14,6 +14,9 @@ import { Token } from '@angular/compiler';
 export class LoginPageComponent implements OnInit {
 
   tokenParam :TokenParams;
+
+  @Output()
+  submitted = new EventEmitter();
 
   // DoLogin():void
 
@@ -50,6 +53,10 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onSubmit({ Username, Password }) {
+    this.submitted.emit({ Username, Password });
   }
 
 }

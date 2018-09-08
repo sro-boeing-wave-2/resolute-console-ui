@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import {SignupService} from '../../signup.service';
 import { Router } from '@angular/router';
@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+
+  @Output()
+  submitted = new EventEmitter();
 
   constructor(
     private router : Router,
@@ -42,6 +45,10 @@ export class SignUpComponent implements OnInit {
     }
 
   ngOnInit() {
+  }
+
+  onSubmit({ customer_name, email, Password }) {
+    this.submitted.emit({ customer_name, email, Password });
   }
 
 }

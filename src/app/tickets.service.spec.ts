@@ -9,7 +9,7 @@ describe('TicketsService', () => {
     });
   });
 
-  it('should be created', inject([TicketsService], (service: TicketsService) => {
-    expect(service).toBeTruthy();
-  }));
+  // it('should be created', inject([TicketsService], (service: TicketsService) => {
+  //   expect(service).toBeTruthy();
+  // }));
 });

@@ -1,25 +1,34 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed, inject, async } from '@angular/core/testing';
+import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 import { SignUpComponent } from './sign-up.component';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('SignUpComponent', () => {
-  let component: SignUpComponent;
-  let fixture: ComponentFixture<SignUpComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SignUpComponent ]
-    })
-    .compileComponents();
-  }));
+describe('Isolated', () => {
+  let subject: SignUpComponent;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SignUpComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, FormsModule, RouterModule, RouterTestingModule, HttpClientTestingModule],
+      providers: [SignUpComponent]
+    });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  beforeEach(inject([SignUpComponent], (signUp: SignUpComponent) => {
+    subject = signUp;
+  }));
+
+
+  it('should add new user on signing up', () => {
+    subject.submitted.subscribe(({ customer_name, email, Password }) => {
+      expect(customer_name).toEqual('expectedCustomername');
+      expect(email).toEqual('expectedEmail');
+      expect(Password).toEqual('expectedPassword');
+    });
+
+    subject.onSubmit({ customer_name: 'expectedCustomername', email: 'expectedEmail', Password: 'expectedPassword' });
   });
+
 });

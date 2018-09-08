@@ -16,6 +16,7 @@ import { LoginPageComponent } from './user-login/login-page/login-page.component
 import { LandingPageComponent } from './user-login/landing-page/landing-page.component';
 import { DragDropAgentComponent } from './user-login/drag-drop-agent/drag-drop-agent.component';
 import { DragDropUserComponent } from './user-login/drag-drop-user/drag-drop-user.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { DragDropUserComponent } from './user-login/drag-drop-user/drag-drop-use
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
   ],
   entryComponents: [
   ],
