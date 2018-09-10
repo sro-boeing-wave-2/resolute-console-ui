@@ -20,9 +20,9 @@
       <h1>Login</h1>
       <div class="form-group">
         <div class="username">
-          <input type="text" name="username" formControlName="Username" class="form-control" id="validationCustom03" placeholder="Username" required />
+          <input type="text" name="username" formControlName="EmailId" class="form-control" id="validationCustom03" placeholder="Username" required />
 
-          <div *ngIf="Username.touched && !Username.valid" id="username-error">
+          <div *ngIf="EmailId.touched && !EmailId.valid" id="username-error">
             Please provide a valid Username.
           </div>
         </div>
@@ -37,8 +37,10 @@
           <button id="buttonId" type="submit">SUBMIT</button>
         </div>
         </div>
+        <section *ngIf="unauthorized">
+          <p id="invalid"> {{unauthorized}} </p>
+        </section>
     </form>
     </div>
 </body>
-
 </html>

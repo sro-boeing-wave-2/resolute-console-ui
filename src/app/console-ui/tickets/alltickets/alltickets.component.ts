@@ -14,6 +14,7 @@ export class AllticketsComponent implements OnInit {
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
   allTickets = [];
   TicketId;
+  httpOptions;
 
   queryParams: queryParams;
 

@@ -13,6 +13,7 @@ export class ClosedticketsComponent implements OnInit {
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
   closedTickets = [];
   TicketId;
+  httpOptions;
   queryParams: queryParams;
 
   constructor(private service: TicketsService, private router: Router) { }

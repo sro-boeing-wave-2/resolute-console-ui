@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class HomepageComponent implements OnInit {
 
   numberOfTickets;
+  httpOptions;
 
   constructor(private service : TicketsService, private router : Router) { }
 

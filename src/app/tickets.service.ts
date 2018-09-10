@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { queryParams } from './queryparams';
 import { Subject } from 'rxjs';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,10 @@ import { Subject } from 'rxjs';
 export class TicketsService {
 
   private _url: string = "http://172.23.238.239:8083/api/Tickets";
-  private UserDetailUrl: string ="http://172.23.238.225:5001/api/endusers/query?Name=%22syed%22";
+  private UserDetailUrl: string = "http://172.23.238.225:5001/api/endusers/query?Name=%22syed%22";
   private _ticketStatusUpdateUrl: string = "";
   private _ticketPriorityUpdateUrl: string = "";
-
+  private agentUrl = "";
 
   // ----------------LINKS-------------------
   // http://172.23.238.239:5000/api/Tickets
@@ -20,9 +21,10 @@ export class TicketsService {
   // http://35.189.155.116:8083/
   // ----------------------------------------
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private loginService: LoginService) { }
 
   private querys = new Subject<queryParams>();
+  token;
 
   getModel() {
     return this.querys.asObservable();
@@ -46,13 +48,13 @@ export class TicketsService {
   getByFilter(queryParams: queryParams) {
     console.log(queryParams);
     if (queryParams != null) {
-      console.log(queryParams.status);
-      console.log(queryParams.source);
-      console.log(queryParams.priority);
-      console.log(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
+      // console.log(queryParams.status);
+      // console.log(queryParams.source);
+      // console.log(queryParams.priority);
+      // console.log(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
       return this.http.get(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
     } else {
-      console.log(this._url + '/filter');
+      // console.log(this._url + '/filter');
       return this.http.get(this._url + '/filter');
     }
   }
@@ -72,18 +74,35 @@ export class TicketsService {
     return this.http.get(this._url);
   }
 
-  updateIndividualTicketStatus(ticketId:number, selectedStatus:string){
+  updateIndividualTicketStatus(ticketId: number, selectedStatus: string) {
     return this.http.post(this._ticketStatusUpdateUrl, ticketId, selectedStatus);
   }
 
-  updateIndividualTicketPriority(ticketId:number, selectedPriority:string){
+  updateIndividualTicketPriority(ticketId: number, selectedPriority: string) {
     return this.http.post(this._ticketPriorityUpdateUrl, ticketId, selectedPriority);
+  }
+
+  GetAgentDetails() {
+    return this.http.get(this.agentUrl);
   }
 }
 
 
+  // gethttpHeader() {
+  //   this.loginService.getTokenForComponents().subscribe(data => {
+  //     this.token = data['token'];
+  //   });
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json',
+  //       'Authorization': `Bearer ${this.token}`
+  //     })
+  //   }
+  //   return httpOptions;
+  // }
 
- // getOpenTickets() {
+
+  // getOpenTickets() {
   //   return this.http.get(this._url + '/status/open');
   //   // return this.http.get<Ticket[]>(this._url)
   //   //  .pipe(map(res => res.filter((ticket) => ticket.status === 0)));
@@ -99,4 +118,4 @@ export class TicketsService {
   //   return this.http.get(this._url + '/status/due');
   //   // return this.http.get<Ticket[]>(this._url)
   //   //  .pipe(map(res => res.filter((ticket) => ticket.status === 2)));
-  // }
+  //}

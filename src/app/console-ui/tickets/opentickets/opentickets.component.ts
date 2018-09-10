@@ -13,6 +13,7 @@ export class OpenticketsComponent implements OnInit {
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
   openTickets = [];
   TicketId;
+  httpOptions;
   queryParams: queryParams;
 
   constructor(private service: TicketsService, private router: Router) { }

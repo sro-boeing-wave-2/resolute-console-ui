@@ -47,6 +47,7 @@ export class TicketsComponent implements OnInit {
     { priority: 'medium' },
     { priority: 'low' }
   ]
+  httpOptions;
 
   constructor(private router: Router, private service: TicketsService, private formbuilder: FormBuilder) {
 

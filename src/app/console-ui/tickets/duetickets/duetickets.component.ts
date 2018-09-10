@@ -13,6 +13,7 @@ export class DueticketsComponent implements OnInit {
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
   dueTickets = [];
   TicketId;
+  httpOptions;
   queryParams: queryParams;
 
   constructor(private service : TicketsService, private router : Router) { }

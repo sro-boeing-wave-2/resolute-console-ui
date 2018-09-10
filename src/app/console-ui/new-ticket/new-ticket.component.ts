@@ -15,6 +15,7 @@ export class NewTicketComponent implements OnInit {
     Userhandle: [''],
     Description: ['']
   });
+  httpOptions;
 
   onSubmit() {
     this.service.addNewTicket(this.noteForm.value).subscribe(result=>this.route.navigate(["/console/tickets"]));
