@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { BehaviorSubject, throwError } from 'rxjs';
+import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class LoginService {
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post(this.loginUrl, form, httpOptions);
+    return this.http.post(this.loginUrl, form, httpOptions).pipe(catchError((error: HttpErrorResponse) => throwError(error.status || 'Server error')));
   }
 
 }

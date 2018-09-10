@@ -12,13 +12,13 @@ import { TokenParams } from '../Classes/TokenParams';
 })
 export class LoginPageComponent implements OnInit {
 
-  token :TokenParams = null;
+  token: TokenParams = null;
   unauthorized: string = null;
 
   //for testing
   @Output() submitted = new EventEmitter();
 
-  constructor(private router : Router, private fb : FormBuilder, private _loginService : LoginService) {}
+  constructor(private router: Router, private fb: FormBuilder, private _loginService: LoginService) { }
 
   loginForm = this.fb.group({
     'EmailId': new FormControl('', [Validators.required]),
@@ -39,14 +39,13 @@ export class LoginPageComponent implements OnInit {
   LoginToAccount() {
     this._loginService.getToken(this.loginForm.value).subscribe(result => {
       this.token = result['token']; //might need to change this
-      // console.log(result);
       this._loginService.updateToken(this.token);
-      if(this.token === null) {
-        // console.log(this.token);
-        this.unauthorized = "Invalid user or Session Timed Out";
-      } else {
-        // console.log(this.token);
+      if (this.token) {
         this.router.navigate(['/console/home']);
+      }
+    }, error => {
+      if (error) {
+        this.unauthorized = "Invalid user or Session Timed Out";
       }
     });
   }
