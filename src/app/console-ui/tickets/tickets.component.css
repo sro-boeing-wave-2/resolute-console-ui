@@ -2,6 +2,10 @@
   background-color: #263238;
 }
 
+mat-tab-nav-bar{
+  background-color: aliceblue;
+}
+
 #displayLinks {
   color:black;
 }

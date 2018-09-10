@@ -9,6 +9,10 @@ import { Subject } from 'rxjs';
 export class TicketsService {
 
   private _url: string = "http://172.23.238.239:8083/api/Tickets";
+  private UserDetailUrl: string ="http://172.23.238.225:5001/api/endusers/query?Name=%22syed%22";
+  private _ticketStatusUpdateUrl: string = "";
+  private _ticketPriorityUpdateUrl: string = "";
+
 
   // ----------------LINKS-------------------
   // http://172.23.238.239:5000/api/Tickets
@@ -27,6 +31,12 @@ export class TicketsService {
   updateModel(queryParams: queryParams) {
     console.log(queryParams);
     this.querys.next(queryParams);
+  }
+
+  getUserDetailsById() {
+    var a = this.http.get(this.UserDetailUrl);
+    console.log(a);
+    return a;
   }
 
   getById(id) {
@@ -60,6 +70,14 @@ export class TicketsService {
 
   getAllTickets() {
     return this.http.get(this._url);
+  }
+
+  updateIndividualTicketStatus(ticketId:number, selectedStatus:string){
+    return this.http.post(this._ticketStatusUpdateUrl, ticketId, selectedStatus);
+  }
+
+  updateIndividualTicketPriority(ticketId:number, selectedPriority:string){
+    return this.http.post(this._ticketPriorityUpdateUrl, ticketId, selectedPriority);
   }
 }
 

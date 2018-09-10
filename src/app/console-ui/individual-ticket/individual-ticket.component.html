@@ -1,5 +1,50 @@
-<section id="ticketDetails">
-  <section id="chatSection">
+<mat-sidenav-container class="ticketContainer">
+  <mat-sidenav-content>Chat Module will come here</mat-sidenav-content>
+  <mat-sidenav mode="side" opened position="end">
+    <mat-card id="TicketDetailsCard">
+    <mat-card-header>
+      <div id="square"><div id="UserImage"></div></div>
+    </mat-card-header>
+    <mat-card-title>Syed Arhaam Ahmed </mat-card-title>
+    <mat-card-subtitle> Ticket ID : 143390 </mat-card-subtitle>
+    <mat-card-content>
+      <p class="CardTitle"> <b>Issue: </b> Ticket Subject goes here </p>
+      <p class="CardTitle"> <b>Description: </b></p>
+      <p id="description">
+          Ticket description goes here
+      </p>
+    </mat-card-content>
+    <form id="statusAndPriority" style="color: white">
+        <mat-form-field >
+          <mat-select  placeholder="Status" [(ngModel)]="selectedStatusValue" name="status">
+            <mat-option  (click)=updateStatus()  *ngFor="let status of statuses" [value]="status.value">
+              {{status.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <form>
+          <mat-form-field>
+            <mat-select placeholder="Priority" [(ngModel)]="selectedPriorityValue" name="priority">
+              <mat-option (click)=updatePriority() *ngFor="let priority of priorities" [value]="priority.value">
+                {{priority.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+        <mat-form-field>
+        <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"
+          placeholder="Leave a comment"></textarea>
+        </mat-form-field>
+        <div class="btn-class">
+          <button id="save-btn">SAVE</button>
+          <button id="resolve-btn">RESOLVE</button>
+        </div>
+  </mat-card>
+  </mat-sidenav>
+
+
+  <!-- <section id="chatSection">
 
   </section>
   <section id="detailSection">
@@ -18,4 +63,5 @@
       <h4> Status : {{TicketById.status}} </h4>
     </section>
   </section>
-</section>
+</section> -->
+</mat-sidenav-container>

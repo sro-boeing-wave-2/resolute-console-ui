@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {HttpModule} from '@angular/http';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatCardModule} from '@angular/material/card';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatInputModule} from '@angular/material/input';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,7 +42,11 @@ import { DragDropUserComponent } from './user-login/drag-drop-user/drag-drop-use
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatInputModule
   ],
   entryComponents: [
   ],

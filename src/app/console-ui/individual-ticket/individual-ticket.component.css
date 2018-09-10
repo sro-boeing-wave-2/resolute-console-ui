@@ -1,4 +1,122 @@
-h2 {
+.ticketContainer{
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  position: absolute;
+}
+
+mat-card{
+  background-image: linear-gradient(to top, #09203f  0%, #537895 100%);
+  color: aliceblue;}
+
+#square{
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+
+}
+
+#square::after{
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+#UserImage{
+  background-image: url('../../../../src/profile-pic.jpg');
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  position: absolute;
+}
+
+::ng-deep .mat-select-content{
+  color: aliceblue;
+}
+
+::ng-deep .mat-select {
+  color: red !important;
+}
+
+mat-card-title {
+  padding: 10px;
+}
+
+mat-card-subtitle {
+  color: aliceblue;
+}
+
+mat-card-title, mat-card-subtitle{
+  text-align: center;
+}
+
+.CardTitle{
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.CardTitle b{
+  color: aliceblue;
+}
+
+#IssueText{
+  margin-top: 0px;
+}
+
+mat-expansion-panel a{
+  text-decoration: none;
+  list-style: none;
+  color: dimgray;
+}
+
+mat-expansion-panel-header{
+  padding: 5px;
+}
+
+mat-expansion-panel-header:hover{
+  background-color: red;
+}
+
+/* .mat-expansion-panel-header.mat-expanded:hover{
+  background-color: brown;
+} */
+
+mat-panel-title{
+  margin: 0px;
+  color: blue;
+}
+
+#statusAndPriority {
+  color: aliceblue;
+}
+
+#save-btn, #resolve-btn{
+  color: aliceblue;
+  background-color: transparent;
+  outline: none;
+  text-decoration: none;
+  border: 1px solid aliceblue;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+}
+
+#save-btn:hover, #resolve-btn:hover{
+  background-color: aliceblue;
+  color: #330867;
+}
+
+#save-btn{
+  margin-right: 7.5px;
+}
+
+#resolve-btn{
+  margin-left: 7.5px;
+}
+
+/* h2 {
   color: #263238;
   text-align: center;
   margin-top: 30px;
@@ -41,4 +159,4 @@ h4 {
   color: #263238;
   text-align: left;
   margin: 20px 10px 20px 10px;
-}
+} */
