@@ -8,10 +8,11 @@ import { Subject } from 'rxjs';
 })
 export class TicketsService {
 
-  private _url: string = "http://172.23.238.239:8083/api/Tickets";
+  private _url: string = "http://35.189.155.116:8083/api/Tickets";
   private UserDetailUrl: string ="http://172.23.238.225:5001/api/endusers/query?Name=%22syed%22";
-  private _ticketStatusUpdateUrl: string = "";
-  private _ticketPriorityUpdateUrl: string = "";
+  private _ticketStatusUpdateUrl: string = "http://172.23.238.233:8083/api/Tickets/status";
+  private _ticketPriorityUpdateUrl: string = "http://172.23.238.233:8083/api/Tickets/priority";
+  private _ticketCommentUpdateUrl: string = "http://172.23.238.233:8083/api/Tickets/updateComment";
 
 
   // ----------------LINKS-------------------
@@ -72,13 +73,30 @@ export class TicketsService {
     return this.http.get(this._url);
   }
 
-  updateIndividualTicketStatus(ticketId:number, selectedStatus:string){
-    return this.http.post(this._ticketStatusUpdateUrl, ticketId, selectedStatus);
+  updateIndividualTicketStatus(ticketId, selectedStatus){
+    var ticketData = {'TicketId': ticketId, 'Status': selectedStatus };
+    console.log(ticketData);
+    var a = this.http.put(this._ticketStatusUpdateUrl, ticketData).subscribe(result => {
+      console.log('haha');
+    });
+    return a;
   }
 
-  updateIndividualTicketPriority(ticketId:number, selectedPriority:string){
-    return this.http.post(this._ticketPriorityUpdateUrl, ticketId, selectedPriority);
+  updateIndividualTicketPriority(ticketId, selectedPriority){
+    var ticketPriorityData = {'TicketId': ticketId, 'Priority': selectedPriority};
+    console.log(ticketPriorityData);
+    return this.http.put(this._ticketPriorityUpdateUrl, ticketPriorityData).subscribe(result => {
+      console.log('hehe');
+    });
   }
+
+  updateIndividualTicketComment(ticketId, comment, createdBy){
+    var ticketCommentData = {'ticketid': ticketId, 'comment': comment, 'Createdby': createdBy};
+    console.log(ticketCommentData);
+    return this.http.put(this._ticketCommentUpdateUrl, ticketCommentData).subscribe(result => {
+      console.log('huhu');
+    });
+}
 }
 
 

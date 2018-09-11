@@ -7,7 +7,8 @@
 }
 
 mat-card{
-  background-image: linear-gradient(to top, #09203f  0%, #537895 100%);
+  background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+
   color: aliceblue;}
 
 #square{
@@ -93,7 +94,7 @@ mat-panel-title{
   color: aliceblue;
 }
 
-#save-btn, #resolve-btn{
+#resolve-btn{
   color: aliceblue;
   background-color: transparent;
   outline: none;
@@ -103,13 +104,9 @@ mat-panel-title{
   cursor: pointer;
 }
 
-#save-btn:hover, #resolve-btn:hover{
+#resolve-btn:hover{
   background-color: aliceblue;
   color: #330867;
-}
-
-#save-btn{
-  margin-right: 7.5px;
 }
 
 #resolve-btn{

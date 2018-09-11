@@ -47,11 +47,16 @@ export class IndividualTicketComponent implements OnInit {
   }
 
   updatePriority(){
-    this.service.updateIndividualTicketPriority(this.TicketById.ticketId,this.selectedStatusValue);
+    this.service.updateIndividualTicketPriority(this.TicketById.ticketId,this.selectedPriorityValue);
+  }
+
+  updateCommentValue(){
+    this.service.updateIndividualTicketComment(this.TicketById.ticketId, this.commentValue, this.TicketById.userid);
   }
 
   selectedStatusValue: string;
   selectedPriorityValue: string;
+  commentValue: string;
 
   statuses: Options[] = [
     {value: 'open', viewValue: 'Open'},

@@ -1,17 +1,18 @@
 <mat-sidenav-container class="ticketContainer">
   <mat-sidenav-content>Chat Module will come here</mat-sidenav-content>
+
   <mat-sidenav mode="side" opened position="end">
     <mat-card id="TicketDetailsCard">
     <mat-card-header>
       <div id="square"><div id="UserImage"></div></div>
     </mat-card-header>
     <mat-card-title>Syed Arhaam Ahmed </mat-card-title>
-    <mat-card-subtitle> Ticket ID : 143390 </mat-card-subtitle>
+    <mat-card-subtitle> Ticket ID : {{TicketById.ticketId}} </mat-card-subtitle>
     <mat-card-content>
-      <p class="CardTitle"> <b>Issue: </b> Ticket Subject goes here </p>
+      <p class="CardTitle"> <b>Issue: </b> {{TicketById.subject}} </p>
       <p class="CardTitle"> <b>Description: </b></p>
       <p id="description">
-          Ticket description goes here
+        {{TicketById.description}}
       </p>
     </mat-card-content>
     <form id="statusAndPriority" style="color: white">
@@ -33,12 +34,11 @@
           </mat-form-field>
         </form>
         <mat-form-field>
-        <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"
+        <textarea matInput [(ngModel)]="commentValue" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"
           placeholder="Leave a comment"></textarea>
         </mat-form-field>
         <div class="btn-class">
-          <button id="save-btn">SAVE</button>
-          <button id="resolve-btn">RESOLVE</button>
+          <button (click)=updateCommentValue() id="resolve-btn">RESOLVE</button>
         </div>
   </mat-card>
   </mat-sidenav>
