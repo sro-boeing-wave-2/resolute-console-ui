@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http'
+import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
+import { Posts } from '../../models/post.model';
 
 @Component({
   selector: 'app-drag-drop-user',
@@ -13,6 +14,7 @@ export class DragDropUserComponent {
   constructor(private http: HttpClient) { }
 
 abupload(files) {
+  
     if (files.length === 0)
       return;
 
@@ -36,7 +38,7 @@ abupload(files) {
 
   OnPost()
   {
-    this.http.post('http://172.23.238.225:5001/api/endusers',{"OrganisationName":"stackroute","email":"stackroute@gmail.in","password":"stackroute1","logoUrl":"logo@stackroute.com"}).subscribe(result =>console.log(result));
+    this.http.post<Posts[]>('http://172.23.238.225:5001/api/endusers',{"OrganisationName":"stackroute","email":"stackroute@gmail.in","password":"stackroute1","logoUrl":"logo@stackroute.com"}).subscribe(result =>console.log(result));
   }
 
 }

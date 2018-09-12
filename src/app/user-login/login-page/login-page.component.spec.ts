@@ -36,31 +36,6 @@ describe('Isolated', () => {
     subject = loginPage;
   }));
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
-
-  // it('form invalid when empty', () => {
-  //   expect(component.loginForm.valid).toBeFalsy();
-  // });
-
-  // it('username field validity', () => {
-  //   let errors = {};
-  //   let username = component.loginForm.controls['Username'];
-  //   expect(username.valid).toBeFalsy();
-
-  //   errors = username.errors || {};
-  //   expect(errors['required']).toBeTruthy();
-  // });
-
-  // it('password field validity', () => {
-  //   let errors = {};
-  //   let password = component.loginForm.controls['Password'];
-  //   expect(password.valid).toBeFalsy();
-
-  //   errors = password.errors || {};
-  //   expect(errors['required']).toBeTruthy();
-  // });
 
   it('should send credentials on submit', () => {
     subject.submitted.subscribe(({ Username, Password }) => {

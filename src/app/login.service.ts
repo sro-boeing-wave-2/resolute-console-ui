@@ -8,6 +8,7 @@ import {Headers, Http, HttpModule } from '@angular/http';
 import {TokenParams} from './user-login/Classes/TokenParams';
 import { Token } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
+import { Loginmodel } from './models/post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class LoginService {
 
    post(form){
     console.log(form)
-    var k = this.http.post("http://172.23.238.235:8081/api/Auth/login", form);
+    var k = this.http.post<Loginmodel[]>("http://172.23.238.235:8081/api/Auth/login", form);
     return k;
   }
 
