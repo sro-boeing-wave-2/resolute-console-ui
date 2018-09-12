@@ -27,7 +27,9 @@ export class TicketsComponent implements OnInit {
   queryParams: queryParams = {
     status: "",
     source: "",
-    priority: ""
+    priority: "",
+    page: 10,
+    size: 10
   }
 
   //Form entries
@@ -47,6 +49,7 @@ export class TicketsComponent implements OnInit {
     { priority: 'medium' },
     { priority: 'low' }
   ]
+
   httpOptions;
 
   constructor(private router: Router, private service: TicketsService, private formbuilder: FormBuilder) {
@@ -66,14 +69,15 @@ export class TicketsComponent implements OnInit {
         path: '/console/tickets/closed',
         count: 'closed'
       }, {
-        label: 'Due',
+        label: 'Unassigned',
         path: '/console/tickets/due',
         count: 'due'
       }
     ];
-
   }
+
   ngOnInit() {
+    const httpHeaders = this.service.gethttpHeader();
     this.service.getCount().subscribe(data => { this.numberOfTickets = data.json(); });
     this.service.updateModel(this.queryParams);
   }

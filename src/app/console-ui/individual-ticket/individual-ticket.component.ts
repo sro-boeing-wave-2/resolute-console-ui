@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TicketsComponent } from '../tickets/tickets.component';
 import { TicketsService } from '../../tickets.service';
+import { Ticket } from '../../ticket';
+
 
 export interface Options {
   value: string;
@@ -17,23 +20,6 @@ export class IndividualTicketComponent implements OnInit {
 
   TicketById;
   UserName;
-  httpOptions;
-
-  selectedStatusValue: string;
-  selectedPriorityValue: string;
-
-  statuses: Options[] = [
-    {value: 'open', viewValue: 'Open'},
-    {value: 'closed', viewValue: 'Closed'},
-    {value: 'onhold', viewValue: 'On Hold'}
-  ];
-
-  priorities: Options[] = [
-    {value: 'high', viewValue: 'High'},
-    {value: 'medium', viewValue: 'Medium'},
-    {value: 'low', viewValue: 'Low'}
-  ];
-
   constructor(private service: TicketsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -60,6 +46,26 @@ export class IndividualTicketComponent implements OnInit {
   }
 
   updatePriority(){
-    this.service.updateIndividualTicketPriority(this.TicketById.ticketId,this.selectedStatusValue);
+    this.service.updateIndividualTicketPriority(this.TicketById.ticketId,this.selectedPriorityValue);
   }
+
+  updateCommentValue(){
+    this.service.updateIndividualTicketComment(this.TicketById.ticketId, this.commentValue, this.TicketById.userid);
+  }
+
+  selectedStatusValue: string;
+  selectedPriorityValue: string;
+  commentValue: string;
+
+  statuses: Options[] = [
+    {value: 'open', viewValue: 'Open'},
+    {value: 'closed', viewValue: 'Closed'},
+    {value: 'onhold', viewValue: 'On Hold'}
+  ];
+
+  priorities: Options[] = [
+    {value: 'high', viewValue: 'High'},
+    {value: 'medium', viewValue: 'Medium'},
+    {value: 'low', viewValue: 'Low'}
+  ];
 }

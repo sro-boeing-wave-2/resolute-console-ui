@@ -15,6 +15,7 @@ export class HomepageComponent implements OnInit {
   constructor(private service : TicketsService, private router : Router) { }
 
   ngOnInit() {
+    const httpHeaders = this.service.gethttpHeader();
     this.service.getCount().subscribe(data => {this.numberOfTickets = data.json()});
   }
 

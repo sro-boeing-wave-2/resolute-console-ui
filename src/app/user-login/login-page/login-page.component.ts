@@ -2,7 +2,6 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../login.service';
-import { TokenParams } from '../Classes/TokenParams';
 
 
 @Component({
@@ -12,7 +11,7 @@ import { TokenParams } from '../Classes/TokenParams';
 })
 export class LoginPageComponent implements OnInit {
 
-  token: TokenParams = null;
+  token;
   unauthorized: string = null;
 
   //for testing
@@ -21,30 +20,37 @@ export class LoginPageComponent implements OnInit {
   constructor(private router: Router, private fb: FormBuilder, private _loginService: LoginService) { }
 
   loginForm = this.fb.group({
-    'EmailId': new FormControl('', [Validators.required]),
-    'Password': new FormControl('', [Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(10)])])
+    //change this to EmailId later
+    'Username': new FormControl('', [Validators.required]),
+    'Password': new FormControl('', [Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(14)])])
   });
 
   get Username() {
-    console.log(this.loginForm.get('EmailId'));
-    return this.loginForm.get('EmailId');
+    console.log(this.loginForm.get('Username'));
+    return this.loginForm.get('Username');
   }
 
   get Password() {
     console.log(this.loginForm.get('Password'));
     return this.loginForm.get('Password');
-
   }
 
   LoginToAccount() {
+    console.log(this.loginForm.value);
     this._loginService.getToken(this.loginForm.value).subscribe(result => {
-      this.token = result['token']; //might need to change this
+      this.token = result.toString(); //might need to change this
       this._loginService.updateToken(this.token);
+      console.log(this.loginForm.value.Password)
+      console.log(`${JSON.stringify(result)} This is the TOKEN`);
       if (this.token) {
         this.router.navigate(['/console/home']);
       }
+      else {
+        this.unauthorized = "Invalid user or Session Timed Out";
+      }
     }, error => {
       if (error) {
+        console.log('Error');
         this.unauthorized = "Invalid user or Session Timed Out";
       }
     });

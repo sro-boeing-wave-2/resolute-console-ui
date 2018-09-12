@@ -1,16 +1,31 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Http } from '@angular/http';
+import { Subject } from 'rxjs';
+import { OrganizationData } from './user-login/organizationData';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignupService {
 
-  url : string ="http://172.23.238.225:5000/api/Signup"
+  private customerData: OrganizationData;
+
+  getData() {
+    console.log("GETDATA");
+    var k = this.customerData;
+    console.log(k);
+    return(k);
+  }
+
+  updateData(updatedData: OrganizationData) {
+    console.log(updatedData);
+    this.customerData = updatedData;
+  }
+
+  url : string ="http://35.189.155.116:8082/api/Signup"
   post(form){
     console.log(form)
-   var k = this.http.post(this.url, form);
-   return k;
+    return this.http.post(this.url, form);
   }
-  constructor(private http : HttpClient) { }
+  constructor(private http : Http) { }
 }

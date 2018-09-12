@@ -15,7 +15,7 @@ import { RoutingComponents } from './app-routing.module';
 import { MaterialModule } from './material';
 import { TicketsService } from './tickets.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RequestInterceptor } from './auth.interceptor';
+// import { RequestInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,12 +39,12 @@ import { RequestInterceptor } from './auth.interceptor';
   entryComponents: [
   ],
   providers: [
-    TicketsService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: RequestInterceptor,
-      multi: true
-    }
+    TicketsService
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: RequestInterceptor,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

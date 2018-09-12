@@ -22,7 +22,9 @@ export class OpenticketsComponent implements OnInit {
     this.service.getByFilter(this.queryParams = {
       status: "open",
       source: "",
-      priority: ""
+      priority: "",
+      page: 10,
+      size: 10
     }).subscribe(tickets => {
       this.openTickets = tickets.json();
     });

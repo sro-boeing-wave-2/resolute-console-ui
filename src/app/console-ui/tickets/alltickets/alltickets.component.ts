@@ -21,7 +21,13 @@ export class AllticketsComponent implements OnInit {
   constructor(private service : TicketsService, private router : Router) { }
 
   ngOnInit() {
-    this.service.getByFilter(null).subscribe(tickets => {
+    this.service.getByFilter(this.queryParams = {
+      status: "",
+      source: "",
+      priority: "",
+      page: 10,
+      size: 10
+    }).subscribe(tickets => {
       this.allTickets = tickets.json();
     });
     this.service.getModel().subscribe((data) => {
@@ -32,10 +38,8 @@ export class AllticketsComponent implements OnInit {
         console.log(this.allTickets);
       });
     });
-
     console.log("After api call");
   }
-
 
   onClick(element) {
     console.log(element.ticketId);

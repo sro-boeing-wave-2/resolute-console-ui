@@ -25,7 +25,9 @@ export class DueticketsComponent implements OnInit {
     this.service.getByFilter(this.queryParams = {
       status: "due",
       source: "",
-      priority: ""
+      priority: "",
+      page: 10,
+      size: 10
     }).subscribe(tickets => {
       this.dueTickets = tickets.json();
     });

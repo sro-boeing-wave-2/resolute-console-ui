@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http'
+import { Router } from '@angular/router';
+import { LoginService } from '../../login.service';
+import { SignupService } from '../../signup.service';
+import { OrganizationData } from '../organizationData';
 
 @Component({
   selector: 'app-drag-drop-user',
@@ -10,9 +14,11 @@ export class DragDropUserComponent {
 
   public progress: number;
   public message: string;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router, private signUpService: SignupService) { }
 
-abupload(files) {
+  data: OrganizationData;
+
+  abupload(files) {
     if (files.length === 0)
       return;
 
@@ -21,7 +27,7 @@ abupload(files) {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', 'http://172.23.238.225:5001/api/Upload', formData, {
+    const uploadReq = new HttpRequest('POST', 'http://35.189.155.116:8082/api/upload', formData, {
       reportProgress: true,
     });
 
@@ -30,13 +36,15 @@ abupload(files) {
         this.progress = Math.round(100 * event.loaded / event.total);
       else if (event.type === HttpEventType.Response)
         this.message = event.body.toString();
-        console.log(event);
+      console.log(event);
     });
   }
 
-  OnPost()
-  {
-    this.http.post('http://172.23.238.225:5001/api/endusers','').subscribe();
+  OnPost() {
+    this.data = this.signUpService.getData();
+    console.log(this.data);
+    this.http.post('http://35.189.155.116:8082/api/endusers', this.data).subscribe(
+      result => this.router.navigate(['/userlogin/login'])
+    );
   }
-
 }
