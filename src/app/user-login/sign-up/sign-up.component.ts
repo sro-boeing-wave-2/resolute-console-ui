@@ -19,7 +19,9 @@ export class SignUpComponent implements OnInit {
     data: OrganizationData;
 
     signUpForm = this.fb.group({
+      'organisationDisplayName': new FormControl('', [Validators.required]),
       'organisationName': new FormControl('', [Validators.required]),
+      'logoUrl': new FormControl('', [Validators.required]),
       'email' : new FormControl('', [Validators.required]),
       'Password': new FormControl('', [Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(10)])])
     });
@@ -27,10 +29,10 @@ export class SignUpComponent implements OnInit {
   GenerateAccount():void {
 
     var a = this.signUpForm.value;
-    console.log(a);
+    console.log("This is the form data coming " + a);
     this.signUpService.post(a).subscribe(data => {
       this.data = data.json();
-      this.signUpService.updateData(this.data);
+      this.signUpService.updateData(this.data); //why is this function called?
       console.log(data.json());
     });
     this.router.navigate(['/userlogin/addagents']);

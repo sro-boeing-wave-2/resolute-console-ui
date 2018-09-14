@@ -44,7 +44,7 @@
         <textarea matInput [(ngModel)]="commentValue" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5" placeholder="Leave a comment"></textarea>
       </mat-form-field>
       <div class="btn-class">
-        <button (click)=updateCommentValue() id="resolve-btn">RESOLVE</button>
+        <button [disabled]="commentstatus == 'disableit'" (click)="openDialog()" id="resolve-btn">RESOLVE</button>
       </div>
     </mat-card>
   </mat-sidenav>

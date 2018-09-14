@@ -10,7 +10,7 @@ body{
 }
 
 
-.username-input, .password-input, .email-id-input, .confirm-password-input {
+.username-input, .teamname-input, .logourl-input, .password-input, .email-id-input, .confirm-password-input {
   margin: 40px;
   color: #000000;
 }
@@ -51,7 +51,7 @@ overflow: hidden;
   cursor: pointer;
 }
 
-#validationCustom03, #validationCustom04, #validationCustom05, #validationCustom06{
+#validationCustom01, #validationCustom02, #validationCustom03, #validationCustom04, #validationCustom05, #validationCustom06{
   border: 1px solid #263238;
 }
 

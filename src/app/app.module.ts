@@ -7,6 +7,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,12 +17,14 @@ import { RoutingComponents } from './app-routing.module';
 import { MaterialModule } from './material';
 import { TicketsService } from './tickets.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PopUpComponent } from './console-ui/pop-up/pop-up.component';
 // import { RequestInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoutingComponents
+    RoutingComponents,
+    PopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +38,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSidenavModule,
     MatCardModule,
     MatExpansionModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
-  entryComponents: [
+  entryComponents: [PopUpComponent
   ],
   providers: [
     TicketsService

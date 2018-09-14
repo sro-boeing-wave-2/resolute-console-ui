@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TicketsService } from '../../tickets.service';
 import { Ticket, TicketDetailsModal } from '../../ticket';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { PopUpComponent } from '../pop-up/pop-up.component';
+
 
 export interface Options {
   value: string;
@@ -21,7 +24,7 @@ export class IndividualTicketComponent implements OnInit {
   commentValue: string;
   TicketById: TicketDetailsModal;
   UserName;
-  constructor(private service: TicketsService, private route: ActivatedRoute) { }
+  constructor(private service: TicketsService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit() {
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -44,11 +47,6 @@ export class IndividualTicketComponent implements OnInit {
     this.service.updateIndividualTicketPriority(this.TicketById.id,this.selectedPriorityValue);
   }
 
-  updateCommentValue(){
-    console.log("Comment field value: " + this.commentValue);
-    this.service.updateIndividualTicketComment(this.TicketById.id, this.commentValue, this.TicketById.userid);
-  }
-
   statuses: Options[] = [
     {value: "open", viewValue: 'Open'},
     {value: "closed", viewValue: 'Closed'},
@@ -60,4 +58,23 @@ export class IndividualTicketComponent implements OnInit {
     {value: "medium", viewValue: 'Medium'},
     {value: "low", viewValue: 'Low'}
   ];
+
+
+  //Opening and closing of the Modal
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(PopUpComponent, {
+      width: '30%',
+      data:{
+        id: this.TicketById.id,
+        comment: this.commentValue,
+        userId: this.TicketById.userid
+      },
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
 }

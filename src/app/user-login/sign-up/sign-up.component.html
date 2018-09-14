@@ -20,8 +20,23 @@
     <form class="needs-validation col-lg-6 col-md-8 col-sm-10" [formGroup]="signUpForm" (ngSubmit)="GenerateAccount()"  novalidate name="signup-form">
       <h1>Create a New Account</h1>
       <div class="form-group">
+
+        <div class="teamname-input">
+          <input type="text" name="organisationDisplayName" formControlName="organisationDisplayName" class="form-control"  id="validationCustom01" placeholder="Company Name" required />
+          <!-- <div *ngIf="!organizationDisplayName.valid && organizationDisplayName.touched " id="username-error">
+            Please enter your desired Username.
+          </div> -->
+        </div>
+
         <div class="username-input">
-          <input type="text" name="organisationName" formControlName="organisationName" class="form-control"  id="validationCustom03" placeholder="New Username" required />
+          <input type="text" name="organisationName" formControlName="organisationName" class="form-control"  id="validationCustom02" placeholder="Unique Team Name" required />
+          <!-- <div *ngIf="!organizationName.valid && organizationName.touched " id="username-error">
+            Please enter your desired Username.
+          </div> -->
+        </div>
+
+        <div class="logourl-input">
+          <input type="text" name="logoUrl" formControlName="logoUrl" class="form-control"  id="validationCustom03" placeholder="Logo Url" required />
           <!-- <div *ngIf="!organizationName.valid && organizationName.touched " id="username-error">
             Please enter your desired Username.
           </div> -->
@@ -33,6 +48,7 @@
             Please provide a valid Email-ID.
           </div> -->
         </div>
+
         <div class="password-input">
           <input type="text" name="password" formControlName="Password" class="form-control"  id="validationCustom05" placeholder="New Password" required>
           <!-- <div *ngIf="!Password.valid && Password.touched" id="password-error" >
