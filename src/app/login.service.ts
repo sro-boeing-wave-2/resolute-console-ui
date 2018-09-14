@@ -1,33 +1,36 @@
 import { Injectable } from '@angular/core';
-import { of, throwError, Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-
-import { HttpHeaders } from '@angular/common/http';
-
-import {Headers, Http, HttpModule} from '@angular/http';
-import {TokenParams} from './user-login/Classes/TokenParams';
-import { Token } from '@angular/compiler';
+import { BehaviorSubject, throwError, Subject } from 'rxjs';
+import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { OrganizationData } from './user-login/organizationData';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-   AccessToken:string = "";
-   constructor(private http : Http) { }
+  tokenSubject = new BehaviorSubject("");
 
-   private TokenAPI = "http://localhost:12345/provideYourTokenAPIhere";
-
-  // login(Username:string, Password:string): Observable<TokenParams>{
-  //   var headersForTokenAPI = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-  //   var data = Username + Password;
-  //   return this.http.post(this.TokenAPI, data, { headers: headersForTokenAPI}).map(res => res.json());
-
-
-  // }
-   post(form){
-    console.log(form)
-    return this.http.post("http://172.23.238.235:8081/api/Auth/login", form);
+  getTokenForComponents() {
+    return this.tokenSubject.asObservable();
   }
 
+  updateToken(token) {
+    this.tokenSubject.next(token);
   }
+
+  constructor(private http: HttpClient) { }
+
+  // loginUrl = Ip of the API Gateway for token generation
+  loginUrl: string = "http://35.189.155.116:8081/api/Auth/login";
+
+  getToken(form) {
+    // const httpHeader = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type':  'application/json'
+    //   })
+    // };
+    return this.http.post(this.loginUrl, form).pipe(catchError((error: HttpErrorResponse) => throwError(error.status || 'Server error')));
+  }
+
+}

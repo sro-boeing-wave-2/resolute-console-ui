@@ -13,6 +13,7 @@ export class DueticketsComponent implements OnInit {
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
   dueTickets = [];
   TicketId;
+  httpOptions;
   queryParams: queryParams;
 
   constructor(private service : TicketsService, private router : Router) { }
@@ -24,7 +25,9 @@ export class DueticketsComponent implements OnInit {
     this.service.getByFilter(this.queryParams = {
       status: "due",
       source: "",
-      priority: ""
+      priority: "",
+      page: 10,
+      size: 10
     }).subscribe(tickets => {
       this.dueTickets = tickets.json();
     });

@@ -31,11 +31,11 @@ nav {
 
 form {
   padding: 10px 20px;
-  color: white;
+  color: black;
 }
 
 label, mat-select {
-  color: white;
+  color: black;
   margin: 20px 0px;
 }
 
@@ -43,8 +43,16 @@ label, mat-select {
   margin: 0px 0px 20px 0px;
 }
 
+#pagination_nav {
+  float: right;
+}
+
 #filterButton {
   margin: 6px 40px;
   float: right;
+}
+
+.pagenav {
+  padding: 6px;
 }
 

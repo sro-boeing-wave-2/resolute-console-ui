@@ -13,6 +13,7 @@ export class ClosedticketsComponent implements OnInit {
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
   closedTickets = [];
   TicketId;
+  httpOptions;
   queryParams: queryParams;
 
   constructor(private service: TicketsService, private router: Router) { }
@@ -24,7 +25,9 @@ export class ClosedticketsComponent implements OnInit {
     this.service.getByFilter(this.queryParams = {
       status: "close",
       source: "",
-      priority: ""
+      priority: "",
+      page: 10,
+      size: 10
     }).subscribe(tickets => {
       this.closedTickets = tickets.json();
     });

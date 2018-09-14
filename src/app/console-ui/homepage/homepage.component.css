@@ -23,3 +23,15 @@ mat-grid-tile:hover{
 
 mat-card-content{
   text-align: center;}
+
+.agentTickets {
+  border-style: solid;
+  border-width: 4px;
+  border-color: orange;
+}
+.departmentTickets {
+  border-style: solid;
+  border-width: 4px;
+  border-color: green;
+}
+

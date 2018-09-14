@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { LandingPageComponent} from './user-login/landing-page/landing-page.component';
-import { LoginPageComponent} from './user-login/login-page/login-page.component';
-import {SignUpComponent} from './user-login/sign-up/sign-up.component';
-import {DragDropUserComponent} from './user-login/drag-drop-user/drag-drop-user.component';
-import {DragDropAgentComponent} from './user-login/drag-drop-agent/drag-drop-agent.component';
-
-
-
+import { LandingPageComponent } from './user-login/landing-page/landing-page.component';
+import { LoginPageComponent } from './user-login/login-page/login-page.component';
+import { SignUpComponent } from './user-login/sign-up/sign-up.component';
+import { DragDropUserComponent } from './user-login/drag-drop-user/drag-drop-user.component';
+import { DragDropAgentComponent } from './user-login/drag-drop-agent/drag-drop-agent.component';
 
 import { ConsoleUIComponent } from './console-ui/console-ui.component';
 import { DashboardComponent } from './console-ui/dashboard/dashboard.component';
@@ -21,18 +18,19 @@ import { AllticketsComponent } from './console-ui/tickets/alltickets/alltickets.
 import { ClosedticketsComponent } from './console-ui/tickets/closedtickets/closedtickets.component';
 import { OpenticketsComponent } from './console-ui/tickets/opentickets/opentickets.component';
 import { DueticketsComponent } from './console-ui/tickets/duetickets/duetickets.component';
+import { GamificationComponent } from './console-ui/dashboard/gamification/gamification.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'userlogin', pathMatch: 'full' },
-  {path: 'userlogin',
+  { path: 'userlogin',
     component: UserLoginComponent,
     children: [
       { path: '', redirectTo: 'landing', pathMatch: 'full' },
-      {path : 'landing', component: LandingPageComponent},
-      {path : 'signup', component: SignUpComponent},
-      {path : 'login', component: LoginPageComponent},
-      {path : 'addusers', component: DragDropUserComponent},
-      {path : 'addagents', component: DragDropAgentComponent},
+      { path : 'landing', component: LandingPageComponent },
+      { path : 'signup', component: SignUpComponent },
+      { path : 'login', component: LoginPageComponent },
+      { path : 'addusers', component: DragDropUserComponent },
+      { path : 'addagents', component: DragDropAgentComponent },
     ]
   },
   { path: 'console',
@@ -73,5 +71,13 @@ export const RoutingComponents = [
   AllticketsComponent,
   ClosedticketsComponent,
   OpenticketsComponent,
-  DueticketsComponent
+  DueticketsComponent,
+  GamificationComponent,
+
+  UserLoginComponent,
+  DragDropAgentComponent,
+  DragDropUserComponent,
+  LoginPageComponent,
+  LandingPageComponent,
+  SignUpComponent
 ];

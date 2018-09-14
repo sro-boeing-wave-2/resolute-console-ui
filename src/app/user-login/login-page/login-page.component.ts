@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import {LoginService} from '../../login.service';
-import {TokenParams} from '../Classes/TokenParams';
-import { Token } from '@angular/compiler';
+import { LoginService } from '../../login.service';
 
 
 @Component({
@@ -13,43 +11,56 @@ import { Token } from '@angular/compiler';
 })
 export class LoginPageComponent implements OnInit {
 
-  tokenParam :TokenParams;
+  token;
+  unauthorized: string = null;
 
-  // DoLogin():void
+  //for testing
+  @Output() submitted = new EventEmitter();
 
-  constructor(
-    private router : Router,
-    private fb : FormBuilder,
-    private _loginService : LoginService,
-  ) {
-    console.log(this.Username);
-  }
+  constructor(private router: Router, private fb: FormBuilder, private _loginService: LoginService) { }
 
   loginForm = this.fb.group({
+    //change this to EmailId later
     'Username': new FormControl('', [Validators.required]),
-    'Password': new FormControl('', [Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(10)])])
+    'Password': new FormControl('', [Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(14)])])
   });
 
-  LoginToAccount(): void {
-    var a = this.loginForm.value;
-    console.log(a);
-    this._loginService.post(a).subscribe(result => {
-      console.log("Logged in: " + result)
-      this.router.navigate(['/console']);
-    });
-
-  }
-
-
   get Username() {
+    console.log(this.loginForm.get('Username'));
     return this.loginForm.get('Username');
   }
 
   get Password() {
+    console.log(this.loginForm.get('Password'));
     return this.loginForm.get('Password');
+  }
+
+  LoginToAccount() {
+    console.log(this.loginForm.value);
+    this._loginService.getToken(this.loginForm.value).subscribe(result => {
+      this.token = result.toString(); //might need to change this
+      this._loginService.updateToken(this.token);
+      console.log(this.loginForm.value.Password)
+      console.log(`${JSON.stringify(result)} This is the TOKEN`);
+      if (this.token) {
+        this.router.navigate(['/console/home']);
+      }
+      else {
+        this.unauthorized = "Invalid user or Session Timed Out";
+      }
+    }, error => {
+      if (error) {
+        console.log('Error');
+        this.unauthorized = "Invalid user or Session Timed Out";
+      }
+    });
   }
 
   ngOnInit() {
   }
 
+  // for testing
+  onSubmit({ Username, Password }) {
+    this.submitted.emit({ Username, Password });
+  }
 }

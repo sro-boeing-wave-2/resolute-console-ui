@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  resolute-console-ui:
+    container_name: resolute-console-ui
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '4200:4200'

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
@@ -15,24 +15,12 @@ import { RoutingComponents } from './app-routing.module';
 import { MaterialModule } from './material';
 import { TicketsService } from './tickets.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserLoginComponent } from './user-login/user-login.component';
-import { SignUpComponent } from './user-login/sign-up/sign-up.component';
-import { LoginPageComponent } from './user-login/login-page/login-page.component';
-import { LandingPageComponent } from './user-login/landing-page/landing-page.component';
-import { DragDropAgentComponent } from './user-login/drag-drop-agent/drag-drop-agent.component';
-import { DragDropUserComponent } from './user-login/drag-drop-user/drag-drop-user.component';
-
+// import { RequestInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoutingComponents,
-    UserLoginComponent,
-    SignUpComponent,
-    LoginPageComponent,
-    LandingPageComponent,
-    DragDropAgentComponent,
-    DragDropUserComponent,
+    RoutingComponents
   ],
   imports: [
     BrowserModule,
@@ -50,7 +38,14 @@ import { DragDropUserComponent } from './user-login/drag-drop-user/drag-drop-use
   ],
   entryComponents: [
   ],
-  providers: [TicketsService],
+  providers: [
+    TicketsService
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: RequestInterceptor,
+    //   multi: true
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

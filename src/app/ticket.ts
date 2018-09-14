@@ -18,10 +18,21 @@ export interface Ticket {
 }
 
 export interface Comment {
-  id: number;
+  commentId: number;
   comment: string;
   createdOn: Date;
   createdBy: string;
   updatedOn: Date;
   updatedBy: string;
+}
+
+export interface TicketDetailsModal {
+  name: string;
+  id: number;
+  status: number;
+  comment: Comment[];
+  priority: string;
+  subject: string;
+  description: string;
+  userid: number;
 }

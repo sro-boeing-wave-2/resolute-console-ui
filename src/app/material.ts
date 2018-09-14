@@ -12,11 +12,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   imports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatDividerModule,
-    MatGridListModule, MatCardModule, MatTabsModule, MatTableModule, MatFormFieldModule, MatMenuModule, MatDialogModule, MatSelectModule],
+    MatGridListModule, MatCardModule, MatTabsModule, MatTableModule, MatFormFieldModule, MatMenuModule, MatDialogModule, MatExpansionModule, MatSelectModule],
   exports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatDividerModule,
-    MatGridListModule, MatCardModule, MatTabsModule, MatTableModule, MatFormFieldModule, MatMenuModule, MatDialogModule, MatSelectModule],
+    MatGridListModule, MatCardModule, MatTabsModule, MatTableModule, MatFormFieldModule, MatMenuModule, MatDialogModule, MatExpansionModule, MatSelectModule],
 })
 export class MaterialModule { }
