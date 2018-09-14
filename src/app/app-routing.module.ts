@@ -19,6 +19,9 @@ import { ClosedticketsComponent } from './console-ui/tickets/closedtickets/close
 import { OpenticketsComponent } from './console-ui/tickets/opentickets/opentickets.component';
 import { DueticketsComponent } from './console-ui/tickets/duetickets/duetickets.component';
 import { GamificationComponent } from './console-ui/dashboard/gamification/gamification.component';
+import { CSatScoreComponent } from './console-ui/dashboard/c-sat-score/c-sat-score.component';
+import { TicketsPiechartComponent } from './console-ui/dashboard/tickets-piechart/tickets-piechart.component';
+import { ResolutionTimeComponent } from './console-ui/dashboard/resolution-time/resolution-time.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'userlogin', pathMatch: 'full' },
@@ -73,6 +76,9 @@ export const RoutingComponents = [
   OpenticketsComponent,
   DueticketsComponent,
   GamificationComponent,
+  CSatScoreComponent,
+  TicketsPiechartComponent,
+  ResolutionTimeComponent,
 
   UserLoginComponent,
   DragDropAgentComponent,

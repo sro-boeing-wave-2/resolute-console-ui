@@ -12,18 +12,23 @@ import { LoginService } from '../login.service';
 export class ConsoleUIComponent implements OnInit {
 
   agentDetails: Agent;
+  agentEmail;
   httpHeader;
   token;
 
   constructor(private service: TicketsService, private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
-    this.service.GetAgentDetails().subscribe(data => this.agentDetails = data.json());
+    this.agentEmail = this.loginService.getAgentEmail();
+    this.service.GetAgentDetails(this.agentEmail).subscribe(data => {
+      this.agentDetails = data.json();
+      console.log(this.agentDetails);
+    });
   }
 
   logOut() {
     console.log("Log out");
-    this.token = [];
+    this.token = null;
     this.loginService.updateToken(this.token);
     this.router.navigate(['/userlogin']);
   }

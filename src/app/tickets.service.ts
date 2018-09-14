@@ -16,7 +16,7 @@ export class TicketsService {
   private _ticketStatusUpdateUrl: string = "http://35.189.155.116:8083/api/Tickets/status";
   private _ticketPriorityUpdateUrl: string = "http://35.189.155.116:8083/api/Tickets/priority";
   private _ticketCommentUpdateUrl: string = "http://35.189.155.116:8083/api/Tickets/updateComment";
-  private agentUrl = "";
+  private agentUrl = "http://35.189.155.116:8082/api/agents/query?Email=";
   // ----------------LINKS-------------------
   // http://172.23.238.239:5000/api/Tickets
   // /assets/mockdata/tickets.json
@@ -67,10 +67,6 @@ export class TicketsService {
     const headers = this.gethttpHeader();
     console.log(queryParams);
     if (queryParams != null) {
-      // console.log(queryParams.status);
-      // console.log(queryParams.source);
-      // console.log(queryParams.priority);
-
       //change url
       console.log(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
       return this.http.get(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority, headers);
@@ -125,11 +121,10 @@ export class TicketsService {
     });
   }
 
-  GetAgentDetails() {
-    return this.http.get(this.agentUrl);
+  GetAgentDetails(agentEmail) {
+    return this.http.get(`${this.agentUrl}%22${agentEmail}%22`);
   }
 }
-
 
   // gethttpHeader() {
   //   this.loginService.getTokenForComponents().subscribe(data => {

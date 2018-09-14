@@ -40,13 +40,8 @@ export class LoginPageComponent implements OnInit {
     this._loginService.getToken(this.loginForm.value).subscribe(result => {
       this.token = result.toString(); //might need to change this
       this._loginService.updateToken(this.token);
-      console.log(this.loginForm.value.Password)
-      console.log(`${JSON.stringify(result)} This is the TOKEN`);
       if (this.token) {
         this.router.navigate(['/console/home']);
-      }
-      else {
-        this.unauthorized = "Invalid user or Session Timed Out";
       }
     }, error => {
       if (error) {

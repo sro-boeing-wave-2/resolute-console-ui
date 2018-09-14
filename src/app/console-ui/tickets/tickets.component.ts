@@ -77,7 +77,6 @@ export class TicketsComponent implements OnInit {
   }
 
   ngOnInit() {
-    const httpHeaders = this.service.gethttpHeader();
     this.service.getCount().subscribe(data => { this.numberOfTickets = data.json(); });
     this.service.updateModel(this.queryParams);
   }

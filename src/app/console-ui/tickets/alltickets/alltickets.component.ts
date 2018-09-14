@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { TicketsService } from '../../../tickets.service';
 import { Router } from '@angular/router';
 import { queryParams } from '../../../queryparams';
@@ -29,6 +29,7 @@ export class AllticketsComponent implements OnInit {
       size: 10
     }).subscribe(tickets => {
       this.allTickets = tickets.json();
+      console.log(this.allTickets);
     });
     this.service.getModel().subscribe((data) => {
       data.status = "";
@@ -38,7 +39,6 @@ export class AllticketsComponent implements OnInit {
         console.log(this.allTickets);
       });
     });
-    console.log("After api call");
   }
 
   onClick(element) {

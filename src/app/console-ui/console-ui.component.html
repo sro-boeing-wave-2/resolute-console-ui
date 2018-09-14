@@ -16,15 +16,15 @@
   <mat-drawer #drawer class="example-sidenav" [mode]="side">
     <section id="agentDetails">
         <!-- ../assets/images/def_user.png -->
-      <img src="" alt="default user" id="userImage">
-      <!-- {{agentDetails.profileImageUrl}} -->
+      <img src="{{agentDetails.ProfileImageUrl}}" alt="{{agentdetails.Name}}" id="userImage">
+      <!--  -->
       <mat-divider></mat-divider>
-      <h3> Name : </h3>
-      <!-- {{agentDetails.name}} -->
-      <p> Department : </p>
-      <!-- {{agentDetails.department.department}} -->
-      <p> Organization :</p>
-      <!-- {{agentDetails.organization.name}} -->
+      <h3> Name : {{agentDetails.Name}} </h3>
+      <!--  -->
+      <p> Department : {{agentDetails.DepartmentName}} </p>
+      <!--  -->
+      <p> Organization : {{agentDetails.OrganizationName}} </p>
+      <!--  -->
     </section>
     <section id="navigation">
       <h1><a routerLink="/console/home" routerLinkActive="active"><mat-icon>home</mat-icon> Home </a></h1>
@@ -40,9 +40,9 @@
 </mat-drawer-container>
 
 <footer>
-  <mat-toolbar color="primary">
+  <mat-toolbar>
     <mat-toolbar-row>
-      <p>Footer</p>
+      <p>&copy; Resolute</p>
     </mat-toolbar-row>
   </mat-toolbar>
 <footer>

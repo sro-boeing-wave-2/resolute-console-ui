@@ -7,7 +7,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
-
+import { DxPieChartModule } from 'devextreme-angular';
+import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    RoutingComponents
+    RoutingComponents,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +35,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSidenavModule,
     MatCardModule,
     MatExpansionModule,
-    MatInputModule
+    MatInputModule,
+    DxPieChartModule,
+    DxChartModule,
+    DxSelectBoxModule
   ],
   entryComponents: [
   ],
