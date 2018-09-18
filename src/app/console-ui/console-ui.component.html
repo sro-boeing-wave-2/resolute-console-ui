@@ -7,14 +7,19 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
+<<<<<<< HEAD
 
 <body>
+=======
+>>>>>>> 4fce9b47ec87bc007ffed5bcc8c5fc90126eaa3d
 <mat-toolbar id="header">
   <mat-toolbar-row>
     <button type="button" mat-button (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span id="mainTitle"><a routerLink="/console/home" routerLinkActive="active">RESOLUTE</a></span>
+    <span id="mainTitle">
+      <a routerLink="/console/home" routerLinkActive="active">RESOLUTE</a>
+    </span>
     <span class="spacer"></span>
     <button type="button" id="createButton" mat-raised-button routerLink="/console/newticket"> Create </button>
     <mat-icon class="icon">notifications</mat-icon>
@@ -25,27 +30,34 @@
   <mat-drawer #drawer class="example-sidenav" [mode]="side">
     <section id="agentDetails">
         <!-- ../assets/images/def_user.png -->
-      <div id="photo-background">
-        <div id="square-box">
-            <div id="UserImageBox"></div>
-          </div>
-        </div>
-        <br>
-      <!-- {{agentDetails.profileImageUrl}} -->
+      <img src="{{agentDetails.ProfileImageUrl}}" alt="{{agentdetails.Name}}" id="userImage">
+      <!--  -->
       <mat-divider></mat-divider>
-      <h4> Name : Syed Arhaam Ahmed</h4>
-      <!-- {{agentDetails.name}} -->
-      <p> Department : Swagger</p>
-      <!-- {{agentDetails.department.department}} -->
-      <p> Organization : Boeing</p>
-      <!-- {{agentDetails.organization.name}} -->
+      <h3> Name : {{agentDetails.Name}} </h3>
+      <!--  -->
+      <p> Department : {{agentDetails.DepartmentName}} </p>
+      <!--  -->
+      <p> Organization : {{agentDetails.OrganizationName}} </p>
+      <!--  -->
     </section>
     <section id="navigation">
-      <button class="link-btn" routerLink="/console/home" routerLinkActive="active"><i class="fas fa-home"></i> Home</button>
-      <button class="link-btn" routerLink="/console/dashboard" routerLinkActive="active"><i class="far fa-chart-bar"></i> Dashboard</button>
-      <button class="link-btn" routerLink="/console/tickets/all" routerLinkActive="active"><i class="far fa-address-card"></i> Tickets </button>
+      <h1>
+        <a routerLink="/console/home" routerLinkActive="active">
+          <mat-icon>home</mat-icon> Home </a>
+      </h1>
+      <h1>
+        <a routerLink="/console/dashboard" routerLinkActive="active">
+          <mat-icon>dashboard</mat-icon> Dashboard </a>
+      </h1>
+      <h1>
+        <a routerLink="/console/tickets/all" routerLinkActive="active">
+          <mat-icon>contact_mail</mat-icon> Tickets </a>
+      </h1>
       <mat-divider></mat-divider>
-      <button class="logout-btn" mat-raised-button (click)="logOut()"><mat-icon>exit_to_app</mat-icon> Log Out </button>
+      <h3>
+        <button mat-raised-button (click)="logOut()">
+          <mat-icon>exit_to_app</mat-icon> Log Out </button>
+      </h3>
     </section>
   </mat-drawer>
   <mat-drawer-content>

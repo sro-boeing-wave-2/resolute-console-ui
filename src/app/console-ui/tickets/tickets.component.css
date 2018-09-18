@@ -23,6 +23,10 @@ td, th {
   color : #263238;
 }
 
+th.mat-sort-header-sorted {
+  color: black;
+}
+
 nav {
   float: left;
   width: 700px;

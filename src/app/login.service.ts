@@ -19,6 +19,8 @@ export class LoginService {
     this.tokenSubject.next(token);
   }
 
+  agentEmail = "";
+
   constructor(private http: HttpClient) { }
 
   // loginUrl = Ip of the API Gateway for token generation
@@ -30,7 +32,11 @@ export class LoginService {
     //     'Content-Type':  'application/json'
     //   })
     // };
+    this.agentEmail = form.Username;
     return this.http.post(this.loginUrl, form).pipe(catchError((error: HttpErrorResponse) => throwError(error.status || 'Server error')));
   }
 
+  getAgentEmail() {
+    return this.agentEmail;
+  }
 }

@@ -14,6 +14,7 @@ export class DragDropUserComponent {
 
   public progress: number;
   public message: string;
+  public UploadMessage: string="";
   constructor(private http: HttpClient, private router: Router, private signUpService: SignupService) { }
 
   data: OrganizationData;
@@ -43,8 +44,12 @@ export class DragDropUserComponent {
   OnPost() {
     this.data = this.signUpService.getData();
     console.log(this.data);
-    this.http.post('http://35.189.155.116:8082/api/endusers', this.data).subscribe(
-      result => this.router.navigate(['/userlogin/login'])
-    );
+    this.UploadMessage="Upload Successful";
+    this.http.post('http://35.189.155.116:8082/api/endusers', this.data).subscribe(data => {
+    setTimeout(a => {
+    this.router.navigate(['/userlogin/login'])
+  },2000,[]);
+});
   }
 }
+
