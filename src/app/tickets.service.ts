@@ -60,7 +60,7 @@ export class TicketsService {
 
   getById(id) {
     const headers = this.gethttpHeader();
-    return this.http.get(`${this._url}/detail${id}`, headers);
+    return this.http.get(`${this._url}/detail/${id}`, headers);
   }
 
   getByFilter(queryParams: queryParams) {
@@ -101,12 +101,13 @@ export class TicketsService {
     console.log(ticketData);
     var a = this.http.put(this._ticketStatusUpdateUrl, ticketData).subscribe(result => {
       console.log('haha');
+      return a;
     });
-    return a;
+
   }
 
-  updateIndividualTicketPriority(ticketId, selectedPriority) {
-    var ticketPriorityData = { 'TicketId': ticketId, 'Priority': selectedPriority };
+  updateIndividualTicketPriority(ticketId, selectedPriority){
+    var ticketPriorityData = {'TicketId': ticketId, 'Priority': selectedPriority};
     console.log(ticketPriorityData);
     return this.http.put(this._ticketPriorityUpdateUrl, ticketPriorityData).subscribe(result => {
       console.log('hehe');
@@ -114,6 +115,7 @@ export class TicketsService {
   }
 
   updateIndividualTicketComment(ticketId, comment, createdBy){
+    console.log("Comment Data: " + comment);
     var ticketCommentData = {'ticketid': ticketId, 'comment': comment, 'Createdby': createdBy};
     console.log(ticketCommentData);
     return this.http.put(this._ticketCommentUpdateUrl, ticketCommentData).subscribe(result => {

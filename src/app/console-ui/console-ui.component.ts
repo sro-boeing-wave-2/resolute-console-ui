@@ -30,6 +30,6 @@ export class ConsoleUIComponent implements OnInit {
     console.log("Log out");
     this.token = null;
     this.loginService.updateToken(this.token);
-    this.router.navigate(['/userlogin']);
+    this.router.navigate(['/userlogin/login']);
   }
 }

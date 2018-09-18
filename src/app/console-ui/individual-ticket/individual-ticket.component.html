@@ -8,18 +8,22 @@
           <div id="UserImage"></div>
         </div>
       </mat-card-header>
-      <mat-card-title>Syed Arhaam Ahmed </mat-card-title>
-      <mat-card-subtitle> Ticket ID : {{TicketById.ticketId}} </mat-card-subtitle>
+      <mat-card-title>{{TicketById.name}} </mat-card-title>
+      <mat-card-subtitle> Ticket ID : {{TicketById.id}} </mat-card-subtitle>
       <mat-card-content>
-        <p class="CardTitle"> <b>Issue: </b> {{TicketById.subject}} </p>
-        <p class="CardTitle"> <b>Description: </b></p>
+        <p class="CardTitle">
+          <b>Issue: </b> {{TicketById.subject}} </p>
+        <p class="CardTitle">
+          <b>Description: </b>
+        </p>
         <p id="description">
           {{TicketById.description}}
         </p>
       </mat-card-content>
       <form id="statusAndPriority" style="color: white">
         <mat-form-field>
-          <mat-select placeholder="Status" [(ngModel)]="selectedStatusValue" name="status">
+          <mat-select placeholder="{{TicketById.status == 0 ? 'Open' : TicketById.status == 1 ? 'Closed' : 'Due'}}" [(ngModel)]="selectedStatusValue"
+            name="status">
             <mat-option (click)=updateStatus() *ngFor="let status of statuses" [value]="status.value">
               {{status.viewValue}}
             </mat-option>
@@ -28,7 +32,8 @@
       </form>
       <form>
         <mat-form-field>
-          <mat-select placeholder="Priority" [(ngModel)]="selectedPriorityValue" name="priority">
+          <mat-select placeholder="{{TicketById.priority == 0 ? 'High' : TicketById.priority == 1 ? 'Medium' : 'Low'}}" [(ngModel)]="selectedPriorityValue"
+            name="priority">
             <mat-option (click)=updatePriority() *ngFor="let priority of priorities" [value]="priority.value">
               {{priority.viewValue}}
             </mat-option>
@@ -47,22 +52,22 @@
 
   <!-- <section id="chatSection">
 
+  </section>
+  <section id="detailSection">
+    <section id="header">
+      <h1>Ticket Details</h1>
     </section>
-    <section id="detailSection">
-      <section id="header">
-        <h1>Ticket Details</h1>
-      </section>
-      <section id="body">
-        <h4> Ticket ID : {{TicketById.ticketId}} </h4>
-        <h4> Created On : {{TicketById.createdOn}} </h4>
-        <h4> Created By : {{TicketById.createdBy}} </h4>
-        <h4> User Id : {{TicketById.userid}} </h4>
-        <h4> Subject : {{TicketById.subject}} </h4>
-        <h4> Description : {{TicketById.description}} </h4>
-        <h4> Source : {{TicketById.source}} </h4>
-        <h4> Priority : {{TicketById.priority}} </h4>
-        <h4> Status : {{TicketById.status}} </h4>
-      </section>
+    <section id="body">
+      <h4> Ticket ID : {{TicketById.ticketId}} </h4>
+      <h4> Created On : {{TicketById.createdOn}} </h4>
+      <h4> Created By : {{TicketById.createdBy}} </h4>
+      <h4> User Id : {{TicketById.userid}} </h4>
+      <h4> Subject : {{TicketById.subject}} </h4>
+      <h4> Description : {{TicketById.description}} </h4>
+      <h4> Source : {{TicketById.source}} </h4>
+      <h4> Priority : {{TicketById.priority}} </h4>
+      <h4> Status : {{TicketById.status}} </h4>
     </section>
-  </section> -->
+  </section>
+</section> -->
 </mat-sidenav-container>
