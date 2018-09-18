@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TicketsService } from '../../tickets.service';
 import { Ticket, TicketDetailsModal } from '../../ticket';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
@@ -24,7 +24,7 @@ export class IndividualTicketComponent implements OnInit {
   commentValue: string;
   TicketById: TicketDetailsModal;
   UserName;
-  constructor(private service: TicketsService, private route: ActivatedRoute, public dialog: MatDialog) { }
+  constructor(private router: Router, private service: TicketsService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit() {
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -37,6 +37,10 @@ export class IndividualTicketComponent implements OnInit {
       this.TicketById = data.json();
     });
     console.log(u);
+  }
+
+  back(){
+    this.router.navigate(['/console/tickets/all'])
   }
 
   updateStatus(){
