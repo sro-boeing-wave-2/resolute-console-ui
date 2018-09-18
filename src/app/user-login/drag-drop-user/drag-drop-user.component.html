@@ -29,13 +29,14 @@
       <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
         {{progress}}%
       </span>
-      <span style="font-weight:bold;color:green;" *ngIf="message">
-        {{message}}
-      </span>
+
     </div>
   </div>
   <div class="secondaryBtnDiv">
   <button id="uploadbtn" (click)="OnPost()">Upload File</button>
+  <span style="font-weight:bold;color:green;" *ngIf="UploadMessage">
+    {{UploadMessage}}
+  </span>
   </div>
 </body>
 

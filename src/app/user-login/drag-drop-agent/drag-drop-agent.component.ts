@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http'
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 // import { Headers,RequestOptions,RequestMethod } from '@angular/http';
 // import { HttpClient } from '@angular/common/http';
 // import { Http } from '@angular/http';
@@ -17,6 +17,7 @@ export class DragDropAgentComponent {
 
   public progress: number;
   public message: string;
+  public UploadMessage: string = "";
   constructor(private http: HttpClient, private router: Router, private signUpService: SignupService) { }
 
   data: OrganizationData;
@@ -46,8 +47,13 @@ export class DragDropAgentComponent {
   OnPost(data) {
     console.log("Post");
     console.log('getdata');
+    this.UploadMessage="Upload Successful";
     this.data = this.signUpService.getData();
     console.log(this.data);
-    this.http.post('http://35.189.155.116:8082/api/agents', this.data).subscribe();
+    this.http.post('http://35.189.155.116:8082/api/agents', this.data).subscribe(data => {
+    setTimeout(a => {
+      this.router.navigate(['/userlogin/addusers'])
+      },2000,[]);
+    });
   }
 }

@@ -43,13 +43,13 @@
         {{progress}}%
       </span>
 
-      <span style="font-weight:bold;color:green;" *ngIf="message">
-        {{message}}
-      </span>
     </div>
     <div class="secondaryBtnDiv">
       <button id="uploadbtn" (click)="OnPost()">Upload File</button>
-      <button id="nextbtn" routerLink="/userlogin/addusers">Next</button>
+      <span style="font-weight:bold;color:green;" *ngIf="UploadMessage">
+        {{UploadMessage}}
+      </span>
+      <!-- <button id="nextbtn" routerLink="/userlogin/addusers">Next</button> -->
     </div>
   </div>
   <script src="js/main.js"></script>
