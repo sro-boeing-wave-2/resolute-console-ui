@@ -50,7 +50,7 @@ mat-toolbar, footer mat-toolbar {
   width: 100%;
 }
 
-#UserImageBox{
+#UserImage-box{
   background-image: url('../../../src/profile-pic.jpg');
   background-size: cover;
   height: 100%;
@@ -63,9 +63,7 @@ mat-toolbar, footer mat-toolbar {
   padding: 10px;
   color: #ffffff;
   border-width: 5px;
-  border-style: solid;
   /* border-right-style: solid; */
-  border-color: #000000;
 }
 
 #navigation {

@@ -7,11 +7,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
-<<<<<<< HEAD
 
 <body>
-=======
->>>>>>> 4fce9b47ec87bc007ffed5bcc8c5fc90126eaa3d
 <mat-toolbar id="header">
   <mat-toolbar-row>
     <button type="button" mat-button (click)="drawer.toggle()">
@@ -29,11 +26,16 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" [mode]="side">
     <section id="agentDetails">
-        <!-- ../assets/images/def_user.png -->
-      <img src="{{agentDetails.ProfileImageUrl}}" alt="{{agentdetails.Name}}" id="userImage">
+      <div id="photo-background">
+      <div id="square-box">
+        <div id="UserImage-box"></div>
+      </div>
+    </div>
+    <br>
+      <!-- ../assets/images/def_user.png -->
       <!--  -->
       <mat-divider></mat-divider>
-      <h3> Name : {{agentDetails.Name}} </h3>
+      <p> Name : {{agentDetails.Name}} </p>
       <!--  -->
       <p> Department : {{agentDetails.DepartmentName}} </p>
       <!--  -->
@@ -41,21 +43,17 @@
       <!--  -->
     </section>
     <section id="navigation">
-      <h1>
-        <a routerLink="/console/home" routerLinkActive="active">
-          <mat-icon>home</mat-icon> Home </a>
-      </h1>
-      <h1>
-        <a routerLink="/console/dashboard" routerLinkActive="active">
-          <mat-icon>dashboard</mat-icon> Dashboard </a>
-      </h1>
-      <h1>
-        <a routerLink="/console/tickets/all" routerLinkActive="active">
-          <mat-icon>contact_mail</mat-icon> Tickets </a>
-      </h1>
+        <button class="link-btn" routerLink="/console/home" routerLinkActive="active">
+          <i class="fas fa-home"></i> Home </button>
+
+        <button class="link-btn" routerLink="/console/dashboard" routerLinkActive="active">
+          <i class="far fa-chart-bar"></i> Dashboard </button>
+
+        <button class="link-btn" routerLink="/console/tickets/all" routerLinkActive="active">
+          <i class="far fa-address-card"></i> Tickets </button>
       <mat-divider></mat-divider>
       <h3>
-        <button mat-raised-button (click)="logOut()">
+        <button mat-raised-button class="logout-btn" (click)="logOut()">
           <mat-icon>exit_to_app</mat-icon> Log Out </button>
       </h3>
     </section>

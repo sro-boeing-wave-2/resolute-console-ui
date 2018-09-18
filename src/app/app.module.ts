@@ -41,7 +41,7 @@ import { PopUpComponent } from './console-ui/pop-up/pop-up.component';
     MatCardModule,
     MatExpansionModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
     DxPieChartModule,
     DxChartModule,
     DxSelectBoxModule
