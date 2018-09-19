@@ -3,6 +3,7 @@ import { Agent } from './agent';
 import { TicketsService } from '../tickets.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-console-ui',
@@ -16,10 +17,11 @@ export class ConsoleUIComponent implements OnInit {
   httpHeader;
   token;
 
-  constructor(private service: TicketsService, private router: Router, private loginService: LoginService) { }
+  constructor(private service: TicketsService, private router: Router, private loginService: LoginService, private localStorage: LocalStorageService) { }
 
   ngOnInit() {
-    this.agentEmail = this.loginService.getAgentEmail();
+    this.agentEmail = this.localStorage.retrieve("email");//this.loginService.getAgentEmail();
+    console.log("Retrieved Email", this.agentEmail);
     this.service.GetAgentDetails(this.agentEmail).subscribe(data => {
       this.agentDetails = data.json();
       console.log(this.agentDetails);
@@ -29,7 +31,7 @@ export class ConsoleUIComponent implements OnInit {
   logOut() {
     console.log("Log out");
     this.token = null;
-    this.loginService.updateToken(this.token);
+    this.localStorage.store('token', this.token);
     this.router.navigate(['/userlogin/login']);
   }
 }

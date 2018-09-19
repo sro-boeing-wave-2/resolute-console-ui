@@ -16,7 +16,9 @@ import { RoutingComponents } from './app-routing.module';
 import { MaterialModule } from './material';
 import { TicketsService } from './tickets.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { RequestInterceptor } from './auth.interceptor';
+import { PopUpComponent } from './console-ui/pop-up/pop-up.component';
+import { RequestInterceptor } from './auth.interceptor';
+import { Ng2Webstorage } from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
@@ -38,17 +40,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     DxPieChartModule,
     DxChartModule,
-    DxSelectBoxModule
+    DxSelectBoxModule,
+    Ng2Webstorage
   ],
   entryComponents: [
   ],
   providers: [
-    TicketsService
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: RequestInterceptor,
-    //   multi: true
-    // }
+    TicketsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
