@@ -1,48 +1,49 @@
 <html lang="en">
+
 <head>
   <title>Resolute | Navbar</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
 </head>
 
-
 <body>
-<mat-toolbar id="header">
-  <mat-toolbar-row>
-    <button type="button" mat-button (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span id="mainTitle">
-      <a routerLink="/console/home" routerLinkActive="active">RESOLUTE</a>
-    </span>
-    <span class="spacer"></span>
-    <button type="button" id="createButton" mat-raised-button routerLink="/console/newticket"> Create </button>
-    <mat-icon class="icon">notifications</mat-icon>
-  </mat-toolbar-row>
-</mat-toolbar>
+  <mat-toolbar id="header">
+    <mat-toolbar-row>
+      <button type="button" mat-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span id="mainTitle">
+        <a routerLink="/console/home" routerLinkActive="active">RESOLUTE</a>
+      </span>
+      <span class="spacer"></span>
+      <button type="button" id="createButton" mat-raised-button routerLink="/console/newticket"> Create </button>
+      <mat-icon class="icon">notifications</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" [mode]="side">
-    <section id="agentDetails">
-      <div id="photo-background">
-      <div id="square-box">
-        <div id="UserImage-box"></div>
-      </div>
-    </div>
-    <br>
-      <!-- ../assets/images/def_user.png -->
-      <!--  -->
-      <mat-divider></mat-divider>
-      <p> Name : {{agentDetails.Name}} </p>
-      <!--  -->
-      <p> Department : {{agentDetails.DepartmentName}} </p>
-      <!--  -->
-      <p> Organization : {{agentDetails.OrganizationName}} </p>
-      <!--  -->
-    </section>
-    <section id="navigation">
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" [mode]="side">
+      <section id="agentDetails">
+        <div id="photo-background">
+          <div id="square-box">
+            <div id="UserImage-box"></div>
+          </div>
+        </div>
+        <br>
+        <!-- ../assets/images/def_user.png -->
+        <!--  -->
+        <mat-divider></mat-divider>
+        <p> Name : {{agentDetails.Name}} </p>
+        <!--  -->
+        <p> Department : {{agentDetails.departmentName}} </p>
+        <!--  -->
+        <p> Organization : {{agentDetails.organisationName}} </p>
+        <!--  -->
+      </section>
+      <section id="navigation">
         <button class="link-btn" routerLink="/console/home" routerLinkActive="active">
           <i class="fas fa-home"></i> Home </button>
 
@@ -51,16 +52,17 @@
 
         <button class="link-btn" routerLink="/console/tickets/all" routerLinkActive="active">
           <i class="far fa-address-card"></i> Tickets </button>
-      <mat-divider></mat-divider>
-      <h3>
-        <button mat-raised-button class="logout-btn" (click)="logOut()">
-          <mat-icon>exit_to_app</mat-icon> Log Out </button>
-      </h3>
-    </section>
-  </mat-drawer>
-  <mat-drawer-content>
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+        <mat-divider></mat-divider>
+        <h3>
+          <button mat-raised-button class="logout-btn" (click)="logOut()">
+            <mat-icon>exit_to_app</mat-icon> Log Out </button>
+        </h3>
+      </section>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
 </body>
+
 </html>

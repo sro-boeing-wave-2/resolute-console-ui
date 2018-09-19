@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../login.service';
+import { LocalStorageService } from 'ngx-webstorage';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class LoginPageComponent implements OnInit {
   //for testing
   @Output() submitted = new EventEmitter();
 
-  constructor(private router: Router, private fb: FormBuilder, private _loginService: LoginService) { }
+  constructor(private router: Router, private fb: FormBuilder, private _loginService: LoginService, private localStorage : LocalStorageService) { }
 
   loginForm = this.fb.group({
     //change this to EmailId later
@@ -39,7 +40,7 @@ export class LoginPageComponent implements OnInit {
     console.log(this.loginForm.value);
     this._loginService.getToken(this.loginForm.value).subscribe(result => {
       this.token = result.toString(); //might need to change this
-      this._loginService.updateToken(this.token);
+      this.localStorage.store('token', this.token);
       if (this.token) {
         this.router.navigate(['/console/home']);
       }

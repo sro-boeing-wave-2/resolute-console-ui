@@ -3,25 +3,26 @@ import { BehaviorSubject, throwError, Subject } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { OrganizationData } from './user-login/organizationData';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  tokenSubject = new BehaviorSubject("");
+  // tokenSubject = new BehaviorSubject("");
 
-  getTokenForComponents() {
-    return this.tokenSubject.asObservable();
-  }
+  // getTokenForComponents() {
+  //   return this.tokenSubject.asObservable();
+  // }
 
-  updateToken(token) {
-    this.tokenSubject.next(token);
-  }
+  // updateToken(token) {
+  //   this.tokenSubject.next(token);
+  // }
 
   agentEmail = "";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
 
   // loginUrl = Ip of the API Gateway for token generation
   loginUrl: string = "http://35.189.155.116:8081/api/Auth/login";
@@ -32,11 +33,7 @@ export class LoginService {
     //     'Content-Type':  'application/json'
     //   })
     // };
-    this.agentEmail = form.Username;
+    this.localStorage.store("email", form.Username);
     return this.http.post(this.loginUrl, form).pipe(catchError((error: HttpErrorResponse) => throwError(error.status || 'Server error')));
-  }
-
-  getAgentEmail() {
-    return this.agentEmail;
   }
 }
