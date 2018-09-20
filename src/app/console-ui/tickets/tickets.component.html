@@ -1,39 +1,36 @@
 <section id="tickets">
   <nav mat-tab-nav-bar>
-    <a mat-tab-link *ngFor="let link of navLinks" id="displayLinks" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
+    <div class="toggleLinks">
+      <a mat-tab-link *ngFor="let link of navLinks" id="displayLinks" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
       [active]="rla.isActive" [routerLinkActiveOptions]="{exact: false}">
       {{link.label}} ({{link.count == 'total' ? numberOfTickets.total : link.count == 'open' ? numberOfTickets.open : link.count
       == 'closed' ? numberOfTickets.closed : numberOfTickets.due}})
-    </a>
-  </nav>
-  <span>
+      </a>
+    </div>
     <span id="pagination_nav">
       <button class="pagenav" mat-button (click)="previousPage()"><mat-icon>skip_previous</mat-icon></button>
       <button class="pagenav" mat-button (click)="nextPage()"><mat-icon>skip_next</mat-icon></button>
     </span>
-
     <button id="filterButton" type="button" mat-raised-button [matMenuTriggerFor]="menu"><mat-icon>filter_list</mat-icon></button>
-    <mat-menu #menu="matMenu">
-      <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
-        <label>
-          Source:
+    <mat-menu #menu="matMenu" id="filterBox">
+      <form [formGroup]="filterForm" id="filterForm" (ngSubmit)="onSubmit()">
           <mat-select (click)="$event.stopPropagation()" placeholder="Source" formControlName="sources">
             <mat-option *ngFor="let source of sources" [value]="source['source']">
               {{source.source}}
             </mat-option>
           </mat-select>
-        </label>
-        <label>
-          Priority:
+        <br>
+        <br>
           <mat-select (click)="$event.stopPropagation()" placeholder="Priority" formControlName="priorityLevel">
             <mat-option *ngFor="let priority of priorityLevel" [value]="priority['priority']">
               {{priority.priority}}
             </mat-option>
           </mat-select>
-        </label>
+        <br>
+        <br>
         <button mat-raised-button type="submit" id="submit">Submit</button>
       </form>
     </mat-menu>
-  </span>
+  </nav>
 </section>
 <router-outlet></router-outlet>

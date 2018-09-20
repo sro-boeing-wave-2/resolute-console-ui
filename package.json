@@ -30,6 +30,7 @@
     "hammerjs": "^2.0.8",
     "ngx-webstorage": "^2.0.1",
     "restore": "^0.3.0",
+    "rtm-chat-plugin": "file:src/lib/rtm-chat-plugin-0.0.0.tgz",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"
   },

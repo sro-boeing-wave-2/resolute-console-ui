@@ -12,14 +12,10 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-dark nav">
-
-  </nav>
-
   <div class="container content">
     <form class="needs-validation col-lg-6 col-md-8 col-sm-10" [formGroup]="signUpForm" (ngSubmit)="GenerateAccount()"  novalidate name="signup-form">
       <div class="logo"><i class="fab fa-ravelry"></i></div>
-      <h1>Create a New Account</h1>
+      <h2>Create a New Account</h2>
       <div class="form-group">
 
         <div class="teamname-input">
@@ -57,12 +53,6 @@
           </div> -->
         </div>
 
-        <div class="confirm-password-input">
-          <input type="text" class="form-control" id="validationCustom06" placeholder="Confirm Password" required>
-          <!-- <div class="invalid-feedback">
-            Your passwords don't match.
-          </div> -->
-        </div>
         <div class="btn ">
           <button id="buttonId" type="submit">SIGN UP</button>
         </div>

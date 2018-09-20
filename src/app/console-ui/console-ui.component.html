@@ -10,40 +10,62 @@
 </head>
 
 <body>
-  <mat-toolbar id="header">
-    <mat-toolbar-row>
-      <button type="button" mat-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span id="mainTitle">
-        <a routerLink="/console/home" routerLinkActive="active">RESOLUTE</a>
-      </span>
-      <span class="spacer"></span>
-      <button type="button" id="createButton" mat-raised-button routerLink="/console/newticket"> Create </button>
-      <mat-icon class="icon">notifications</mat-icon>
-    </mat-toolbar-row>
-  </mat-toolbar>
 
-  <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" [mode]="side">
-      <section id="agentDetails">
-        <div id="photo-background">
-          <div id="square-box">
-            <div id="UserImage-box"></div>
-          </div>
-        </div>
-        <br>
-        <!-- ../assets/images/def_user.png -->
-        <!--  -->
-        <mat-divider></mat-divider>
-        <p> Name : {{agentDetails.Name}} </p>
-        <!--  -->
-        <p> Department : {{agentDetails.departmentName}} </p>
-        <!--  -->
-        <p> Organization : {{agentDetails.organisationName}} </p>
-        <!--  -->
-      </section>
-      <section id="navigation">
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" opened class="example-sidenav"
+  [fixedInViewport]>
+
+  <div class="agentDetails">
+    <div class="agentImage">
+      <img src="../../../src/profile-pic.jpg">
+    </div>
+    <div class="agentName"><b>Syed Arhaam  </b><br> Department<br>Organization</div>
+  </div>
+
+  <!-- <p> Name : {{agentDetails.Name}} </p>
+  <p> Department : {{agentDetails.DepartmentName}} </p>
+  <p> Organization : {{agentDetails.OrganizationName}} </p> -->
+
+
+  <div id="navigation">
+      <button class="link-btn" routerLink="/console/home" routerLinkActive="active">
+        <i class="fas fa-home"></i> Home </button>
+
+      <button class="link-btn" routerLink="/console/dashboard" routerLinkActive="active">
+        <i class="far fa-chart-bar"></i> Dashboard </button>
+
+      <button class="link-btn" routerLink="/console/tickets/all" routerLinkActive="active">
+        <i class="far fa-address-card"></i> Tickets </button>
+    <h3>
+      <button mat-raised-button class="logout-btn" (click)="logOut()">
+        <mat-icon>exit_to_app</mat-icon> Log Out </button>
+    </h3>
+  </div>
+
+</mat-sidenav>
+
+  <mat-sidenav-content class="rightSideContent">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<!-- <mat-drawer-container class="example-container" autosize >
+  <mat-drawer #drawer class="example-sidenav" [mode]="side">
+    <section id="agentDetails">
+      <div id="photo-background">
+      <div id="square-box">
+        <div id="UserImage-box"></div>
+      </div>
+    </div>
+    <br>
+      <mat-divider></mat-divider>
+      <p> Name : {{agentDetails.Name}} </p>
+      <p> Department : {{agentDetails.DepartmentName}} </p>
+      <p> Organization : {{agentDetails.OrganizationName}} </p>
+    </section>
+    <section id="navigation">
         <button class="link-btn" routerLink="/console/home" routerLinkActive="active">
           <i class="fas fa-home"></i> Home </button>
 
@@ -52,17 +74,17 @@
 
         <button class="link-btn" routerLink="/console/tickets/all" routerLinkActive="active">
           <i class="far fa-address-card"></i> Tickets </button>
-        <mat-divider></mat-divider>
-        <h3>
-          <button mat-raised-button class="logout-btn" (click)="logOut()">
-            <mat-icon>exit_to_app</mat-icon> Log Out </button>
-        </h3>
-      </section>
-    </mat-drawer>
-    <mat-drawer-content>
-      <router-outlet></router-outlet>
-    </mat-drawer-content>
-  </mat-drawer-container>
+      <mat-divider></mat-divider>
+      <h3>
+        <button mat-raised-button class="logout-btn" (click)="logOut()">
+          <mat-icon>exit_to_app</mat-icon> Log Out </button>
+      </h3>
+    </section>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container> -->
 </body>
 
 </html>

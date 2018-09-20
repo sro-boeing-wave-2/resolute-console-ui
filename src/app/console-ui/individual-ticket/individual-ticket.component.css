@@ -7,15 +7,13 @@
 }
 
 mat-card{
-  background:linear-gradient(135deg, #622774 0%,#c53364 100%);
-
+  background:linear-gradient(135deg, #184e68 0%,#57ca85 100%);
   color: aliceblue;}
 
 #square{
   position: relative;
   width: 50%;
   margin: 0 auto;
-
 }
 
 #square::after{

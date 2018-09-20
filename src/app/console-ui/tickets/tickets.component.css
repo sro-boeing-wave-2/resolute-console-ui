@@ -1,62 +1,48 @@
-#tickets {
-  background-color: #263238;
-}
 
 mat-tab-nav-bar{
   background-color: aliceblue;
 }
 
 #displayLinks {
-  color:black;
-}
-
-.mat-menu-panel {
-  background: #263238;
+  margin: 2px;
+  background-color: #004d40;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 table {
   width: 100%;
-  background-color: white;
 }
 
 td, th {
-  color : #263238;
-}
-
-th.mat-sort-header-sorted {
-  color: black;
-}
-
-nav {
-  float: left;
-  width: 700px;
-  color: black;
-}
-
-form {
-  padding: 10px 20px;
-  color: black;
-}
-
-label, mat-select {
-  color: black;
-  margin: 20px 0px;
+  color : black;
 }
 
 #submit {
-  margin: 0px 0px 20px 0px;
-}
-
-#pagination_nav {
-  float: right;
-}
+text-align: center;
+background-color:#004d40;
+color: #ffffff; }
 
 #filterButton {
   margin: 6px 40px;
-  float: right;
+  background-color: #004d40;
+  color: #ffffff;
+}
+
+#filterForm{
+  padding: 20px;
+  margin: 10px;
+}
+
+#filterForm label{
+  margin: 0px;
+}
+
+::ng-deep .mat-select-content{
+  background-color: aqua;
 }
 
 .pagenav {
-  padding: 6px;
-}
+color:#004d40;
+padding: 5px; }
 
