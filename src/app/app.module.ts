@@ -8,8 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ChatLibModule } from 'rtm-chat-plugin/projects/chat-lib/src/lib/chat-lib.module';
-
+import { ChatLibModule } from 'chat-lib';
 import { DxPieChartModule } from 'devextreme-angular';
 import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
 

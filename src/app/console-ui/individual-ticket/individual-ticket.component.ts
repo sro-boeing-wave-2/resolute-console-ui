@@ -4,6 +4,7 @@ import { TicketsService } from '../../tickets.service';
 import { Ticket, TicketDetailsModal } from '../../ticket';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { PopUpComponent } from '../pop-up/pop-up.component';
+import { LocalStorageService } from 'ngx-webstorage';
 
 
 export interface Options {
@@ -19,17 +20,24 @@ export interface Options {
 
 export class IndividualTicketComponent implements OnInit {
 
+
+
   selectedStatusValue: string ;
   selectedPriorityValue: string ;
   commentValue: string;
   TicketById: TicketDetailsModal;
   UserName;
-  constructor(private router: Router, private service: TicketsService, private route: ActivatedRoute, public dialog: MatDialog) { }
+  _connectionId:number = this.TicketById.id;
+  agentDetails;
+  // email:string = this.TicketById.
+  constructor(private router: Router, private service: TicketsService, private route: ActivatedRoute, public dialog: MatDialog, private localStorage: LocalStorageService) { }
 
   ngOnInit() {
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
     console.log(id);
     this.call(id);
+    // this.service.GetAgentDetails(this.localStorage.retrieve("email")).subscribe(data=>this.agentDetails=data)
+    // console.log(this.agentDetails.Name);
   }
 
   call(id) {

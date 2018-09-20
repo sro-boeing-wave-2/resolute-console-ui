@@ -11,12 +11,12 @@ import { Headers } from '@angular/http';
 
 export class TicketsService {
 
-  private _url: string = "http://35.189.155.116:8083/api/Tickets";
-  private UserDetailUrl: string = "http://35.189.155.116:8081/api/endusers/query?Name=%22syed%22";
-  private _ticketStatusUpdateUrl: string = "http://35.189.155.116:8083/api/Tickets/status";
-  private _ticketPriorityUpdateUrl: string = "http://35.189.155.116:8083/api/Tickets/priority";
-  private _ticketCommentUpdateUrl: string = "http://35.189.155.116:8083/api/Tickets/updateComment";
-  private agentUrl = "http://35.189.155.116:8082/api/agents/query?Email=";
+  private _url: string = "http://35.221.125.153:8083/api/Tickets";
+  private UserDetailUrl: string = "http://35.221.125.153:8081/api/endusers/query?Name=%22syed%22";
+  private _ticketStatusUpdateUrl: string = "http://35.221.125.153:8083/api/Tickets/status";
+  private _ticketPriorityUpdateUrl: string = "http://35.221.125.153:8083/api/Tickets/priority";
+  private _ticketCommentUpdateUrl: string = "http://35.221.125.153:8083/api/Tickets/updateComment";
+  private agentUrl = "http://35.221.125.153:8082/api/agents/query?Email=";
   // ----------------LINKS-------------------
   // http://172.23.238.239:5000/api/Tickets
   // /assets/mockdata/tickets.json

@@ -1,4 +1,4 @@
-.ticketContainer{
+.example-container{
   top: 0px;
   left: 0px;
   right: 0px;
@@ -6,9 +6,35 @@
   position: absolute;
 }
 
-mat-card{
+.remove-position-fixed {
+  position: inherit !important;
+}
+
+.example-sidenav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  background: rgba(255, 0, 0, 0.5);
+}
+
+.example-right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  background-color: aquamarine;
+}
+
+
+#TicketDetailsCard{
   background:linear-gradient(135deg, #184e68 0%,#57ca85 100%);
-  color: aliceblue;}
+  color: aliceblue;
+
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  }
 
 #square{
   position: relative;
@@ -79,10 +105,6 @@ mat-expansion-panel-header:hover{
   background-color: red;
 }
 
-/* .mat-expansion-panel-header.mat-expanded:hover{
-  background-color: brown;
-} */
-
 mat-panel-title{
   margin: 0px;
   color: blue;
@@ -125,48 +147,3 @@ mat-panel-title{
 #back-btn{
   padding: 15px;
 }
-
-/* h2 {
-  color: #263238;
-  text-align: center;
-  margin-top: 30px;
-}
-#ticketDetails {
-  width: 95%;
-  height: 90%;
-  margin: auto;
-  margin-top: 30px;
-  border-style: solid;
-  border-width: 4px;
-  border-color: #263238;
-  border-radius: 10px;
-  background-color: white;
-}
-
-#detailSection {
-  float: right;
-  width: 30%;
-  height: 100%;
-  border-left-style: solid;
-  border-left-width: 4px;
-  border-left-color: #263238;
-}
-
-#header {
-  width: 100%;
-  height: 50px;
-  border-bottom-style: solid;
-  border-bottom-width: 4px;
-  border-bottom-color: #263238;
-}
-
-h1 {
-  color: #263238;
-  text-align: center;
-  margin-top: 30px;
-}
-h4 {
-  color: #263238;
-  text-align: left;
-  margin: 20px 10px 20px 10px;
-} */
