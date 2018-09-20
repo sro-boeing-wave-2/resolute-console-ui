@@ -6,7 +6,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { LocalStorageService } from 'ngx-webstorage';
 
-
 export interface Options {
   value: string;
   viewValue: string;
