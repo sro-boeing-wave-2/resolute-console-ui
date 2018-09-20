@@ -8,8 +8,11 @@
   </nav>
   <span>
     <span id="pagination_nav">
-      <button class="pagenav" mat-button (click)="previousPage()"><mat-icon>skip_previous</mat-icon></button>
-      <button class="pagenav" mat-button (click)="nextPage()"><mat-icon>skip_next</mat-icon></button>
+      <button class="pagenav" mat-button (click)="previousPage()" ><mat-icon>skip_previous</mat-icon></button>
+      <!-- [disabled]="!(ticketOutputModel.HasPrevious)" -->
+      <!-- <div data-pagination="" data-num-pages="numOfPages()" data-current-page="curPage" data-max-size="maxSize" data-boundary-links="true"></div> -->
+      <button class="pagenav" mat-button (click)="nextPage()" ><mat-icon>skip_next</mat-icon></button>
+      <!-- [disabled]="!(ticketOutputModel.HasNext)" -->
     </span>
 
     <button id="filterButton" type="button" mat-raised-button [matMenuTriggerFor]="menu"><mat-icon>filter_list</mat-icon></button>

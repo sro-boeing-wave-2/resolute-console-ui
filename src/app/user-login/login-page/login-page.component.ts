@@ -40,6 +40,7 @@ export class LoginPageComponent implements OnInit {
     console.log(this.loginForm.value);
     this._loginService.getToken(this.loginForm.value).subscribe(result => {
       this.token = result.toString(); //might need to change this
+      console.log(this.token);
       this.localStorage.store('token', this.token);
       if (this.token) {
         this.router.navigate(['/console/home']);

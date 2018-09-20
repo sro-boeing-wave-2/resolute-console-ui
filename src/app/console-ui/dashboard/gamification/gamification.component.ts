@@ -22,11 +22,11 @@ export interface GamificationData {
 }
 
 const ELEMENT_DATA: GamificationData[] = [
-  {mostTickets: {image_url: "../../../../assets/images/def_user.png", agentName: "Agent 1", department: "1",
+  {mostTickets: {image_url: "../../../../assets/images/def_user.png", agentName: "Agent 1", department: "Analytics",
     numberOfTickets: 50, badge_url: "../../../../assets/images/gold.jpg"}},
-  {mostTickets: {image_url: "../../../../assets/images/def_user.png", agentName: "Agent 2", department: "2",
+  {mostTickets: {image_url: "../../../../assets/images/def_user.png", agentName: "Agent 2", department: "Logistics",
     numberOfTickets: 30, badge_url: "../../../../assets/images/silver.jpg"}},
-  {mostTickets: {image_url: "../../../../assets/images/def_user.png", agentName: "Agent 3", department: "3",
+  {mostTickets: {image_url: "../../../../assets/images/def_user.png", agentName: "Agent 3", department: "IT",
     numberOfTickets: 20, badge_url: "../../../../assets/images/bronze.jpg"}}
 ];
 

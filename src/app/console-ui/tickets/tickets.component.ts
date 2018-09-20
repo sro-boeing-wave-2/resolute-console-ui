@@ -28,8 +28,8 @@ export class TicketsComponent implements OnInit {
     status: "",
     source: "",
     priority: "",
-    page: 10,
-    size: 10
+    page: 1,
+    size: 20
   }
 
   //Form entries
@@ -77,7 +77,7 @@ export class TicketsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getCount().subscribe(data => { this.numberOfTickets = data.json(); });
+    this.service.getCount().subscribe(data => { this.numberOfTickets = data; console.log(data);});
     this.service.updateModel(this.queryParams);
   }
 
@@ -86,4 +86,17 @@ export class TicketsComponent implements OnInit {
     this.queryParams.priority = this.filterForm.value['priorityLevel'];
     this.service.updateModel(this.queryParams);
   }
+
+  previousPage() {
+    this.service.getModel().subscribe(data => this.queryParams = data);
+    this.queryParams.page -= 1;
+    this.service.updateModel(this.queryParams);
+  }
+
+  nextPage() {
+    this.service.getModel().subscribe(data => this.queryParams = data);
+    this.queryParams.page += 1;
+    this.service.updateModel(this.queryParams);
+  }
+
 }

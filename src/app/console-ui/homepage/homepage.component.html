@@ -2,26 +2,26 @@
   <mat-grid-list cols="2" rowHeight="2:1" gutterSize="20px">
     <mat-grid-tile (click)="onClick('open')" class="agentTickets">
       <mat-card-content>
-        <h1>Open Tickets</h1>
-        <p> {{numberOfTickets.open}}</p>
+        <h2>Open Tickets</h2>
+        <h3> {{numberOfTickets?.open}}</h3>
       </mat-card-content>
     </mat-grid-tile>
-    <mat-grid-tile (click)="onClick('closed')"  class="agentTickets">
+    <mat-grid-tile (click)="onClick('due')" class="departmentTicketsUnassigned">
+        <mat-card-content>
+          <h2>Unassigned Tickets</h2>
+          <h3>{{numberOfTickets?.due}}</h3>
+        </mat-card-content>
+      </mat-grid-tile>
+      <mat-grid-tile (click)="onClick('closed')"  class="agentTicketsClosed">
       <mat-card-content>
-        <h1>Closed Tickets</h1>
-        <p>{{numberOfTickets.closed}}</p>
+        <h2>Closed Tickets</h2>
+        <h3>{{numberOfTickets?.closed}}</h3>
       </mat-card-content>
     </mat-grid-tile>
     <mat-grid-tile (click)="onClick('due')" class="departmentTickets">
       <mat-card-content>
-        <h1>Unassigned Tickets</h1>
-        <p>{{numberOfTickets.due}}</p>
-      </mat-card-content>
-    </mat-grid-tile>
-    <mat-grid-tile (click)="onClick('')" class="departmentTickets">
-      <mat-card-content>
-        <h1>Total Tickets</h1>
-        <p>{{numberOfTickets.total}} </p>
+        <h2>Total Tickets</h2>
+        <h3>{{numberOfTickets?.total}} </h3>
       </mat-card-content>
     </mat-grid-tile>
   </mat-grid-list>

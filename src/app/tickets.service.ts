@@ -4,6 +4,9 @@ import { queryParams } from './queryparams';
 import { Subject } from 'rxjs';
 import { LoginService } from './login.service';
 import { Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { TicketDetailsModal } from './ticket';
+import { Agent } from './console-ui/agent';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +14,17 @@ import { Headers } from '@angular/http';
 
 export class TicketsService {
 
-  private _url: string = "http://35.189.155.116:8083/api/Tickets";
-  private UserDetailUrl: string = "http://35.189.155.116:8081/api/endusers/query?Name=%22syed%22";
-  private _ticketStatusUpdateUrl: string = "http://35.189.155.116:8083/api/Tickets/status";
-  private _ticketPriorityUpdateUrl: string = "http://35.189.155.116:8083/api/Tickets/priority";
-  private _ticketCommentUpdateUrl: string = "http://35.189.155.116:8083/api/Tickets/updateComment";
-  private agentUrl = "http://35.189.155.116:8082/api/agents/query?Email=";
+  private _url: string = "http://35.221.125.153";
+  // http://35.221.125.153:8083/api/Tickets
+
+  // private _url: string = "http://35.221.125.153";
+
+
+  private UserDetailUrl: string = "http://35.221.125.153:8081/api/endusers/query?Name=%22syed%22";
+  private _ticketStatusUpdateUrl: string = "http://35.221.125.153:8083/api/Tickets/status";
+  private _ticketPriorityUpdateUrl: string = "http://35.221.125.153:8083/api/Tickets/priority";
+  private _ticketCommentUpdateUrl: string = "http://35.221.125.153:8083/api/Tickets/updateComment";
+  private agentUrl = "http://35.221.125.153:8082/api/agents/query?Email=";
   // ----------------LINKS-------------------
   // http://172.23.238.239:5000/api/Tickets
   // /assets/mockdata/tickets.json
@@ -25,19 +33,19 @@ export class TicketsService {
 
   token;
 
-  constructor(private http: Http, private loginService: LoginService) { }
+  constructor(private http: HttpClient, private loginService: LoginService) { }
 
-  gethttpHeader() {
-    const myheaders = new Headers();
-    myheaders.append('Content-Type', 'application/json');
-    myheaders.append('agentId', '1');
-    myheaders.append('departmentId', '1');
-    let httpOptions = new RequestOptions({
-      headers: myheaders
-    });
-    console.log(httpOptions);
-    return httpOptions;
-  }
+  // gethttpHeader() {
+  //   const myheaders = new Headers();
+  //   myheaders.append('Content-Type', 'application/json');
+  //   myheaders.append('agentId', '1');
+  //   myheaders.append('departmentId', '1');
+  //   let httpOptions = new RequestOptions({
+  //     headers: myheaders
+  //   });
+  //   console.log(httpOptions);
+  //   return httpOptions;
+  // }
 
   private querys = new Subject<queryParams>();
 
@@ -59,41 +67,41 @@ export class TicketsService {
   }
 
   getById(id) {
-    const headers = this.gethttpHeader();
-    return this.http.get(`${this._url}/detail/${id}`, headers);
+    // const headers = this.gethttpHeader();
+    return this.http.get<TicketDetailsModal>(`${this._url}/detail/${id}`);
   }
 
   getByFilter(queryParams: queryParams) {
-    const headers = this.gethttpHeader();
+    // const headers = this.gethttpHeader();
     console.log(queryParams);
     if (queryParams != null) {
       //change url
       console.log(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
-      return this.http.get(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority, headers);
+      return this.http.get(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
     } else {
       console.log(this._url + '/filter');
 
       //change url
-      return this.http.get(`${this._url}/filter`, headers);
+      return this.http.get(`${this._url}/filter`);
     }
   }
 
   getCount() {
-    const headers = this.gethttpHeader();
-    var countOfTickets = this.http.get(`${this._url}/count`, headers);
+    // const headers = this.gethttpHeader();
+    var countOfTickets = this.http.get(`${this._url}/count`)
     return countOfTickets;
   }
 
   addNewTicket(ticket) {
-    const headers = this.gethttpHeader();
+    // const headers = this.gethttpHeader();
     console.log(ticket);
     console.log(this._url);
-    return this.http.post(this._url, ticket, headers);
+    return this.http.post(this._url, ticket);
   }
 
   getAllTickets() {
-    const headers = this.gethttpHeader();
-    return this.http.get(this._url, headers);
+    // const headers = this.gethttpHeader();
+    return this.http.get(this._url);
   }
 
   updateIndividualTicketStatus(ticketId, selectedStatus) {
@@ -124,7 +132,7 @@ export class TicketsService {
   }
 
   GetAgentDetails(agentEmail) {
-    return this.http.get(`${this.agentUrl}%22${agentEmail}%22`);
+    return this.http.get<Agent>(`${this.agentUrl}%22${agentEmail}%22`);
   }
 }
 

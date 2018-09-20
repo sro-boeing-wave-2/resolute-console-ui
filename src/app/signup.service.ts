@@ -22,7 +22,7 @@ export class SignupService {
     this.customerData = updatedData;
   }
 
-  url : string ="http://35.189.155.116:8082/api/Signup"
+  url : string ="http://35.221.125.153:8082/api/Signup"
   post(form){
     console.log(form)
     return this.http.post(this.url, form);

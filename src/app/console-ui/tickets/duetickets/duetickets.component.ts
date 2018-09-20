@@ -11,7 +11,7 @@ import { queryParams } from '../../../queryparams';
 export class DueticketsComponent implements OnInit {
 
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
-  dueTickets = [];
+  dueTickets;
   TicketId;
   httpOptions;
   queryParams: queryParams;
@@ -29,13 +29,13 @@ export class DueticketsComponent implements OnInit {
       page: 10,
       size: 10
     }).subscribe(tickets => {
-      this.dueTickets = tickets.json();
+      this.dueTickets = tickets;
     });
     this.service.getModel().subscribe((data) => {
       data.status = "due";
       console.log(data);
       this.service.getByFilter(data).subscribe(tickets => {
-        this.dueTickets = tickets.json();
+        this.dueTickets = tickets;
         console.log(this.dueTickets);
       });
     });

@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, ElementRef, Input, OnChanges, ViewChild } from
 import * as d3 from 'd3';
 import { csatDescription, csatScoreVsDate } from '../analytics-classes/csat-score';
 import { CsatScoreService } from '../csat-score.service';
+import { Csat } from '../analytics-classes/AnalyticsData';
 
 @Component({
   selector: 'app-c-sat-score',
@@ -12,14 +13,21 @@ import { CsatScoreService } from '../csat-score.service';
 export class CSatScoreComponent implements OnInit {
 
   types: string[] = ["line", "stackedline", "fullstackedline"];
-  countriesInfo: csatScoreVsDate[];
-  energySources: csatDescription[];
+  csatData: Csat[];
+  csatMetaData: csatDescription[];
 
   constructor(service: CsatScoreService) {
-    service.getInitialCsatStatus()
-      .subscribe(csatData => this.countriesInfo = csatData.reverse().slice(-9, -1).reverse());
-    service.getCsatMetaData()
-      .subscribe(csatMetaData => this.energySources = csatMetaData);
+    service.getAnalyticsData().subscribe(data => {
+      this.csatData = data.analyticscsat.reverse().slice(-5, -1).reverse();
+      console.log(data.analyticscsat[0].csatscore);
+    })
+    // service.getCsatMetaData()
+    //   .subscribe(csatMetaData => {
+    this.csatMetaData = [{
+      value: "csat",
+      name: "CustomerSatisfaction"
+    }];
+    console.log(this.csatMetaData);
   }
 
   customizeTooltip(arg) {

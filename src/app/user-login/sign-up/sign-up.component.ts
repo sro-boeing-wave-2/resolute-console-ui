@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import {SignupService} from '../../signup.service';
 import { Router } from '@angular/router';
 import { OrganizationData } from '../organizationData';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +15,8 @@ export class SignUpComponent implements OnInit {
   constructor(
     private router : Router,
     private fb : FormBuilder,
-    private signUpService : SignupService ) { }
+    private signUpService : SignupService,
+    private localStorage: LocalStorageService ) { }
 
     data: OrganizationData;
 
@@ -26,11 +28,12 @@ export class SignUpComponent implements OnInit {
 
   GenerateAccount():void {
 
-    var a = this.signUpForm.value;
-    console.log(a);
-    this.signUpService.post(a).subscribe(data => {
+    var SignUpFormData = this.signUpForm.value;
+    console.log("This is the form data coming " + SignUpFormData);
+    this.signUpService.post(SignUpFormData).subscribe(data => {
       this.data = data.json();
-      this.signUpService.updateData(this.data);
+      // this.signUpService.updateData(this.data); //why is this function called?
+      this.localStorage.store("OrganisationData", this.data);
       console.log(data.json());
     });
     this.router.navigate(['/userlogin/addagents']);

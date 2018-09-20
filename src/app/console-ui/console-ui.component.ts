@@ -23,7 +23,7 @@ export class ConsoleUIComponent implements OnInit {
     this.agentEmail = this.localStorage.retrieve("email");//this.loginService.getAgentEmail();
     console.log("Retrieved Email", this.agentEmail);
     this.service.GetAgentDetails(this.agentEmail).subscribe(data => {
-      this.agentDetails = data.json();
+      this.agentDetails = data;
       console.log(this.agentDetails);
     });
   }

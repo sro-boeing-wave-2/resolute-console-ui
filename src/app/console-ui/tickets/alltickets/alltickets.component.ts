@@ -12,7 +12,7 @@ import { queryParams } from '../../../queryparams';
 export class AllticketsComponent implements OnInit {
 
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
-  allTickets = [];
+  allTickets;
   TicketId;
   httpOptions;
 
@@ -25,17 +25,17 @@ export class AllticketsComponent implements OnInit {
       status: "",
       source: "",
       priority: "",
-      page: 10,
+      page: 1,
       size: 10
     }).subscribe(tickets => {
-      this.allTickets = tickets.json();
+      this.allTickets = tickets;
       console.log(this.allTickets);
     });
     this.service.getModel().subscribe((data) => {
       data.status = "";
       console.log(data);
       this.service.getByFilter(data).subscribe(tickets => {
-        this.allTickets = tickets.json();
+        this.allTickets = tickets;
         console.log(this.allTickets);
       });
     });

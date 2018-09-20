@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../login.service';
 import { SignupService } from '../../signup.service';
 import { OrganizationData } from '../organizationData';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-drag-drop-user',
@@ -14,8 +15,8 @@ export class DragDropUserComponent {
 
   public progress: number;
   public message: string;
-  public UploadMessage: string="";
-  constructor(private http: HttpClient, private router: Router, private signUpService: SignupService) { }
+  public UploadMessage: string = "";
+  constructor(private http: HttpClient, private router: Router, private signUpService: SignupService, private localStorage: LocalStorageService) { }
 
   data: OrganizationData;
 
@@ -28,7 +29,7 @@ export class DragDropUserComponent {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', 'http://35.189.155.116:8082/api/upload', formData, {
+    const uploadReq = new HttpRequest('POST', 'http://35.221.125.153:8082/api/upload', formData, {
       reportProgress: true,
     });
 
@@ -42,14 +43,15 @@ export class DragDropUserComponent {
   }
 
   OnPost() {
-    this.data = this.signUpService.getData();
+    // this.data = this.signUpService.getData();
+    this.data = this.localStorage.retrieve("OrganisationData");
     console.log(this.data);
-    this.UploadMessage="Upload Successful";
-    this.http.post('http://35.189.155.116:8082/api/endusers', this.data).subscribe(data => {
-    setTimeout(a => {
-    this.router.navigate(['/userlogin/login'])
-  },2000,[]);
-});
+    this.UploadMessage = "Upload Successful";
+    this.http.post('http://35.221.125.153:8082/api/endusers', this.data).subscribe(data => {
+      setTimeout(a => {
+        this.router.navigate(['/userlogin/login'])
+      }, 1000);
+    });
   }
 }
 
