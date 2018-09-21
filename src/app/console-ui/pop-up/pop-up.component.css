@@ -1,0 +1,28 @@
+.mat-dialog-container{
+  padding: 0px;
+  background-color: black;
+}
+
+#no-btn{
+  background-color: brown;
+}
+
+#yes-btn{
+  background-color: darkgreen
+}
+
+#yes-btn, #no-btn{
+  color: white;
+}
+
+h1 {
+  text-align: center;
+}
+
+#btn{
+  margin: 0 auto;
+}
+
+#btn button{
+  margin: 0 auto
+ }

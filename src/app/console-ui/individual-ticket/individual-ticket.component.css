@@ -7,7 +7,7 @@
 }
 
 mat-card{
-  background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+  background:linear-gradient(135deg, #622774 0%,#c53364 100%);
 
   color: aliceblue;}
 
@@ -94,23 +94,38 @@ mat-panel-title{
   color: aliceblue;
 }
 
-#resolve-btn{
-  color: aliceblue;
+.btn-class{
+  width: 100%;
+}
+
+#resolve-btn, #back-btn{
   background-color: transparent;
-  outline: none;
-  text-decoration: none;
-  border: 1px solid aliceblue;
-  padding: 5px 10px 5px 10px;
   cursor: pointer;
-}
+  font-size: small;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  outline: none;
+  margin: 5px;
+  text-align: left;}
 
-#resolve-btn:hover{
-  background-color: aliceblue;
-  color: #330867;
-}
+#resolve-btn:hover, #back-btn:hover{
+  border:0px;
+  background-color: #f5f5f6;
+  color:#c53364;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.6s ease 0s;}
 
 #resolve-btn{
-  margin-left: 7.5px;
+  padding: 15px;
+}
+
+#back-btn{
+  padding: 15px;
 }
 
 /* h2 {

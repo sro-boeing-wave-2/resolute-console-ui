@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -18,7 +18,7 @@ import { RoutingComponents } from './app-routing.module';
 import { MaterialModule } from './material';
 import { TicketsService } from './tickets.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { PopUpComponent } from './console-ui/pop-up/pop-up.component';
+import { PopUpComponent } from './console-ui/pop-up/pop-up.component';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { RequestInterceptor } from './auth.interceptor';
 
@@ -26,6 +26,7 @@ import { RequestInterceptor } from './auth.interceptor';
   declarations: [
     AppComponent,
     RoutingComponents,
+    PopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -40,12 +41,13 @@ import { RequestInterceptor } from './auth.interceptor';
     MatCardModule,
     MatExpansionModule,
     MatInputModule,
+    MatDialogModule,
     DxPieChartModule,
     DxChartModule,
     DxSelectBoxModule,
     Ng2Webstorage
   ],
-  entryComponents: [
+  entryComponents: [PopUpComponent
   ],
   providers: [
     TicketsService,
