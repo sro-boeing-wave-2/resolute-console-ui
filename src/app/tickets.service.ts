@@ -14,7 +14,7 @@ import { Agent } from './console-ui/agent';
 
 export class TicketsService {
 
-  private _url: string = "http://35.221.125.153";
+  private _url: string = "http://35.221.125.153:8083/api/Tickets";
   // http://35.221.125.153:8083/api/Tickets
 
   // private _url: string = "http://35.221.125.153";
