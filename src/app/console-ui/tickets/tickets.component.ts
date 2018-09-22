@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TicketsService } from '../../tickets.service';
 import { FormBuilder } from '@angular/forms';
 import { queryParams } from '../../queryparams';
+import { PaginationTicketModel, PageRange } from './ticketModelForPagination';
 
 export interface Sources {
   source: string
@@ -22,7 +23,12 @@ export class TicketsComponent implements OnInit {
 
   navLinks = [];
   numberOfTickets = {};
-  filteredTickets;
+  PaginationTicket: PaginationTicketModel;
+  Pages = 14;
+  isPreviousDisabled;
+  isNextDisabled;
+  pageRange: PageRange;
+  currentPage = 9;
 
   queryParams: queryParams = {
     status: "",
@@ -77,8 +83,18 @@ export class TicketsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getCount().subscribe(data => { this.numberOfTickets = data; console.log(data);});
+    this.service.getCount().subscribe(data => { this.numberOfTickets = data;});
     this.service.updateModel(this.queryParams);
+    // this.service.getByFilter(this.queryParams).subscribe(data => {
+    //   this.PaginationTicket = data;
+    //   this.Pages = this.PaginationTicket.Pages;
+    // })
+    this.pageRange = this.getPageRange(this.Pages, this.currentPage);
+    this.isPreviousDisabled = true;
+    if (this.Pages == 1)
+      this.isNextDisabled = true;
+    else
+      this.isNextDisabled = false;
   }
 
   onSubmit() {
@@ -89,14 +105,53 @@ export class TicketsComponent implements OnInit {
 
   previousPage() {
     this.service.getModel().subscribe(data => this.queryParams = data);
-    this.queryParams.page -= 1;
-    this.service.updateModel(this.queryParams);
+    if (this.queryParams.page > 1) {
+      this.isNextDisabled = false;
+      this.queryParams.page -= 1;
+      this.service.updateModel(this.queryParams);
+      if (this.queryParams.page == 1) this.isPreviousDisabled = true;
+    }
+    console.log(this.queryParams);
   }
 
   nextPage() {
     this.service.getModel().subscribe(data => this.queryParams = data);
-    this.queryParams.page += 1;
-    this.service.updateModel(this.queryParams);
+    if (this.queryParams.page < this.Pages) {
+      this.isPreviousDisabled = false;
+      this.queryParams.page += 1;
+      this.service.updateModel(this.queryParams);
+      if(this.queryParams.page == this.Pages) this.isNextDisabled = true;
+    }
+    console.log(this.queryParams);
+  }
+
+  getPageRange(Pages, currentPage) {
+    // Pages = 10;
+    // currentPage = 10;
+    let pageRange = new PageRange();
+
+    if(Pages < 6) {
+      pageRange.startPage = 1;
+      pageRange.endPage = Pages;
+    } else
+    {
+      if(currentPage <= 3) {
+        pageRange.startPage = 1;
+        pageRange.endPage = 5;
+      } else
+      if(currentPage + 2 >= Pages) {
+        pageRange.startPage = Pages - 4;
+        pageRange.endPage = Pages;
+      } else
+      {
+        pageRange.startPage = currentPage - 2;
+        pageRange.endPage = currentPage + 2;
+      }
+    }
+
+    console.log(pageRange.startPage);
+    console.log(pageRange.endPage);
+    return pageRange;
   }
 
 }

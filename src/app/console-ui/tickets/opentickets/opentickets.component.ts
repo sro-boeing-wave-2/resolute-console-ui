@@ -23,7 +23,7 @@ export class OpenticketsComponent implements OnInit {
       status: "open",
       source: "",
       priority: "",
-      page: 10,
+      page: 1,
       size: 10
     }).subscribe(tickets => {
       this.openTickets = tickets;
@@ -37,7 +37,7 @@ export class OpenticketsComponent implements OnInit {
   }
 
   onClick(element) {
-    console.log(element.ticketId);
+    // console.log(element.ticketId);
     this.router.navigate(['/console/tickets/view', element.ticketId]);
   }
 

@@ -1,6 +1,6 @@
 <div id="chart-demo">
   <dx-chart palette="violet" [dataSource]="csatData">
-    <dxi-series *ngFor="let data of csatMetaData" [valueField]="data.value" [name]="data.name">
+    <dxi-series *ngFor="let data of csatMetaData" [valueField]="data?.value" [name]="data?.name">
     </dxi-series>
     <dxo-common-series-settings #seriesSettings argumentField="date" [type]="types[0]">
     </dxo-common-series-settings>

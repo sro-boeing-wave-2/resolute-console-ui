@@ -3,14 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { csatDescription, csatScoreVsDate } from './analytics-classes/csat-score';
 import { ticketstatus } from './analytics-classes/ticketstatus';
 import { AnalyticsData } from './analytics-classes/AnalyticsData';
+import { GamificationModel } from './analytics-classes/GamificationModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CsatScoreService {
-  private baseUrl =  'http://localhost:3000';
+  // private baseUrl =  'http://localhost:3000';
 
-  private analyticsUrl: string = "http://35.221.125.153:8083/api/Tickets/analytics";
+  private analyticsUrl: string = "http://35.221.125.153/Tickets/analytics";
+  private gamificationUrl: string = "http://35.221.125.153:8083/api/Tickets/leaderboard";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -26,5 +28,9 @@ export class CsatScoreService {
 
   getAnalyticsData() {
     return this.httpClient.get<AnalyticsData>(this.analyticsUrl);
+  }
+
+  getGamificationData() {
+    return this.httpClient.get<GamificationModel[]>(this.gamificationUrl);
   }
 }

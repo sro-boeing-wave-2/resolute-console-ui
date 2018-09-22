@@ -26,17 +26,17 @@ export class ClosedticketsComponent implements OnInit {
       status: "close",
       source: "",
       priority: "",
-      page: 10,
+      page: 1,
       size: 10
     }).subscribe(tickets => {
       this.closedTickets = tickets;
     });
     this.service.getModel().subscribe((data) => {
       data.status = "close";
-      console.log(data);
+      // console.log(data);
       this.service.getByFilter(data).subscribe(tickets => {
         this.closedTickets = tickets;
-        console.log(this.closedTickets);
+        // console.log(this.closedTickets);
       });
     });
   }

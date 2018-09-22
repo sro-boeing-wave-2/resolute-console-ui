@@ -19,7 +19,7 @@ export class TicketsPiechartComponent implements OnInit {
   pieChartdata: Count[];
 
   constructor(private analyticsService: CsatScoreService) {
-    console.log(this.pieChartdata);
+    // console.log(this.pieChartdata);
     this.analyticsService.getAnalyticsData().subscribe((data) => {
       this.pieChartdata = data.analyticscount;
       console.log(this.pieChartdata);

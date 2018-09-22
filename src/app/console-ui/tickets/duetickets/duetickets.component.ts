@@ -26,17 +26,17 @@ export class DueticketsComponent implements OnInit {
       status: "due",
       source: "",
       priority: "",
-      page: 10,
+      page: 1,
       size: 10
     }).subscribe(tickets => {
       this.dueTickets = tickets;
     });
     this.service.getModel().subscribe((data) => {
       data.status = "due";
-      console.log(data);
+      // console.log(data);
       this.service.getByFilter(data).subscribe(tickets => {
         this.dueTickets = tickets;
-        console.log(this.dueTickets);
+        // console.log(this.dueTickets);
       });
     });
   }

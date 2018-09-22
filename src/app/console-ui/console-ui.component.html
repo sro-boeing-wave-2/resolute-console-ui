@@ -16,10 +16,10 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span id="mainTitle">
-        <a routerLink="/console/home" routerLinkActive="active">RESOLUTE</a>
+        <a routerLink="/console/home" routerLinkActive="active"><strong>{{agentDetails?.organisationName | uppercase }}</strong></a>
       </span>
       <span class="spacer"></span>
-      <button type="button" id="createButton" mat-raised-button routerLink="/console/newticket"> Create </button>
+      <!-- <button type="button" id="createButton" mat-raised-button routerLink="/console/newticket"> Create </button> -->
       <mat-icon class="icon">notifications</mat-icon>
     </mat-toolbar-row>
   </mat-toolbar>

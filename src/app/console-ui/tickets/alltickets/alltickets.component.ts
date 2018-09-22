@@ -29,14 +29,14 @@ export class AllticketsComponent implements OnInit {
       size: 10
     }).subscribe(tickets => {
       this.allTickets = tickets;
-      console.log(this.allTickets);
+      // console.log(this.allTickets);
     });
     this.service.getModel().subscribe((data) => {
       data.status = "";
-      console.log(data);
+      // console.log(data);
       this.service.getByFilter(data).subscribe(tickets => {
         this.allTickets = tickets;
-        console.log(this.allTickets);
+        // console.log(this.allTickets);
       });
     });
   }

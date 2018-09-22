@@ -19,7 +19,7 @@ export class CSatScoreComponent implements OnInit {
   constructor(service: CsatScoreService) {
     service.getAnalyticsData().subscribe(data => {
       this.csatData = data.analyticscsat.reverse().slice(-5, -1).reverse();
-      console.log(data.analyticscsat[0].csatscore);
+      // console.log(data.analyticscsat[0].csatscore);
     })
     // service.getCsatMetaData()
     //   .subscribe(csatMetaData => {

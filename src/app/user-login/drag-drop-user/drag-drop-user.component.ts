@@ -29,7 +29,7 @@ export class DragDropUserComponent {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', 'http://35.221.125.153:8082/api/upload', formData, {
+    const uploadReq = new HttpRequest('POST', 'http://35.221.125.153/upload', formData, {
       reportProgress: true,
     });
 
@@ -47,7 +47,7 @@ export class DragDropUserComponent {
     this.data = this.localStorage.retrieve("OrganisationData");
     console.log(this.data);
     this.UploadMessage = "Upload Successful";
-    this.http.post('http://35.221.125.153:8082/api/endusers', this.data).subscribe(data => {
+    this.http.post('http://35.221.125.153/endusers', this.data).subscribe(data => {
       setTimeout(a => {
         this.router.navigate(['/userlogin/login'])
       }, 1000);
