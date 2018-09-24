@@ -35,7 +35,8 @@
   <div class="secondaryBtnDiv">
   <button id="uploadbtn" (click)="OnPost()">Upload File</button>
   <span style="font-weight:bold;color:green;" *ngIf="UploadMessage">
-    {{UploadMessage}}
+      <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate">
+        </mat-progress-spinner>
   </span>
   </div>
 </body>

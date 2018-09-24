@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../login.service';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -13,18 +13,24 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class LoginPageComponent implements OnInit {
 
   token;
+  loginForm: FormGroup;
   unauthorized: string = null;
+  isSubmitted = false;
 
   //for testing
   @Output() submitted = new EventEmitter();
 
-  constructor(private router: Router, private fb: FormBuilder, private _loginService: LoginService, private localStorage : LocalStorageService) { }
+  constructor(private router: Router, public fb: FormBuilder, private _loginService: LoginService, private localStorage : LocalStorageService) { }
 
-  loginForm = this.fb.group({
-    //change this to EmailId later
-    'Username': new FormControl('', [Validators.required]),
-    'Password': new FormControl('', [Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(14)])])
-  });
+  ngOnInit() {
+    this.loginForm = this.fb.group({
+      //change this to EmailId later
+      'Username': ['', Validators.required],
+      'Password': [null, [Validators.compose([Validators.required, Validators.minLength(6)])]]
+    });
+  }
+
+  get f() { return this.loginForm.controls; }
 
   get Username() {
     console.log(this.loginForm.get('Username'));
@@ -37,6 +43,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   LoginToAccount() {
+    this.isSubmitted = true;
+    if (this.loginForm.valid){
     console.log(this.loginForm.value);
     this._loginService.getToken(this.loginForm.value).subscribe(result => {
       this.token = result.toString(); //might need to change this
@@ -51,9 +59,12 @@ export class LoginPageComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit() {
+  else{
+    return;
   }
+  }
+
+
 
   // for testing
   onSubmit({ Username, Password }) {

@@ -93,7 +93,8 @@ input::-webkit-input-placeholder {
   padding: 5px;
 }
 
-#invalid {
-  color: red;
+section #invalid {
+  color: yellow;
+  padding-top: 20px;
   text-align: center;
 }

@@ -12,7 +12,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { DxPieChartModule } from 'devextreme-angular';
 import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RoutingComponents } from './app-routing.module';
@@ -20,14 +19,15 @@ import { MaterialModule } from './material';
 import { TicketsService } from './tickets.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopUpComponent } from './console-ui/pop-up/pop-up.component';
-import { RequestInterceptor } from './auth.interceptor';
 import { Ng2Webstorage } from 'ngx-webstorage';
+//import { CompareValidatorDirective } from './user-login/sign-up/compare-validator.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutingComponents,
     PopUpComponent
+    //CompareValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -51,12 +51,12 @@ import { Ng2Webstorage } from 'ngx-webstorage';
   entryComponents: [PopUpComponent
   ],
   providers: [
-    TicketsService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: RequestInterceptor,
-      multi: true
-    }
+    TicketsService
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: RequestInterceptor,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })
