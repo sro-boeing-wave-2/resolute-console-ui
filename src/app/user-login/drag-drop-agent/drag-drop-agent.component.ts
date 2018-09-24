@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http'
+import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
-// import { Headers,RequestOptions,RequestMethod } from '@angular/http';
-// import { HttpClient } from '@angular/common/http';
-// import { Http } from '@angular/http';
-import { SignupService } from '../../signup.service'
+import { SignupService } from '../../signup.service';
 import { LoginService } from '../../login.service';
 import { OrganizationData } from '../organizationData';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-drag-drop-agent',
@@ -18,7 +16,7 @@ export class DragDropAgentComponent {
   public progress: number;
   public message: string;
   public UploadMessage: string = "";
-  constructor(private http: HttpClient, private router: Router, private signUpService: SignupService) { }
+  constructor(private http: HttpClient, private router: Router, private signUpService: SignupService,  private localStorage: LocalStorageService) { }
 
   data: OrganizationData;
 
@@ -31,7 +29,7 @@ export class DragDropAgentComponent {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', 'http://35.189.155.116:8082/api/Upload', formData, {
+    const uploadReq = new HttpRequest('POST', 'http://35.221.125.153/Upload', formData, {
       reportProgress: true,
     });
 
@@ -44,16 +42,18 @@ export class DragDropAgentComponent {
     });
   }
 
-  OnPost(data) {
+  OnPost() {
     console.log("Post");
     console.log('getdata');
     this.UploadMessage="Upload Successful";
-    this.data = this.signUpService.getData();
+    // this.data = this.signUpService.getData();
+    this.data = this.localStorage.retrieve("OrganisationData");
     console.log(this.data);
-    this.http.post('http://35.189.155.116:8082/api/agents', this.data).subscribe(data => {
+    this.http.post('http://35.221.125.153/agents', this.data).subscribe(data => {
     setTimeout(a => {
+      console.log("POST WORKING");
       this.router.navigate(['/userlogin/addusers'])
-      },2000,[]);
+      },1000);
     });
   }
 }

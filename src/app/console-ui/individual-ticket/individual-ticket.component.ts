@@ -28,6 +28,8 @@ export class IndividualTicketComponent implements OnInit {
   UserName;
   _connectionId:number = this.TicketById.id;
   agentDetails;
+  userImage;
+
   // email:string = this.TicketById.
   constructor(private router: Router, private service: TicketsService, private route: ActivatedRoute, public dialog: MatDialog, private localStorage: LocalStorageService) { }
 
@@ -41,7 +43,12 @@ export class IndividualTicketComponent implements OnInit {
 
   call(id) {
     let u = this.service.getById(id).subscribe(data => {
-      this.TicketById = data.json();
+      this.TicketById = data;
+      console.log(this.TicketById.userid);
+      this.service.GetUserDetails(this.TicketById.name).subscribe(data => {
+        this.userImage = data;
+        console.log(this.userImage);
+      })
     });
     console.log(u);
   }
@@ -51,16 +58,17 @@ export class IndividualTicketComponent implements OnInit {
   }
 
   updateStatus(){
-    this.service.updateIndividualTicketStatus(this.TicketById.id,this.selectedStatusValue);
+    console.log(this.selectedStatusValue);
+    this.service.updateIndividualTicketStatus(this.TicketById.id,this.selectedStatusValue).subscribe();
   }
 
   updatePriority(){
-    this.service.updateIndividualTicketPriority(this.TicketById.id,this.selectedPriorityValue);
+    this.service.updateIndividualTicketPriority(this.TicketById.id,this.selectedPriorityValue).subscribe();
   }
 
   statuses: Options[] = [
     {value: "open", viewValue: 'Open'},
-    {value: "closed", viewValue: 'Closed'},
+    {value: "close", viewValue: 'Closed'},
     {value: "due", viewValue: 'Due'}
   ];
 

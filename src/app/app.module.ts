@@ -8,10 +8,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ChatLibModule } from 'chat-lib';
+
 import { DxPieChartModule } from 'devextreme-angular';
 import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RoutingComponents } from './app-routing.module';
@@ -19,14 +18,15 @@ import { MaterialModule } from './material';
 import { TicketsService } from './tickets.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopUpComponent } from './console-ui/pop-up/pop-up.component';
-import { RequestInterceptor } from './auth.interceptor';
 import { Ng2Webstorage } from 'ngx-webstorage';
+//import { RequestInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutingComponents,
     PopUpComponent
+    //CompareValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -45,18 +45,17 @@ import { Ng2Webstorage } from 'ngx-webstorage';
     DxPieChartModule,
     DxChartModule,
     DxSelectBoxModule,
-    Ng2Webstorage,
-    ChatLibModule
+    Ng2Webstorage
   ],
   entryComponents: [PopUpComponent
   ],
   providers: [
-    TicketsService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: RequestInterceptor,
-      multi: true
-    }
+    TicketsService
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: RequestInterceptor,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

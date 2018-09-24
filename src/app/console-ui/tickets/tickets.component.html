@@ -8,8 +8,19 @@
       </a>
     </div>
     <span id="pagination_nav">
-      <button class="pagenav" mat-button (click)="previousPage()"><mat-icon>skip_previous</mat-icon></button>
-      <button class="pagenav" mat-button (click)="nextPage()"><mat-icon>skip_next</mat-icon></button>
+      <button class="pagenav" [disabled]="isPreviousDisabled" mat-button (click)="previousPage()" ><mat-icon>skip_previous</mat-icon></button>
+      <!-- <div data-pagination="" data-num-pages="numOfPages()" data-current-page="curPage" data-max-size="maxSize" data-boundary-links="true"></div> -->
+
+      <span *ngFor="let page of pageRangeArray.pageNo" style="color: black; text-decoration: none; padding: 5px 10px;"
+      [style.color]="(page === currentPageNo) ? 'blue' : 'black'"
+      [style.border-style]="(page === currentPageNo) ? 'solid' : 'none'"
+      [style.border-radius.px]="(page === currentPageNo) ? 10 : '0'"
+      >
+        <a (click)="getPageRange(page)"><strong>{{page}}</strong></a>
+      </span>
+
+
+      <button class="pagenav" [disabled]="isNextDisabled" mat-button (click)="nextPage()" ><mat-icon>skip_next</mat-icon></button>
     </span>
     <button id="filterButton" type="button" mat-raised-button [matMenuTriggerFor]="menu"><mat-icon>filter_list</mat-icon></button>
     <mat-menu #menu="matMenu" id="filterBox">

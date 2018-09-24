@@ -46,3 +46,11 @@ color: #ffffff; }
 color:#004d40;
 padding: 5px; }
 
+.active {
+  color: red;
+}
+
+a {
+  cursor: pointer;
+  font-size: 15px;
+}

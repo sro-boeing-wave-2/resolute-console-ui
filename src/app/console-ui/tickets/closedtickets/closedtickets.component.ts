@@ -11,7 +11,7 @@ import { queryParams } from '../../../queryparams';
 export class ClosedticketsComponent implements OnInit {
 
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
-  closedTickets = [];
+  closedTickets;
   TicketId;
   httpOptions;
   queryParams: queryParams;
@@ -26,17 +26,18 @@ export class ClosedticketsComponent implements OnInit {
       status: "close",
       source: "",
       priority: "",
-      page: 10,
-      size: 10
+      page: 1,
+      sortBy: "subject",
+      sortOrder: false
     }).subscribe(tickets => {
-      this.closedTickets = tickets.json();
+      this.closedTickets = tickets;
     });
     this.service.getModel().subscribe((data) => {
       data.status = "close";
-      console.log(data);
+      // console.log(data);
       this.service.getByFilter(data).subscribe(tickets => {
-        this.closedTickets = tickets.json();
-        console.log(this.closedTickets);
+        this.closedTickets = tickets;
+        // console.log(this.closedTickets);
       });
     });
   }
@@ -44,6 +45,15 @@ export class ClosedticketsComponent implements OnInit {
   onClick(element) {
     console.log(element.ticketId);
     this.router.navigate(['/console/tickets/view', element.ticketId]);
+  }
+
+  changeSortBy(sortby) {
+    this.service.getModel().subscribe((data) => {
+      data.sortBy = sortby;
+      data.sortOrder = !data.sortOrder;
+      this.service.updateModel(data);
+      console.log(data);
+    })
   }
 
 }

@@ -62,10 +62,12 @@
     <mat-card id="TicketDetailsCard">
       <mat-card-header>
         <div id="square">
-          <div id="UserImage"></div>
+          <!-- <div id="UserImage"></div> -->
+          <img id="UserImage" src="{{userImage?.profileImageUrl}}" alt="UserImage">
         </div>
       </mat-card-header>
-      <mat-card-title>{{TicketById?.name}} </mat-card-title>
+      <mat-card-title> {{TicketById?.name}} </mat-card-title>
+>>>>>>> c2444ce2a53fa3a7f54d1eececd272be76aa26e6
       <mat-card-subtitle> Ticket ID : {{TicketById?.id}} </mat-card-subtitle>
       <mat-card-content>
         <p class="CardTitle">
@@ -79,20 +81,20 @@
       </mat-card-content>
       <form id="statusAndPriority" style="color: white">
         <mat-form-field>
-          <mat-select placeholder="{{TicketById?.status == 0 ? 'Open' : TicketById?.status == 1 ? 'Closed' : 'Due'}}" [(ngModel)]="selectedStatusValue"
+          <mat-select placeholder="{{TicketById?.status == 0 ? 'Open' : (TicketById?.status == 1 ? 'Closed' : 'Due')}}" [(ngModel)]="selectedStatusValue"
             name="status">
-            <mat-option (click)=updateStatus() *ngFor="let status of statuses" [value]="status.value">
-              {{status.viewValue}}
+            <mat-option (click)="updateStatus()" *ngFor="let status of statuses" [value]="status.value">
+              {{status?.viewValue }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </form>
       <form>
         <mat-form-field>
-          <mat-select placeholder="{{TicketById?.priority == 0 ? 'High' : TicketById?.priority == 1 ? 'Medium' : 'Low'}}" [(ngModel)]="selectedPriorityValue"
+          <mat-select placeholder="{{TicketById?.priority | titlecase }}" [(ngModel)]="selectedPriorityValue"
             name="priority">
             <mat-option (click)=updatePriority() *ngFor="let priority of priorities" [value]="priority.value">
-              {{priority.viewValue}}
+              {{priority?.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>

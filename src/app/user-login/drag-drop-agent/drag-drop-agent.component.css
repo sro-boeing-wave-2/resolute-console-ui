@@ -21,6 +21,10 @@ body{
   padding: 0px 40px 0px 40px;
   width: 100%;
 }
+.example-section{
+  height: 20px;
+  margin: 0 10px;
+}
 
 .fab {
   text-align: left;
@@ -38,11 +42,12 @@ body{
 #iconDiv{
   margin: 0 auto;
   text-align: center;
+
 }
 
 .font{
-  padding-top: 50px;
-  font-size: 8ex;
+  padding-top: 40px;
+  font-size: 9ex;
 }
 
 #chooseFileDiv{

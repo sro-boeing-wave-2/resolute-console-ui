@@ -11,12 +11,12 @@ import { queryParams } from '../../../queryparams';
 export class DueticketsComponent implements OnInit {
 
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
-  dueTickets = [];
+  dueTickets;
   TicketId;
   httpOptions;
   queryParams: queryParams;
 
-  constructor(private service : TicketsService, private router : Router) { }
+  constructor(private service: TicketsService, private router: Router) { }
 
   ngOnInit() {
     // this.queryParams.status = "due";
@@ -26,17 +26,18 @@ export class DueticketsComponent implements OnInit {
       status: "due",
       source: "",
       priority: "",
-      page: 10,
-      size: 10
+      page: 1,
+      sortBy: "subject",
+      sortOrder: false
     }).subscribe(tickets => {
-      this.dueTickets = tickets.json();
+      this.dueTickets = tickets;
     });
     this.service.getModel().subscribe((data) => {
       data.status = "due";
-      console.log(data);
+      // console.log(data);
       this.service.getByFilter(data).subscribe(tickets => {
-        this.dueTickets = tickets.json();
-        console.log(this.dueTickets);
+        this.dueTickets = tickets;
+        // console.log(this.dueTickets);
       });
     });
   }
@@ -44,6 +45,15 @@ export class DueticketsComponent implements OnInit {
   onClick(element) {
     console.log(element.ticketId);
     this.router.navigate(['/console/tickets/view', element.ticketId]);
+  }
+
+  changeSortBy(sortby) {
+    this.service.getModel().subscribe((data) => {
+      data.sortBy = sortby;
+      data.sortOrder = !data.sortOrder;
+      this.service.updateModel(data);
+      console.log(data);
+    })
   }
 
 }
