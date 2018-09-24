@@ -16,7 +16,7 @@ export class DueticketsComponent implements OnInit {
   httpOptions;
   queryParams: queryParams;
 
-  constructor(private service : TicketsService, private router : Router) { }
+  constructor(private service: TicketsService, private router: Router) { }
 
   ngOnInit() {
     // this.queryParams.status = "due";
@@ -27,7 +27,8 @@ export class DueticketsComponent implements OnInit {
       source: "",
       priority: "",
       page: 1,
-      size: 10
+      sortBy: "subject",
+      sortOrder: false
     }).subscribe(tickets => {
       this.dueTickets = tickets;
     });
@@ -44,6 +45,15 @@ export class DueticketsComponent implements OnInit {
   onClick(element) {
     console.log(element.ticketId);
     this.router.navigate(['/console/tickets/view', element.ticketId]);
+  }
+
+  changeSortBy(sortby) {
+    this.service.getModel().subscribe((data) => {
+      data.sortBy = sortby;
+      data.sortOrder = !data.sortOrder;
+      this.service.updateModel(data);
+      console.log(data);
+    })
   }
 
 }

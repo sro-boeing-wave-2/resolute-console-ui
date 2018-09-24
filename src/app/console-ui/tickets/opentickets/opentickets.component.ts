@@ -24,7 +24,8 @@ export class OpenticketsComponent implements OnInit {
       source: "",
       priority: "",
       page: 1,
-      size: 10
+      sortBy: "subject",
+      sortOrder: false
     }).subscribe(tickets => {
       this.openTickets = tickets;
     });
@@ -39,6 +40,15 @@ export class OpenticketsComponent implements OnInit {
   onClick(element) {
     // console.log(element.ticketId);
     this.router.navigate(['/console/tickets/view', element.ticketId]);
+  }
+
+  changeSortBy(sortby) {
+    this.service.getModel().subscribe((data) => {
+      data.sortBy = sortby;
+      data.sortOrder = !data.sortOrder;
+      this.service.updateModel(data);
+      console.log(data);
+    })
   }
 
 }

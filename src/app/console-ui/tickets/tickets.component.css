@@ -60,3 +60,11 @@ label, mat-select {
   padding: 6px;
 }
 
+.active {
+  color: red;
+}
+
+a {
+  cursor: pointer;
+  font-size: 15px;
+}

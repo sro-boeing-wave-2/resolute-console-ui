@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TicketsService } from '../../../tickets.service';
 import { Router } from '@angular/router';
 import { queryParams } from '../../../queryparams';
@@ -13,8 +13,6 @@ export class AllticketsComponent implements OnInit {
 
   displayedColumns: string[] = ['subject', 'source', 'status', 'priority'];
   allTickets;
-  TicketId;
-  httpOptions;
 
   queryParams: queryParams;
 
@@ -26,12 +24,14 @@ export class AllticketsComponent implements OnInit {
       source: "",
       priority: "",
       page: 1,
-      size: 10
+      sortBy: "subject",
+      sortOrder: false
     }).subscribe(tickets => {
       this.allTickets = tickets;
       // console.log(this.allTickets);
     });
     this.service.getModel().subscribe((data) => {
+      this.queryParams = data;
       data.status = "";
       // console.log(data);
       this.service.getByFilter(data).subscribe(tickets => {
@@ -44,6 +44,14 @@ export class AllticketsComponent implements OnInit {
   onClick(element) {
     console.log(element.ticketId);
     this.router.navigate(['/console/tickets/view', element.ticketId]);
+  }
+
+  changeSortBy(sortby) {
+    console.log("Hi");
+    this.queryParams.sortBy = sortby;
+    this.queryParams.sortOrder = !this.queryParams.sortOrder;
+    console.log(this.queryParams);
+    this.service.updateModel(this.queryParams);
   }
 
 }

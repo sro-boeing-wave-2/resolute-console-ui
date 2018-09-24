@@ -16,3 +16,11 @@ export class PageRange {
     this.endPage = 0;
   }
 }
+
+export class PageRangeArray {
+  pageNo: number[];
+
+  constructor() {
+    this.pageNo = [];
+  }
+}
