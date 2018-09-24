@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CsatScoreService } from '../csat-score.service';
 
 @Component({
   selector: 'app-resolution-time',
@@ -7,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResolutionTimeComponent implements OnInit {
 
-  private time;
-  constructor() { }
+  averageResolutionTime;
+
+  constructor(private analyticsService: CsatScoreService) { }
 
   ngOnInit() {
-    this.time = Date.now();
+    this.analyticsService.getAnalyticsData().subscribe(data => {
+      this.averageResolutionTime = data.avgresolutiontime;
+      console.log(this.averageResolutionTime);
+    })
   }
 
 }

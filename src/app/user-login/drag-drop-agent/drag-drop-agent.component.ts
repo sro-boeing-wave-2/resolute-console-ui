@@ -16,7 +16,7 @@ export class DragDropAgentComponent {
   public progress: number;
   public message: string;
   public UploadMessage: string = "";
-  constructor(private http: HttpClient, private router: Router, private signUpService: SignupService, private localStorage: LocalStorageService) { }
+  constructor(private http: HttpClient, private router: Router, private signUpService: SignupService,  private localStorage: LocalStorageService) { }
 
   data: OrganizationData;
 
@@ -29,7 +29,7 @@ export class DragDropAgentComponent {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', 'http://35.221.125.153:8082/api/Upload', formData, {
+    const uploadReq = new HttpRequest('POST', 'http://35.221.125.153/Upload', formData, {
       reportProgress: true,
     });
 
@@ -46,13 +46,14 @@ export class DragDropAgentComponent {
     console.log("Post");
     console.log('getdata');
     this.UploadMessage="Upload Successful";
-     //this.data = this.signUpService.getData();
-    this.data = this.localStorage.retrieve("signUpData");
+    // this.data = this.signUpService.getData();
+    this.data = this.localStorage.retrieve("OrganisationData");
     console.log(this.data);
-    this.http.post('http://35.221.125.153:8082/api/agents', this.data).subscribe(data => {
+    this.http.post('http://35.221.125.153/agents', this.data).subscribe(data => {
     setTimeout(a => {
+      console.log("POST WORKING");
       this.router.navigate(['/userlogin/addusers'])
-      },2000,[]);
+      },1000);
     });
   }
 }

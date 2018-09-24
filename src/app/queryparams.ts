@@ -3,5 +3,11 @@ export interface queryParams {
   source: string;
   priority: string;
   page: number;
-  size: number;
+  sortBy: string;
+  sortOrder: boolean; //false = ascending; true = descending;
 }
+
+// export enum sortOrder {
+//   ascending = 0,
+//   descending = 1
+// }

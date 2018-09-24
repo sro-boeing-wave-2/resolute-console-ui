@@ -21,10 +21,10 @@ export class ConsoleUIComponent implements OnInit {
 
   ngOnInit() {
     this.agentEmail = this.localStorage.retrieve("email");//this.loginService.getAgentEmail();
-    console.log("Retrieved Email", this.agentEmail);
+    // console.log("Retrieved Email", this.agentEmail);
     this.service.GetAgentDetails(this.agentEmail).subscribe(data => {
-      this.agentDetails = data.json();
-      console.log(this.agentDetails);
+      this.agentDetails = data;
+      // console.log(this.agentDetails);
     });
   }
 

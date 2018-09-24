@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ticketstatus } from '../analytics-classes/ticketstatus';
-import {CsatScoreService} from '../csat-score.service';
-import {  enableProdMode } from '@angular/core';
+import { CsatScoreService } from '../csat-score.service';
+import { enableProdMode } from '@angular/core';
+import { Count } from '../analytics-classes/AnalyticsData';
 
-if(!/localhost/.test(document.location.host)) {
+if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
 
@@ -15,16 +16,18 @@ if(!/localhost/.test(document.location.host)) {
 })
 export class TicketsPiechartComponent implements OnInit {
 
-  pieChartdata : ticketstatus[];
+  pieChartdata: Count[];
 
-  constructor( service: CsatScoreService) {
-    console.log(this.pieChartdata);
-      service.getInitialTicketStatus()
-      .subscribe((price) => {this.pieChartdata = price;console.log(this.pieChartdata);});
+  constructor(private analyticsService: CsatScoreService) {
+    // console.log(this.pieChartdata);
+    this.analyticsService.getAnalyticsData().subscribe((data) => {
+      this.pieChartdata = data.analyticscount;
+      console.log(this.pieChartdata);
+    });
   }
 
   customizeLabel(arg) {
-      return arg.valueText + " (" + arg.percentText + ")";
+    return arg.valueText + " (" + arg.percentText + ")";
   }
 
   ngOnInit() {

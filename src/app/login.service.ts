@@ -25,7 +25,8 @@ export class LoginService {
   constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
 
   // loginUrl = Ip of the API Gateway for token generation
-  loginUrl: string = "http://35.221.125.153:8081/api/Auth/login";
+  loginUrl: string = "http://35.221.125.153/login";
+  // loginUrl: string = "http://35.221.125.153:8081/api/Auth/login";
 
   getToken(form) {
     // const httpHeader = {

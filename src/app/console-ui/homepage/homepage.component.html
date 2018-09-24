@@ -14,25 +14,25 @@
     <mat-grid-tile (click)="onClick('open')" class="agentTicketsOpen">
       <mat-card-content>
         <h2>Open Tickets</h2>
-        <h3> {{numberOfTickets.open}}</h3>
+        <h3> {{numberOfTickets?.open}}</h3>
       </mat-card-content>
     </mat-grid-tile>
     <mat-grid-tile (click)="onClick('due')" class="departmentTicketsUnassigned">
         <mat-card-content>
           <h2>Unassigned Tickets</h2>
-          <h3>{{numberOfTickets.due}}</h3>
+          <h3>{{numberOfTickets?.due}}</h3>
         </mat-card-content>
       </mat-grid-tile>
       <mat-grid-tile (click)="onClick('closed')"  class="agentTicketsClosed">
       <mat-card-content>
         <h2>Closed Tickets</h2>
-        <h3>{{numberOfTickets.closed}}</h3>
+        <h3>{{numberOfTickets?.closed}}</h3>
       </mat-card-content>
     </mat-grid-tile>
     <mat-grid-tile (click)="onClick('')" class="departmentTicketsTotal">
       <mat-card-content>
         <h2>Total Tickets</h2>
-        <h3>{{numberOfTickets.total}} </h3>
+        <h3>{{numberOfTickets?.total}} </h3>
       </mat-card-content>
     </mat-grid-tile>
   </mat-grid-list>

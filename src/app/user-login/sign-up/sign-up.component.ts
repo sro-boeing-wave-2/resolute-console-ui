@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { OrganizationData } from '../organizationData';
 import { LocalStorageService } from 'ngx-webstorage';
 
-
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',

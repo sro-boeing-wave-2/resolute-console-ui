@@ -9,7 +9,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 
-
 import { DxPieChartModule } from 'devextreme-angular';
 import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +19,7 @@ import { TicketsService } from './tickets.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopUpComponent } from './console-ui/pop-up/pop-up.component';
 import { Ng2Webstorage } from 'ngx-webstorage';
-//import { CompareValidatorDirective } from './user-login/sign-up/compare-validator.directive';
+//import { RequestInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
