@@ -25,6 +25,7 @@ export class IndividualTicketComponent implements OnInit {
   TicketById: TicketDetailsModal;
   UserName;
   userImage;
+
   constructor(private router: Router, private service: TicketsService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit() {

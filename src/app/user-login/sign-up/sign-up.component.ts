@@ -35,7 +35,7 @@ export class SignUpComponent implements OnInit {
     this.signUpService.post(SignUpFormData).subscribe(data => {
       this.data = data.json();
       // this.signUpService.updateData(this.data); //why is this function called?
-      this.localStorage.store("OrganisationData", this.data);
+      this.localStorage.store("OrganisationData", this.data);\
       console.log(data.json());
     });
     this.router.navigate(['/userlogin/addagents']);
