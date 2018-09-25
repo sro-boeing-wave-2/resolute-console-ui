@@ -47,7 +47,7 @@ export class DragDropAgentComponent {
     console.log('getdata');
     this.UploadMessage = "Upload Successful";
     // this.data = this.signUpService.getData();
-    this.data = this.localStorage.retrieve("OrganisationData");
+    this.data = this.localStorage.retrieve("signUpData");
     console.log(this.data);
     this.http.post('http://35.221.125.153/agents', this.data).subscribe(data => {
       setTimeout(a => {

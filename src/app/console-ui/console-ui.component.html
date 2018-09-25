@@ -1,15 +1,4 @@
-<html lang="en">
 
-<head>
-  <title>Resolute | Navbar</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-    crossorigin="anonymous">
-</head>
-
-<body>
   <mat-toolbar id="header">
     <mat-toolbar-row>
       <button type="button" mat-button (click)="drawer.toggle()">
@@ -44,7 +33,7 @@
         <!--  -->
         <p> Organization : {{agentDetails?.organisationName}} </p>
         <!--  -->
-        <button mat-button (click)="onClick()">Notify</button>
+        <!-- <button mat-button (click)="onCli  ck()">Notify</button> -->
       </section>
       <section id="navigation">
         <button class="link-btn" routerLink="/console/home" routerLinkActive="active">
@@ -57,6 +46,7 @@
           <i class="far fa-address-card"></i> Tickets </button>
         <mat-divider></mat-divider>
         <h3>
+          <!-- <button (click)="displayMessage()">Notify</button> -->
           <button mat-raised-button class="logout-btn" (click)="logOut()">
             <mat-icon>exit_to_app</mat-icon> Log Out </button>
         </h3>
@@ -64,8 +54,6 @@
     </mat-drawer>
     <mat-drawer-content>
       <router-outlet></router-outlet>
+      <p-growl [(value)]="msgs"></p-growl>
     </mat-drawer-content>
   </mat-drawer-container>
-</body>
-
-</html>

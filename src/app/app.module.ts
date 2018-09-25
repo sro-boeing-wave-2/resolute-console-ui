@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopUpComponent } from './console-ui/pop-up/pop-up.component';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { RequestInterceptor } from './auth.interceptor';
+import { GrowlModule } from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { RequestInterceptor } from './auth.interceptor';
     DxChartModule,
     DxSelectBoxModule,
     Ng2Webstorage,
+    GrowlModule
   ],
   entryComponents: [],
   providers: [
