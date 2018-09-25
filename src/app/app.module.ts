@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 
 import { DxPieChartModule } from 'devextreme-angular';
 import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
@@ -21,6 +22,7 @@ import { PopUpComponent } from './console-ui/pop-up/pop-up.component';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { RequestInterceptor } from './auth.interceptor';
 import { SafePipe, IndividualTicketComponent } from './console-ui/individual-ticket/individual-ticket.component';
+import { LandingPageComponent } from './user-login/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -30,7 +32,7 @@ import { SafePipe, IndividualTicketComponent } from './console-ui/individual-tic
     PopUpComponent,
     SafePipe,
     IndividualTicketComponent,
-
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,7 @@ import { SafePipe, IndividualTicketComponent } from './console-ui/individual-tic
     DxChartModule,
     DxSelectBoxModule,
     Ng2Webstorage,
+    MatButtonModule
   ],
   entryComponents: [],
   providers: [

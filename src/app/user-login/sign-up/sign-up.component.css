@@ -1,10 +1,10 @@
-body{
-  background:linear-gradient(135deg, #622774 0%,#c53364 100%);
-      margin: 0;}
-
+.fullBody{
+  height: 100vh;
+  padding-top: 30px;
+  background:linear-gradient(135deg, #184e68 0%,#57ca85 100%);
+}
   .needs-validation{
   margin: 0 auto;
-  margin-bottom: 100px;
   padding: 20px;
   background-color: transparent;
   border: 3px solid #ffffff;
@@ -35,20 +35,9 @@ input::-webkit-input-placeholder {
   }
 
 
-.nav{
-  color: #ffffff;
-  background-color: transparent;
-}
-
-.content{
-  margin-top: 40px;
-overflow: hidden;
-}
-
 .content h1{
   margin-left: 40px;
   color: #ffffff;
-  font-family: 'Roboto';
 }
 
 .btn{
