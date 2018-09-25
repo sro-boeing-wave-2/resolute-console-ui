@@ -20,13 +20,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopUpComponent } from './console-ui/pop-up/pop-up.component';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { RequestInterceptor } from './auth.interceptor';
-import { GrowlModule } from 'primeng/primeng';
+import { SafePipe, IndividualTicketComponent } from './console-ui/individual-ticket/individual-ticket.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutingComponents,
-    PopUpComponent
+    PopUpComponent,
+    SafePipe,
+    IndividualTicketComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -46,11 +50,11 @@ import { GrowlModule } from 'primeng/primeng';
     DxChartModule,
     DxSelectBoxModule,
     Ng2Webstorage,
-    GrowlModule
   ],
   entryComponents: [],
   providers: [
     TicketsService,
+    SafePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,

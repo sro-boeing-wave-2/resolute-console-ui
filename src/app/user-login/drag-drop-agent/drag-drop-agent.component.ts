@@ -46,10 +46,9 @@ export class DragDropAgentComponent {
     console.log("Post");
     console.log('getdata');
     this.UploadMessage = "Upload Successful";
-    // this.data = this.signUpService.getData();
     this.data = this.localStorage.retrieve("signUpData");
     console.log(this.data);
-    this.http.post('http://35.221.125.153/agents', this.data).subscribe(data => {
+    this.signUpService.postAgentCSVtoDB(this.data).subscribe(data => {
       setTimeout(a => {
         console.log("POST WORKING");
         this.router.navigate(['/userlogin/addusers'])

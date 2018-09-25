@@ -25,7 +25,6 @@ export class SignUpComponent implements OnInit {
     this.signUpForm = this.fb.group({
       'organisationDisplayName': ['', Validators.required],
       'organisationName': ['', Validators.required],
-      'logoUrl': ['', Validators.required],
       'email': [null, [Validators.required, Validators.email]],
       'Password': [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(10)])],
       'ConfirmPassword': [null, Validators.required]
@@ -33,7 +32,7 @@ export class SignUpComponent implements OnInit {
   }
   data;
 
-  get f() { return this.signUpForm.controls; }
+  get formInputControls() { return this.signUpForm.controls; }
 
   GenerateAccount(): void {
     this.submitted = true;
@@ -42,9 +41,9 @@ export class SignUpComponent implements OnInit {
     console.log(this.signUpForm.value.Password);
     console.log(this.signUpForm.value.ConfirmPassword);
     if (this.signUpForm.valid && this.signUpForm.value.Password == this.signUpForm.value.ConfirmPassword) {
-      var a = this.signUpForm.value;
-      console.log("This is the form data coming " + a);
-      this.signUpService.post(a).subscribe(data => {
+      var formInputValue = this.signUpForm.value;
+      console.log("This is the form data coming " + formInputValue);
+      this.signUpService.post(formInputValue).subscribe(data => {
         //console.log(this.signUpForm.value.Password);
 
         this.data = data.json();

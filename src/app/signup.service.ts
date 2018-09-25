@@ -21,10 +21,25 @@ export class SignupService {
   //   this.customerData = updatedData;
   // }
 
-  url: string = "http://35.221.125.153/signup"
+  _url: string = "http://35.221.125.153/signup"
+  _agentCSVtoDB: string ="http://35.221.125.153/agents"
+  _userCSVtoDB: string ="http://35.221.125.153/endusers"
+
   post(form) {
     console.log(form)
-    return this.http.post(this.url, form);
+    return this.http.post(this._url, form);
   }
+
+  postAgentCSVtoDB(fileData) {
+    console.log(fileData)
+    return this.http.post(this._agentCSVtoDB, fileData);
+  }
+
+  postUserCSVtoDB(fileData) {
+    console.log(fileData)
+    return this.http.post(this._userCSVtoDB, fileData);
+  }
+
+
   constructor(private http: Http) { }
 }

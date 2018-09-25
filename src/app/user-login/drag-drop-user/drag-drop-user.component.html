@@ -1,44 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <title>Resolute | Login</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
-</head>
-
-<body>
-  <nav class="navbar navbar-dark nav">
-    <div class="container">
-      <h1>Resolute</h1>
-    </div>
-  </nav>
-
-  <div class="container">
-    <h1 id="headline">Upload User Details File</h1>
-    <div id="iconDiv">
-      <i class="font far fa-file-alt"></i>
-    </div>
-    <div id="chooseFileDiv">
-      <input #file type="file" multiple (change)="abupload(file.files)" />
-      <br/>
-      <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
-        {{progress}}%
-      </span>
-
-    </div>
+<div class="container">
+  <h1 id="headline">Upload User Details File</h1>
+  <div id="iconDiv">
+    <i class="font far fa-file-alt"></i>
   </div>
-  <div class="secondaryBtnDiv">
+  <div id="chooseFileDiv">
+    <input #file type="file" multiple (change)="abupload(file.files)" />
+    <br/>
+    <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
+      {{progress}}%
+    </span>
+  </div>
+</div>
+<div class="secondaryBtnDiv">
   <button id="uploadbtn" (click)="OnPost()">Upload File</button>
   <span style="font-weight:bold;color:green;" *ngIf="UploadMessage">
     <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate">
     </mat-progress-spinner>
   </span>
-  </div>
-</body>
-
-</html>
+</div>

@@ -35,4 +35,8 @@ export interface TicketDetailsModal {
   subject: string;
   description: string;
   userid: number;
+  connectionid: string;
+  email:string;
+  agentname: string;
 }
+

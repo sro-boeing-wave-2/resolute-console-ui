@@ -30,7 +30,7 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
-  get f() { return this.loginForm.controls; }
+  get formInputControls() { return this.loginForm.controls; }
 
   get Username() {
     console.log(this.loginForm.get('Username'));

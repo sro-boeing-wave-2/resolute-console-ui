@@ -51,7 +51,7 @@ export class TicketsService {
   //   return a;
   // }
 
-  getTicketById(id) {
+  getById(id) {
     return this.http.get<TicketDetailsModal>(`${this._url}/detail/${id}`);
   }
 

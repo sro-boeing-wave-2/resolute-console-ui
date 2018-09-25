@@ -1,75 +1,55 @@
-<mat-sidenav-container class="ticketContainer">
-  <mat-sidenav-content>Chat Module will come here</mat-sidenav-content>
+<div class="fullContent">
+  <div class="left-side-content">
+    <!-- Chat Module will come here -->
+    <iframe [src]="chatHubUrl | safe" height="800" width="1000"></iframe>
+  </div>
 
-  <mat-sidenav mode="side" opened position="end">
-    <mat-card id="TicketDetailsCard">
-      <mat-card-header>
-        <div id="square">
-          <!-- <div id="UserImage"></div> -->
-          <img id="UserImage" src="{{userImage?.profileImageUrl}}" alt="UserImage">
+
+  <div class="right-side-content">
+        <mat-card-header>
+          <div id="square">
+            <div id="UserImage"></div>
+            <img id="UserImage" src="{{userImage?.profileImageUrl}}" alt="UserImage">
+          </div>
+        </mat-card-header>
+        <mat-card-title> {{TicketById?.name}} </mat-card-title>
+        <mat-card-subtitle> Ticket ID : {{TicketById?.id}} </mat-card-subtitle>
+        <mat-card-content>
+          <p class="CardTitle">
+            <b>Issue: </b> {{TicketById?.subject}} </p>
+          <p class="CardTitle">
+            <b>Description: </b>
+          </p>
+          <p id="description">
+            {{TicketById?.description}}
+          </p>
+        </mat-card-content>
+        <form id="statusAndPriority" style="color: white">
+          <mat-form-field>
+            <mat-select placeholder="{{TicketById?.status == 0 ? 'Open' : (TicketById?.status == 1 ? 'Closed' : 'Due')}}" [(ngModel)]="selectedStatusValue"
+              name="status">
+              <mat-option (click)="updateStatus()" *ngFor="let status of statuses" [value]="status.value">
+                {{status?.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field>
+            <mat-select placeholder="{{TicketById?.priority | titlecase }}" [(ngModel)]="selectedPriorityValue" name="priority">
+              <mat-option (click)=updatePriority() *ngFor="let priority of priorities" [value]="priority.value">
+                {{priority?.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+        <mat-form-field>
+          <textarea matInput [(ngModel)]="commentValue" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5" placeholder="Leave a comment"></textarea>
+        </mat-form-field>
+        <div class="btn-class">
+          <button (click)="openDialog()" id="resolve-btn">RESOLVE</button>
+          <button (click)="back()" id="back-btn">BACK</button>
         </div>
-      </mat-card-header>
-      <mat-card-title> {{TicketById?.name}} </mat-card-title>
-      <mat-card-subtitle> Ticket ID : {{TicketById?.id}} </mat-card-subtitle>
-      <mat-card-content>
-        <p class="CardTitle">
-          <b>Issue: </b> {{TicketById?.subject}} </p>
-        <p class="CardTitle">
-          <b>Description: </b>
-        </p>
-        <p id="description">
-          {{TicketById?.description}}
-        </p>
-      </mat-card-content>
-      <form id="statusAndPriority" style="color: white">
-        <mat-form-field>
-          <mat-select placeholder="{{TicketById?.status == 0 ? 'Open' : (TicketById?.status == 1 ? 'Closed' : 'Due')}}" [(ngModel)]="selectedStatusValue"
-            name="status">
-            <mat-option (click)="updateStatus()" *ngFor="let status of statuses" [value]="status.value">
-              {{status?.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </form>
-      <form>
-        <mat-form-field>
-          <mat-select placeholder="{{TicketById?.priority | titlecase }}" [(ngModel)]="selectedPriorityValue"
-            name="priority">
-            <mat-option (click)=updatePriority() *ngFor="let priority of priorities" [value]="priority.value">
-              {{priority?.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </form>
-      <mat-form-field>
-        <textarea matInput [(ngModel)]="commentValue" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5" placeholder="Leave a comment"></textarea>
-      </mat-form-field>
-      <div class="btn-class">
-        <button (click)="openDialog()" id="resolve-btn">RESOLVE</button>
-        <button (click)="back()" id="back-btn">BACK</button>
-      </div>
-    </mat-card>
-  </mat-sidenav>
+    </div>
 
-
-  <!-- <section id="chatSection">
-
-  </section>
-  <section id="detailSection">
-    <section id="header">
-      <h1>Ticket Details</h1>
-    </section>
-    <section id="body">
-      <h4> Ticket ID : {{TicketById.ticketId}} </h4>
-      <h4> Created On : {{TicketById.createdOn}} </h4>
-      <h4> Created By : {{TicketById.createdBy}} </h4>
-      <h4> User Id : {{TicketById.userid}} </h4>
-      <h4> Subject : {{TicketById.subject}} </h4>
-      <h4> Description : {{TicketById.description}} </h4>
-      <h4> Source : {{TicketById.source}} </h4>
-      <h4> Priority : {{TicketById.priority}} </h4>
-      <h4> Status : {{TicketById.status}} </h4>
-    </section>
-  </section>
-</section> -->
-</mat-sidenav-container>
+  </div>
