@@ -4,6 +4,7 @@ import { TicketsService } from '../tickets.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { LocalStorageService } from 'ngx-webstorage';
+import { PushNotificationService } from './push-notification.service';
 
 @Component({
   selector: 'app-console-ui',
@@ -17,7 +18,15 @@ export class ConsoleUIComponent implements OnInit {
   httpHeader;
   token;
 
-  constructor(private service: TicketsService, private router: Router, private loginService: LoginService, private localStorage: LocalStorageService) { }
+  constructor(
+    private service: TicketsService,
+    private router: Router,
+    private loginService: LoginService,
+    private localStorage: LocalStorageService,
+    private pushService: PushNotificationService
+  ) {
+    this.pushService.requestPermission();
+  }
 
   ngOnInit() {
     this.agentEmail = this.localStorage.retrieve("email");//this.loginService.getAgentEmail();
@@ -28,10 +37,24 @@ export class ConsoleUIComponent implements OnInit {
     });
   }
 
+  onClick() {
+    this.notify();
+  }
+
   logOut() {
     console.log("Log out");
-    this.token = null;
-    this.localStorage.store('token', this.token);
+    this.localStorage.store('token', null);
+    this.localStorage.store('email', null);
     this.router.navigate(['/userlogin/login']);
+  }
+
+  notify() {
+    let data: Array<any> = [];
+    data.push({
+      'title': 'New Ticket',
+      'alertContent': 'This is the new ticket'
+    });
+    console.log("data pushed");
+    // this.pushService.generateNotification(data);
   }
 }

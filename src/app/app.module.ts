@@ -19,14 +19,13 @@ import { TicketsService } from './tickets.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopUpComponent } from './console-ui/pop-up/pop-up.component';
 import { Ng2Webstorage } from 'ngx-webstorage';
-//import { RequestInterceptor } from './auth.interceptor';
+import { RequestInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutingComponents,
     PopUpComponent
-    //CompareValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -45,17 +44,16 @@ import { Ng2Webstorage } from 'ngx-webstorage';
     DxPieChartModule,
     DxChartModule,
     DxSelectBoxModule,
-    Ng2Webstorage
+    Ng2Webstorage,
   ],
-  entryComponents: [PopUpComponent
-  ],
+  entryComponents: [],
   providers: [
-    TicketsService
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: RequestInterceptor,
-    //   multi: true
-    // }
+    TicketsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

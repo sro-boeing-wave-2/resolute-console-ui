@@ -21,10 +21,10 @@ export class SignupService {
   //   this.customerData = updatedData;
   // }
 
-  url : string ="http://35.221.125.153/Signup"
-  post(form){
+  url: string = "http://35.221.125.153/signup"
+  post(form) {
     console.log(form)
     return this.http.post(this.url, form);
   }
-  constructor(private http : Http) { }
+  constructor(private http: Http) { }
 }

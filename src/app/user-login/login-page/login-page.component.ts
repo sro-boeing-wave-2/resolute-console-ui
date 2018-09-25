@@ -20,7 +20,7 @@ export class LoginPageComponent implements OnInit {
   //for testing
   @Output() submitted = new EventEmitter();
 
-  constructor(private router: Router, public fb: FormBuilder, private _loginService: LoginService, private localStorage : LocalStorageService) { }
+  constructor(private router: Router, public fb: FormBuilder, private _loginService: LoginService, private localStorage: LocalStorageService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -44,28 +44,26 @@ export class LoginPageComponent implements OnInit {
 
   LoginToAccount() {
     this.isSubmitted = true;
-    if (this.loginForm.valid){
-    console.log(this.loginForm.value);
-    this._loginService.getToken(this.loginForm.value).subscribe(result => {
-      this.token = result.toString(); //might need to change this
-      console.log(this.token);
-      this.localStorage.store('token', this.token);
-      if (this.token) {
-        this.router.navigate(['/console/home']);
-      }
-    }, error => {
-      if (error) {
-        console.log('Error');
-        this.unauthorized = "Invalid user or Session Timed Out";
-      }
-    });
+    if (this.loginForm.valid) {
+      console.log(this.loginForm.value);
+      this._loginService.getToken(this.loginForm.value).subscribe(result => {
+        this.token = result.toString();
+        // console.log(this.token);
+        this.localStorage.store('token', this.token);
+        if (this.token) {
+          this.router.navigate(['/console/home']);
+        }
+      }, error => {
+        if (error) {
+          console.log('Error');
+          this.unauthorized = "Login failed. Please check your Username or Password";
+        }
+      });
+    }
+    else {
+      return;
+    }
   }
-  else{
-    return;
-  }
-  }
-
-
 
   // for testing
   onSubmit({ Username, Password }) {

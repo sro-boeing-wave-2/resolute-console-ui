@@ -14,10 +14,6 @@ import { IndividualTicketComponent } from './console-ui/individual-ticket/indivi
 import { NewTicketComponent } from './console-ui/new-ticket/new-ticket.component';
 import { PageNotFoundComponent } from './console-ui/page-not-found/page-not-found.component';
 import { TicketsComponent } from './console-ui/tickets/tickets.component';
-import { AllticketsComponent } from './console-ui/tickets/alltickets/alltickets.component';
-import { ClosedticketsComponent } from './console-ui/tickets/closedtickets/closedtickets.component';
-import { OpenticketsComponent } from './console-ui/tickets/opentickets/opentickets.component';
-import { DueticketsComponent } from './console-ui/tickets/duetickets/duetickets.component';
 import { GamificationComponent } from './console-ui/dashboard/gamification/gamification.component';
 import { CSatScoreComponent } from './console-ui/dashboard/c-sat-score/c-sat-score.component';
 import { TicketsPiechartComponent } from './console-ui/dashboard/tickets-piechart/tickets-piechart.component';
@@ -42,18 +38,9 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomepageComponent},
       { path: 'dashboard', component: DashboardComponent },
-      {
-        path: 'tickets',
-        component: TicketsComponent,
-        children: [
-          { path: '', redirectTo: 'all', pathMatch: 'full' },
-          { path: 'all', component: AllticketsComponent },
-          { path: 'open', component: OpenticketsComponent },
-          { path: 'closed', component: ClosedticketsComponent },
-          { path: 'due', component: DueticketsComponent }
-        ]},
+      { path: 'tickets/:index', component: TicketsComponent },
       { path: 'tickets/view/:id', component: IndividualTicketComponent },
-      { path: 'newticket', component: NewTicketComponent },
+      { path: 'newticket', component: NewTicketComponent }
     ]},
   { path: '**', component: PageNotFoundComponent}
 ];
@@ -71,10 +58,6 @@ export const RoutingComponents = [
   NewTicketComponent,
   PageNotFoundComponent,
   TicketsComponent,
-  AllticketsComponent,
-  ClosedticketsComponent,
-  OpenticketsComponent,
-  DueticketsComponent,
   GamificationComponent,
   CSatScoreComponent,
   TicketsPiechartComponent,

@@ -44,6 +44,7 @@
         <!--  -->
         <p> Organization : {{agentDetails?.organisationName}} </p>
         <!--  -->
+        <button mat-button (click)="onClick()">Notify</button>
       </section>
       <section id="navigation">
         <button class="link-btn" routerLink="/console/home" routerLinkActive="active">
@@ -52,7 +53,7 @@
         <button class="link-btn" routerLink="/console/dashboard" routerLinkActive="active">
           <i class="far fa-chart-bar"></i> Dashboard </button>
 
-        <button class="link-btn" routerLink="/console/tickets/all" routerLinkActive="active">
+        <button class="link-btn" [routerLink]="['/console/tickets', '']" routerLinkActive="active">
           <i class="far fa-address-card"></i> Tickets </button>
         <mat-divider></mat-divider>
         <h3>
