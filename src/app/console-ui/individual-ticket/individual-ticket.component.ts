@@ -35,7 +35,7 @@ export class IndividualTicketComponent implements OnInit {
   }
 
   call(id) {
-    let u = this.service.getById(id).subscribe(data => {
+    let u = this.service.getTicketById(id).subscribe(data => {
       this.TicketById = data;
       console.log(this.TicketById.userid);
       this.service.GetUserDetails(this.TicketById.name).subscribe(data => {

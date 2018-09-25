@@ -21,48 +21,47 @@ export class SignUpComponent implements OnInit {
     private signUpService: SignupService,
     private localStorage: LocalStorageService) { }
 
-    ngOnInit() {
-      this.signUpForm = this.fb.group({
-        'organisationDisplayName': ['', Validators.required],
-        'organisationName': ['', Validators.required],
-        'logoUrl': ['', Validators.required],
-        'email': [null, [Validators.required,Validators.email]],
-        'Password': [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(10)])],
-        'ConfirmPassword': [null,Validators.required]
-      });
-    }
-    data: OrganizationData;
+  ngOnInit() {
+    this.signUpForm = this.fb.group({
+      'organisationDisplayName': ['', Validators.required],
+      'organisationName': ['', Validators.required],
+      'logoUrl': ['', Validators.required],
+      'email': [null, [Validators.required, Validators.email]],
+      'Password': [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(10)])],
+      'ConfirmPassword': [null, Validators.required]
+    });
+  }
+  data;
 
-    get f() { return this.signUpForm.controls; }
+  get f() { return this.signUpForm.controls; }
 
   GenerateAccount(): void {
     this.submitted = true;
 
-        // stop here if form is invalid
-        console.log(this.signUpForm.value.Password);
-        console.log(this.signUpForm.value.ConfirmPassword);
-        if (this.signUpForm.valid && this.signUpForm.value.Password==this.signUpForm.value.ConfirmPassword) {
-    var a = this.signUpForm.value;
-    console.log("This is the form data coming " + a);
-    this.signUpService.post(a).subscribe(data => {
-      //console.log(this.signUpForm.value.Password);
+    // stop here if form is invalid
+    console.log(this.signUpForm.value.Password);
+    console.log(this.signUpForm.value.ConfirmPassword);
+    if (this.signUpForm.valid && this.signUpForm.value.Password == this.signUpForm.value.ConfirmPassword) {
+      var a = this.signUpForm.value;
+      console.log("This is the form data coming " + a);
+      this.signUpService.post(a).subscribe(data => {
+        //console.log(this.signUpForm.value.Password);
 
-      this.data = data.json();
-      // this.signUpService.updateData(this.data); //why is this function called?
-      this.localStorage.store("signUpData", this.data);
-      console.log(data.json());
-    });
-    this.router.navigate(['/userlogin/addagents']);
-  }
-  else{
-    if(this.signUpForm.value.Password!=this.signUpForm.value.ConfirmPassword)
-    {
-      this.ErrorMessage="*Password does not match";
-      console.log("password does not match");
+        this.data = data.json();
+        // this.signUpService.updateData(this.data); //why is this function called?
+        this.localStorage.store("signUpData", this.data);
+        console.log(data.json());
+      });
+      this.router.navigate(['/userlogin/addagents']);
     }
-    //alert("Password Does not match");
-    return;
-  }
+    else {
+      if (this.signUpForm.value.Password != this.signUpForm.value.ConfirmPassword) {
+        this.ErrorMessage = "*Password does not match";
+        console.log("password does not match");
+      }
+      //alert("Password Does not match");
+      return;
+    }
   }
 
 

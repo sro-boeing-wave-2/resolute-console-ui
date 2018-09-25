@@ -45,7 +45,7 @@ export class DragDropUserComponent {
 
   OnPost() {
     // this.data = this.signUpService.getData();
-    this.data = this.localStorage.retrieve("OrganisationData");
+    this.data = this.localStorage.retrieve("signUpData");
     console.log(this.data);
     this.UploadMessage = "Upload Successful";
     this.http.post('http://35.221.125.153/endusers', this.data).subscribe(data => {

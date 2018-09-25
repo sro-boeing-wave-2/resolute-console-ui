@@ -26,7 +26,6 @@ export class TicketsService {
 
   // ----------------LINKS-------------------
   // http://172.23.238.239:5000/api/Tickets
-  // /assets/mockdata/tickets.json
   // http://35.189.155.116:8083/
   // ----------------------------------------
 
@@ -34,28 +33,15 @@ export class TicketsService {
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
-  // gethttpHeader() {
-  //   const myheaders = new Headers();
-  //   myheaders.append('Content-Type', 'application/json');
-  //   myheaders.append('agentId', '1');
-  //   myheaders.append('departmentId', '1');
-  //   let httpOptions = new RequestOptions({
-  //     headers: myheaders
-  //   });
-  //   console.log(httpOptions);
-  //   return httpOptions;
-  // }
-
   private querys = new Subject<queryParams>();
 
-  getModel() {
+  getQueryParamsModel() {
     var k = this.querys.asObservable();
-    // console.log(k);
     return k;
   }
 
-  updateModel(queryParams: queryParams) {
-    // console.log(queryParams);
+  updateQueryParamsModel(queryParams: queryParams) {
+    console.log("update successful");
     this.querys.next(queryParams);
   }
 
@@ -65,41 +51,29 @@ export class TicketsService {
   //   return a;
   // }
 
-  getById(id) {
-    // const headers = this.gethttpHeader();
+  getTicketById(id) {
     return this.http.get<TicketDetailsModal>(`${this._url}/detail/${id}`);
   }
 
-  getByFilter(queryParams: queryParams) {
-    // const headers = this.gethttpHeader();
-    // console.log(queryParams);
+  getTicketsByFilter(queryParams: queryParams) {
     if (queryParams != null) {
-      //change url
       // console.log(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
       return this.http.get(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
     } else {
-      // console.log(this._url + '/filter');
-
-      //change url
       return this.http.get(`${this._url}/filter`);
     }
   }
 
-  getCount() {
-    // const headers = this.gethttpHeader();
+  getTicketCount() {
     var countOfTickets = this.http.get(`${this._url}/count`)
     return countOfTickets;
   }
 
   addNewTicket(ticket) {
-    // const headers = this.gethttpHeader();
-    // console.log(ticket);
-    // console.log(this._url);
     return this.http.post(this._url, ticket);
   }
 
   getAllTickets() {
-    // const headers = this.gethttpHeader();
     return this.http.get(this._url);
   }
 
@@ -132,35 +106,3 @@ export class TicketsService {
     return this.http.get<EndUser>(`${this.UserDetailUrl}%22${username}%22`);
   }
 }
-
-  // gethttpHeader() {
-  //   this.loginService.getTokenForComponents().subscribe(data => {
-  //     this.token = data['token'];
-  //   });
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json',
-  //       'Authorization': `Bearer ${this.token}`
-  //     })
-  //   }
-  //   return httpOptions;
-  // }
-
-
-  // getOpenTickets() {
-  //   return this.http.get(this._url + '/status/open');
-  //   // return this.http.get<Ticket[]>(this._url)
-  //   //  .pipe(map(res => res.filter((ticket) => ticket.status === 0)));
-  // }
-
-  // getClosedTickets() {
-  //   return this.http.get(this._url + '/status/close');
-  //   // return this.http.get<Ticket[]>(this._url)
-  //   //  .pipe(map(res => res.filter((ticket) => ticket.status === 1)));
-  // }
-
-  // getDueTickets() {
-  //   return this.http.get(this._url + '/status/due');
-  //   // return this.http.get<Ticket[]>(this._url)
-  //   //  .pipe(map(res => res.filter((ticket) => ticket.status === 2)));
-  //}
