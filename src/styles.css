@@ -4,4 +4,20 @@ body {
   margin: 0;
 }
 
+/* Dirty code, needs to be replaced someday */
+.mat-form-field-label {
+  color: white !important;
+}
 
+.mat-select-value-text {
+  color: white !important;
+}
+
+.mat-select-arrow {
+  color: white !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline{
+  color: white !important;
+  background-color: white !important;
+}

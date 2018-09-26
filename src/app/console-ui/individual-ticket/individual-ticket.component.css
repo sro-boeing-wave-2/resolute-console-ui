@@ -2,6 +2,14 @@
   width: 100%;
 }
 
+.mat-form-field-label {
+  color: white !important;
+}
+
+/* .mat-select-content {
+  color: white !important;
+} */
+
 .left-side-content{
   width: 70%;
   background-color: burlywood;
