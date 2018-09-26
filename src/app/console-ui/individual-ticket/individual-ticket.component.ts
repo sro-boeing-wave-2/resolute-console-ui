@@ -3,9 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TicketsService } from '../../tickets.service';
 import { Ticket, TicketDetailsModal } from '../../ticket';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { LocalStorageService } from 'ngx-webstorage';
 import { DomSanitizer } from "@angular/platform-browser";
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
 
 export interface Options {
   value: string;
@@ -25,6 +29,7 @@ export class SafePipe implements PipeTransform {
   templateUrl: './individual-ticket.component.html',
   styleUrls: ['./individual-ticket.component.css']
 })
+
 export class IndividualTicketComponent implements OnInit {
   ConnectionId: string;
   Type: string;
@@ -38,6 +43,10 @@ export class IndividualTicketComponent implements OnInit {
   agentDetails:TicketsService;
   userImage;
 
+  myControl = new FormControl();
+  options: string[] = ['Intent One', 'Intent Two', 'Intent Three'];
+  filteredOptions: Observable<string[]>;
+
   constructor(private router: Router, private service: TicketsService, private route: ActivatedRoute, public dialog: MatDialog, private localStorage: LocalStorageService) { }
 
   ngOnInit() {
@@ -45,10 +54,16 @@ export class IndividualTicketComponent implements OnInit {
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
     console.log(id);
     this.call(id);
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+
     this.ConnectionId = "chonnect";
     this.Type = "agent";
     this.Email = "emailagentka";
-    this.chatHubUrl = `http://172.23.238.235:4200?connectionId=${this.ConnectionId}&type=${this.Type}&email=${this.Email}`;
+    this.chatHubUrl = `http://172.23.238.235:4200?connectionId=${this.TicketById.id}&type=${this.Type}`;
     console.log(this.chatHubUrl);
 
   }
@@ -60,6 +75,12 @@ export class IndividualTicketComponent implements OnInit {
     });
     console.log(u);
   }
+
+   _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
 
   back(){
     this.router.navigate(['/console/tickets/all'])

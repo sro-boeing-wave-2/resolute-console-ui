@@ -57,7 +57,6 @@ export class TicketsService {
 
   getTicketsByFilter(queryParams: queryParams) {
     if (queryParams != null) {
-      // console.log(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
       return this.http.get(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
     } else {
       return this.http.get(`${this._url}/filter`);

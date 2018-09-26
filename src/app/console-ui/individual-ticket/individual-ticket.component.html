@@ -1,29 +1,34 @@
 <div class="fullContent">
   <div class="left-side-content">
     <!-- Chat Module will come here -->
-    <iframe [src]="chatHubUrl | safe" height="800" width="1000"></iframe>
+    <iframe [src]="chatHubUrl | safe" ></iframe>
   </div>
 
 
   <div class="right-side-content">
-        <mat-card-header>
           <div id="square">
-            <div id="UserImage"></div>
             <img id="UserImage" src="{{userImage?.profileImageUrl}}" alt="UserImage">
           </div>
-        </mat-card-header>
-        <mat-card-title> {{TicketById?.name}} </mat-card-title>
-        <mat-card-subtitle> Ticket ID : {{TicketById?.id}} </mat-card-subtitle>
-        <mat-card-content>
-          <p class="CardTitle">
+          <p> {{TicketById?.name}}</p>
+          <p> Ticket ID : {{TicketById?.id}} </p>
+          <p >
             <b>Issue: </b> {{TicketById?.subject}} </p>
-          <p class="CardTitle">
+          <p>
             <b>Description: </b>
           </p>
           <p id="description">
             {{TicketById?.description}}
           </p>
-        </mat-card-content>
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input type="text" placeholder="Subject" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
         <form id="statusAndPriority" style="color: white">
           <mat-form-field>
             <mat-select placeholder="{{TicketById?.status == 0 ? 'Open' : (TicketById?.status == 1 ? 'Closed' : 'Due')}}" [(ngModel)]="selectedStatusValue"
@@ -43,11 +48,8 @@
             </mat-select>
           </mat-form-field>
         </form>
-        <mat-form-field>
-          <textarea matInput [(ngModel)]="commentValue" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5" placeholder="Leave a comment"></textarea>
-        </mat-form-field>
         <div class="btn-class">
-          <button (click)="openDialog()" id="resolve-btn">RESOLVE</button>
+          <button (click)="openDialog()" id="resolve-btn">GIVE SOLUTION</button>
           <button (click)="back()" id="back-btn">BACK</button>
         </div>
     </div>

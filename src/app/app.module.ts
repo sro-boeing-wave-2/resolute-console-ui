@@ -9,6 +9,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { DxPieChartModule } from 'devextreme-angular';
 import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
@@ -52,7 +53,8 @@ import { LandingPageComponent } from './user-login/landing-page/landing-page.com
     DxChartModule,
     DxSelectBoxModule,
     Ng2Webstorage,
-    MatButtonModule
+    MatButtonModule,
+    MatAutocompleteModule
   ],
   entryComponents: [],
   providers: [
