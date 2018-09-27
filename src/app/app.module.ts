@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
+import { AceEditorModule } from 'ng2-ace-editor';
 import { DxPieChartModule } from 'devextreme-angular';
 import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
 import { AppRoutingModule } from './app-routing.module';
@@ -54,9 +54,12 @@ import { LandingPageComponent } from './user-login/landing-page/landing-page.com
     DxSelectBoxModule,
     Ng2Webstorage,
     MatButtonModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    AceEditorModule
   ],
-  entryComponents: [],
+  entryComponents: [
+    PopUpComponent,
+  ],
   providers: [
     TicketsService,
     SafePipe,

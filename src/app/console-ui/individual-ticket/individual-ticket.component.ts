@@ -113,12 +113,8 @@ export class IndividualTicketComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PopUpComponent, {
+      panelClass: 'my-panel',
       width: '30%',
-      data:{
-        id: this.TicketById.id,
-        comment: this.commentValue,
-        userId: this.TicketById.userid
-      },
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -48,6 +48,17 @@ input::-webkit-input-placeholder {
 }
 
 
+#buttonId {
+  width: 100%;
+  border-radius: .25rem;
+  outline: none;
+  background-color: transparent;
+  color: #f5f5f6;
+  padding: 10px 20px 10px 20px;
+  border: 2px solid #ffffff;
+}
+
+
 #buttonId:hover{
   border:0px;
   background-color: #f5f5f6;
@@ -61,16 +72,6 @@ input::-webkit-input-placeholder {
   transition: all 0.6s ease 0s;
 }
 
-
-#buttonId {
-  width: 100%;
-  border-radius: .25rem;
-  outline: none;
-  background-color: transparent;
-  color: #f5f5f6;
-  padding: 10px 20px 10px 20px;
-  border: 2px solid #ffffff;
-}
 
 #validationCustom01, #validationCustom02, #validationCustom03, #validationCustom04, #validationCustom05, #validationCustom06{
   border-top: 0px solid #ffffff;
