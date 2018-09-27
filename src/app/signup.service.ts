@@ -21,9 +21,9 @@ export class SignupService {
   //   this.customerData = updatedData;
   // }
 
-  _url: string = "http://35.221.125.153/signup"
-  _agentCSVtoDB: string ="http://35.221.125.153/agents"
-  _userCSVtoDB: string ="http://35.221.125.153/endusers"
+  _url: string = "http://35.221.76.107/signup"
+  _agentCSVtoDB: string ="http://35.221.76.107/agents"
+  _userCSVtoDB: string ="http://35.221.76.107/endusers"
 
   post(form) {
     console.log(form)

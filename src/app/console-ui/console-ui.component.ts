@@ -4,7 +4,6 @@ import { TicketsService } from '../tickets.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { LocalStorageService } from 'ngx-webstorage';
-import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-console-ui',
@@ -17,7 +16,6 @@ export class ConsoleUIComponent implements OnInit {
   agentEmail;
   httpHeader;
   token;
-  msgs: Message[] = [];
 
   constructor(
     private service: TicketsService,
@@ -34,11 +32,6 @@ export class ConsoleUIComponent implements OnInit {
       this.agentDetails = data;
       // console.log(this.agentDetails);
     });
-  }
-
-  displayMessage() {
-    console.log("notify");
-    this.msgs.push({ severity: "success", summary: "Hello"});
   }
 
   logOut() {
