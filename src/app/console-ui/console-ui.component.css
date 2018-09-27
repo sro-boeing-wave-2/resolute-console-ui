@@ -1,18 +1,11 @@
-body{
-height: 100vh;
-background-color: black;
-}
-
-mat-toolbar, footer mat-toolbar {
-  background-color: #000a12;
+mat-toolbar {
+  background-color: #004d40 ;
   color: white;
 }
 
 .mat-drawer{
   width: 20%;
 }
-
-
 
 .spacer {
   flex: 1 1 auto;
@@ -23,6 +16,9 @@ mat-toolbar, footer mat-toolbar {
   letter-spacing: 4px;
 }
 
+.example-sidenav{
+  background:linear-gradient(135deg, #184e68 0%,#57ca85 100%);
+}
 
 .mat-drawer-content {
   width: 100%;
@@ -45,7 +41,7 @@ mat-toolbar, footer mat-toolbar {
 }
 
 #photo-background{
-  background:linear-gradient(135deg, #622774 0%,#c53364 100%);
+  background-color: transparent;
   padding: 15px 0px 15px 0px;
   width: 100%;
 }
@@ -67,26 +63,24 @@ mat-toolbar, footer mat-toolbar {
 
 #navigation {
   padding: 0px;
-  margin: 5px;
+
 }
 
 .link-btn{
   background-color: transparent;
   font-size: medium;
-  width: 90%;
+  width: 100%;
   color: #ffffff;
   border: none;
   outline: none;
   padding: 10px;
-  margin: 10px;
   text-align: left;
-  border-bottom: 2px solid #ffffff;
 }
 
 .link-btn:hover{
   border:0px;
   background-color: #f5f5f6;
-  color:#c53364;
+  color:#004d40 ;
   cursor: pointer;
   font-weight: bold;
   letter-spacing: 5px;
@@ -97,11 +91,10 @@ mat-toolbar, footer mat-toolbar {
 }
 
 .logout-btn{
-  background:linear-gradient(135deg, #622774 0%,#c53364 100%);
-  font-size: medium;
+  background-color: transparent;
   width: 90%;
   color: #ffffff;
-  border: none;
+  border: 2px solid #ffffff;
   outline: none;
   padding: 10px;
   margin: 10px;
@@ -111,7 +104,7 @@ mat-toolbar, footer mat-toolbar {
 .logout-btn:hover{
   border:0px;
   background-color: #ffffff;
-  color:#ffffff;
+  color:#004d40 ;
   cursor: pointer;
   font-weight: bold;
   letter-spacing: 5px;
@@ -126,16 +119,7 @@ a {
   color: white;
 }
 
-.mat-drawer {
-  background-color: #000000;
-}
-
-
-
 #createButton{
   background-color: #f5f5f6;
 }
 
-footer {
-  background-color: #000a12;
-}

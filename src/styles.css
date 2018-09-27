@@ -2,6 +2,7 @@
 body {
   font-family: 'Raleway', sans-serif;
   margin: 0;
+  height: 100vh;
 }
 
 /* Dirty code, needs to be replaced someday */
