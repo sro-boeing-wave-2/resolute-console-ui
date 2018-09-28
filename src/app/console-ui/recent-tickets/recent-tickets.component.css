@@ -1,0 +1,12 @@
+h1, .example-card {
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  max-width: 90%;
+  max-height: 300px;
+}
+
+.example-card {
+  background:linear-gradient(135deg, #c6e6fc 0%,#5cbcf3 100%);
+}
+

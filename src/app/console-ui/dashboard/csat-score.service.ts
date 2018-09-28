@@ -11,8 +11,8 @@ import { GamificationModel } from './analytics-classes/GamificationModel';
 export class CsatScoreService {
   // private baseUrl =  'http://localhost:3000';
 
-  private analyticsUrl: string = "http://35.221.125.153/Tickets/analytics";
-  private gamificationUrl: string = "http://35.221.125.153:8083/api/Tickets/leaderboard";
+  private analyticsUrl: string = "http://35.221.76.107/Tickets/analytics";
+  private gamificationUrl: string = "http://35.221.76.107/Tickets/leaderboard";
 
   constructor(private httpClient: HttpClient) { }
 

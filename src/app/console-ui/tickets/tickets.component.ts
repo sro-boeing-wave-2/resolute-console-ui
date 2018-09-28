@@ -6,9 +6,6 @@ import { queryParams } from '../../queryparams';
 import { PaginationTicketModel, PageRange, PageRangeArray } from './ticketModelForPagination';
 import { MatTabChangeEvent } from '@angular/material';
 
-export interface Sources {
-  source: string
-}
 
 export interface PriorityLevel {
   priority: string
@@ -22,10 +19,11 @@ export interface PriorityLevel {
 
 export class TicketsComponent implements OnInit {
 
-  displayedColumns = ['subject', 'source', 'status', 'priority'];
+  displayedColumns = ['subject', 'status', 'priority'];
   navLinks = []; numberOfTickets = {};
   PaginationTicket: PaginationTicketModel;
-  TotalPages = 10; isPreviousDisabled; isNextDisabled;
+  TotalPages;
+  isPreviousDisabled; isNextDisabled;
   pageRange = new PageRange(); pageRangeArray = new PageRangeArray();
   currentPageNo;
   index; indexMap; indexValue;
@@ -33,24 +31,18 @@ export class TicketsComponent implements OnInit {
 
   queryParams: queryParams = {
     status: "",
-    source: "",
     priority: "",
-    page: 1,
-    sortBy: "subject",
-    sortOrder: false
+    page: 1
+    // sortBy: "subject",
+    // sortOrder: false
   }
 
   //Form entries
   filterForm = this.formbuilder.group({
-    sources: [''],
     priorityLevel: [''],
   });
 
   //Menu options
-  sources: Sources[] = [
-    { source: 'twitter' },
-    { source: 'chat' },
-  ]
 
   priorityLevel: PriorityLevel[] = [
     { priority: 'high' },
@@ -65,6 +57,14 @@ export class TicketsComponent implements OnInit {
       "close": 2,
       "due": 3
     }
+
+    this.service.getTicketsByFilter({
+      status: "",
+      priority: "",
+      page: 1
+    }).subscribe(data => {
+      this.TotalPages = data.pages;
+    })
   }
 
   ngOnInit() {
@@ -83,7 +83,10 @@ export class TicketsComponent implements OnInit {
       // data.status = this.index;
       // console.log(this.index);
       this.service.getTicketsByFilter(data).subscribe(tickets => {
-        this.tickets = tickets;
+        this.tickets = tickets.tickets;
+        this.TotalPages = tickets.pages;
+        console.log("BLAHHHHHHHHHHH");
+        console.log(this.TotalPages);
         console.log(this.tickets);
       });
     });
@@ -99,7 +102,7 @@ export class TicketsComponent implements OnInit {
       this.isNextDisabled = false;
   }
 
-  onTabChange(event : MatTabChangeEvent) {
+  onTabChange(event: MatTabChangeEvent) {
     console.log("status change triggered");
     let status;
     status = Object.keys(this.indexMap).find(key => this.indexMap[key] == event.index);
@@ -115,16 +118,15 @@ export class TicketsComponent implements OnInit {
     this.router.navigate(['/console/tickets/view', element.ticketId]);
   }
 
-  changeSortBy(sortby) {
-    console.log("Hi");
-    this.queryParams.sortBy = sortby;
-    this.queryParams.sortOrder = !this.queryParams.sortOrder;
-    console.log(this.queryParams);
-    this.service.updateQueryParamsModel(this.queryParams);
-  }
+  // changeSortBy(sortby) {
+  //   console.log("Hi");
+  //   this.queryParams.sortBy = sortby;
+  //   this.queryParams.sortOrder = !this.queryParams.sortOrder;
+  //   console.log(this.queryParams);
+  //   this.service.updateQueryParamsModel(this.queryParams);
+  // }
 
   applyFilters() {
-    this.queryParams.source = this.filterForm.value['sources'];
     this.queryParams.priority = this.filterForm.value['priorityLevel'];
     this.service.updateQueryParamsModel(this.queryParams);
   }
@@ -146,6 +148,7 @@ export class TicketsComponent implements OnInit {
   nextPage() {
     this.service.getQueryParamsModel().subscribe(data => this.queryParams = data);
     if (this.queryParams.page < this.TotalPages) {
+      console.log("LINE 143:" + this.TotalPages);
       this.isPreviousDisabled = false;
       this.queryParams.page += 1;
       this.service.updateQueryParamsModel(this.queryParams);

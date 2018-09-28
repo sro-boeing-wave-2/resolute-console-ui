@@ -8,8 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { DxPieChartModule } from 'devextreme-angular';
 import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
@@ -24,7 +24,8 @@ import { Ng2Webstorage } from 'ngx-webstorage';
 import { RequestInterceptor } from './auth.interceptor';
 import { SafePipe, IndividualTicketComponent } from './console-ui/individual-ticket/individual-ticket.component';
 import { LandingPageComponent } from './user-login/landing-page/landing-page.component';
-
+import { NotificationComponent } from './console-ui/notification/notification.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -34,12 +35,14 @@ import { LandingPageComponent } from './user-login/landing-page/landing-page.com
     SafePipe,
     IndividualTicketComponent,
     LandingPageComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -59,6 +62,7 @@ import { LandingPageComponent } from './user-login/landing-page/landing-page.com
   ],
   entryComponents: [
     PopUpComponent,
+    NotificationComponent
   ],
   providers: [
     TicketsService,

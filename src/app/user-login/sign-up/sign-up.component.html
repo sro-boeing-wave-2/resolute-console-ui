@@ -1,5 +1,5 @@
   <div class="content" >
-  <form #userForm="ngForm"  class="needs-validation col-lg-6 col-md-8 col-sm-10" [formGroup]='signUpForm' (ngSubmit)="GenerateAccount()"
+  <form #userForm="ngForm" autocomplete="off" class="needs-validation col-lg-6 col-md-8 col-sm-10" [formGroup]='signUpForm' (ngSubmit)="GenerateAccount()"
     novalidate name="signup-form">
     <div class="logo">
       <i class="fab fa-ravelry"></i>
@@ -7,7 +7,7 @@
     <h1>Create a New Account</h1>
     <div class="form-group">
       <div class="teamname-input">
-        <input type="text" ng-required="true" name="organisationDisplayName" formControlName="organisationDisplayName" class="form-control"
+        <input type="text" ng-required="true"  name="organisationDisplayName" formControlName="organisationDisplayName" class="form-control"
           id="validationCustom01" placeholder="Company Name" [ngClass]="{ 'is-invalid': submitted && formInputControls.organisationDisplayName.errors }"
         />
         <div *ngIf="submitted && formInputControls.organisationDisplayName.errors" class="invalid-feedback">
@@ -16,7 +16,7 @@
       </div>
 
       <div class="username-input">
-        <input type="text" name="organisationName" formControlName="organisationName" class="form-control" id="validationCustom02"
+        <input type="text" name="organisationName"  formControlName="organisationName" class="form-control" id="validationCustom02"
           placeholder="Unique Team Name" required [ngClass]="{ 'is-invalid': submitted && formInputControls.organisationName.errors }"
         />
         <div *ngIf="submitted && formInputControls.organisationName.errors" class="invalid-feedback">

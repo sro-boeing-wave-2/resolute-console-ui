@@ -25,6 +25,7 @@ export class RequestInterceptor implements HttpInterceptor {
         if (!request.headers.has('Content-Type')) {
           request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
         }
+        console.log(request.headers);
         return next.handle(request)
           .pipe(tap((event: HttpEvent<any>) => {
             if (event instanceof HttpResponse) {

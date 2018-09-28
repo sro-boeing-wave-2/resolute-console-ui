@@ -1,0 +1,12 @@
+.example-card {
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  max-width: 90%;
+  max-height: 300px;
+  background:linear-gradient(135deg, #a1daff 0%,#8bd3fd 100%);
+}
+
+#elseBlock {
+  margin: auto;
+}

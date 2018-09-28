@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { LoginService } from './login.service';
 import { Headers } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
-import { TicketDetailsModal } from './ticket';
+import { TicketDetailsModal, modelForGetTicketsByFilter, Ticket } from './ticket';
 import { Agent } from './console-ui/agent';
 import { EndUser } from './console-ui/enduser';
 
@@ -52,14 +52,16 @@ export class TicketsService {
   // }
 
   getById(id) {
-    return this.http.get<TicketDetailsModal>(`${this._url}/detail/${id}`);
+    return this.http.get<Ticket>(`${this._url}/detail/${id}`);
   }
 
   getTicketsByFilter(queryParams: queryParams) {
     if (queryParams != null) {
-      return this.http.get(this._url + '/filter?status=' + queryParams.status + '&source=' + queryParams.source + '&priority=' + queryParams.priority);
+      console.log(queryParams.page);
+      console.log(this._url + '/filter?status=' + queryParams.status + '&priority=' + queryParams.priority + '&pageNumber=' + queryParams.page + '&pageSize=' + 10);
+      return this.http.get<modelForGetTicketsByFilter>(this._url + '/filter?status=' + queryParams.status + '&priority=' + queryParams.priority + '&pageNumber=' + queryParams.page + '&pageSize=' + 10);
     } else {
-      return this.http.get(`${this._url}/filter`);
+      return this.http.get<modelForGetTicketsByFilter>(`${this._url}/filter?all`);
     }
   }
 

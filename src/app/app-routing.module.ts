@@ -18,6 +18,7 @@ import { GamificationComponent } from './console-ui/dashboard/gamification/gamif
 import { CSatScoreComponent } from './console-ui/dashboard/c-sat-score/c-sat-score.component';
 import { TicketsPiechartComponent } from './console-ui/dashboard/tickets-piechart/tickets-piechart.component';
 import { ResolutionTimeComponent } from './console-ui/dashboard/resolution-time/resolution-time.component';
+import { RecentTicketsComponent } from './console-ui/recent-tickets/recent-tickets.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'userlogin', pathMatch: 'full' },
@@ -36,9 +37,11 @@ const routes: Routes = [
     component: ConsoleUIComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomepageComponent},
+      { path: 'home', component: RecentTicketsComponent },
+      { path: 'counts', component: HomepageComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'tickets/:index', component: TicketsComponent },
+      { path: 'tickets/', redirectTo: 'tickets/all', pathMatch: 'full' },
       { path: 'tickets/view/:id', component: IndividualTicketComponent },
       { path: 'newticket', component: NewTicketComponent }
     ]},
@@ -62,6 +65,7 @@ export const RoutingComponents = [
   CSatScoreComponent,
   TicketsPiechartComponent,
   ResolutionTimeComponent,
+  RecentTicketsComponent,
 
   UserLoginComponent,
   DragDropAgentComponent,

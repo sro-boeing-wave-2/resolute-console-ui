@@ -69,4 +69,19 @@ export class LoginPageComponent implements OnInit {
   onSubmit({ Username, Password }) {
     this.submitted.emit({ Username, Password });
   }
+
+  // viewPassword()
+  // {
+  //   var passwordInput = document.getElementById('validationCustom04');
+  //   var passStatus = document.getElementById('pass-status');
+
+  //   if (passwordInput.type == 'password'){
+  //     passwordInput.type = 'text';
+  //     passStatus.className = 'fa fa-eye-slash';
+  //   }
+  //   else {
+  //     passwordInput.type = 'password';
+  //     passStatus.className = 'fa fa-eye';
+  //   }
+  // }
 }

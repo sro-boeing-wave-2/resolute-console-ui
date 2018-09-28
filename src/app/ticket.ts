@@ -1,36 +1,36 @@
-export interface Ticket {
-  ticketId: number;
-  subject: string;
-  description: string;
-  agentid: number;
-  departmentid: number;
-  source: string;
-  priority: string;
-  status: number;
-  sla: number;
-  createdOn: Date;
-  createdBy: string;
-  updatedOn: Date;
-  updatedBy: string;
-  userid: number;
-  customerId: number;
-  comment: Comment[];
+export interface modelForGetTicketsByFilter {
+  pages: number;
+  hasNext: boolean;
+  hasPrevious: boolean;
+  tickets: Ticket[];
 }
 
-export interface Comment {
-  commentId: number;
-  comment: string;
+export interface Ticket {
+  ticketId: string;
+  intent: string;
+  description: string;
+  agentEmailId: string;
+  priority: string;
+  status: number;
   createdOn: Date;
-  createdBy: string;
   updatedOn: Date;
   updatedBy: string;
+  userEmailId: string;
 }
+
+// export interface Comment {
+//   commentId: number;
+//   comment: string;
+//   createdOn: Date;
+//   createdBy: string;
+//   updatedOn: Date;
+//   updatedBy: string;
+// }
 
 export interface TicketDetailsModal {
   name: string;
   id: number;
   status: number;
-  comment: Comment[];
   priority: string;
   subject: string;
   description: string;

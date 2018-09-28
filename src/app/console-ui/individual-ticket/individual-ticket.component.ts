@@ -37,7 +37,7 @@ export class IndividualTicketComponent implements OnInit {
   selectedStatusValue: string ;
   selectedPriorityValue: string ;
   commentValue: string;
-  TicketById: TicketDetailsModal;
+  TicketById: Ticket;
   UserName;
   chatHubUrl: string;
   agentDetails:TicketsService;
@@ -51,7 +51,7 @@ export class IndividualTicketComponent implements OnInit {
 
   ngOnInit() {
 
-    let id = parseInt(this.route.snapshot.paramMap.get('id'));
+    let id = this.route.snapshot.paramMap.get('id');
     console.log(id);
     this.call(id);
     this.filteredOptions = this.myControl.valueChanges
@@ -63,7 +63,7 @@ export class IndividualTicketComponent implements OnInit {
     this.ConnectionId = "chonnect";
     this.Type = "agent";
     this.Email = "emailagentka";
-    this.chatHubUrl = `http://172.23.238.235:4200?connectionId=${this.TicketById.id}&type=${this.Type}`;
+    this.chatHubUrl = `http://35.221.76.107:4200?connectionId=${this.TicketById.ticketId}&type="agent"`;
     console.log(this.chatHubUrl);
 
   }
@@ -71,7 +71,7 @@ export class IndividualTicketComponent implements OnInit {
   call(id) {
     let u = this.service.getById(id).subscribe(data => {
       this.TicketById = data;
-      console.log(this.TicketById.userid);
+      console.log(this.TicketById.userEmailId);
     });
     console.log(u);
   }
@@ -88,11 +88,11 @@ export class IndividualTicketComponent implements OnInit {
 
   updateStatus(){
     console.log(this.selectedStatusValue);
-    this.service.updateIndividualTicketStatus(this.TicketById.id,this.selectedStatusValue).subscribe();
+    this.service.updateIndividualTicketStatus(this.TicketById.ticketId,this.selectedStatusValue).subscribe();
   }
 
   updatePriority(){
-    this.service.updateIndividualTicketPriority(this.TicketById.id,this.selectedPriorityValue).subscribe();
+    this.service.updateIndividualTicketPriority(this.TicketById.ticketId,this.selectedPriorityValue).subscribe();
   }
 
   statuses: Options[] = [

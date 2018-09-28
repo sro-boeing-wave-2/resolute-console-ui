@@ -1,38 +1,34 @@
 <section id="tickets">
 
   <mat-tab-group [selectedIndex]="indexValue" style="background-color: white" (selectedTabChange)="onTabChange($event)">
-    <mat-tab label="All Tickets ({{numberOfTickets.total}})">
+    <mat-tab label="All Tickets ({{numberOfTickets?.total}})">
       <table mat-table [dataSource]="tickets" class="mat-elevation-z8">
 
         <ng-container matColumnDef="subject">
-          <th mat-header-cell *matHeaderCellDef> SUBJECT <button mat-button (click)="changeSortBy('subject')">
+          <th mat-header-cell *matHeaderCellDef> SUBJECT  </th>
+          <!-- <button mat-button (click)="changeSortBy('subject')">
               <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
-          <td mat-cell *matCellDef="let element"> <button type="button" mat-button (click)="onClick(element)">{{element.subject
+            </button> -->
+          <td mat-cell *matCellDef="let element"> <button type="button" mat-button (click)="onClick(element)">{{element.description
               | titlecase}}</button> </td>
         </ng-container>
 
-        <ng-container matColumnDef="source">
+        <!-- <ng-container matColumnDef="source">
           <th mat-header-cell *matHeaderCellDef> SOURCE <button mat-button (click)="changeSortBy('source')">
               <mat-icon>arrow_upward</mat-icon>
             </button> </th>
           <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color: #4f5b62" (click)=onClick(element)>
               {{element.source | titlecase}}</a> </td>
-        </ng-container>
+        </ng-container> -->
 
         <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef> STATUS <button mat-button (click)="changeSortBy('status')">
-              <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
-          <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.status
-              == 0 ? 'Open' : element.status == 1 ? 'Closed' : 'Unassigned'}}</a>
+          <th mat-header-cell *matHeaderCellDef> STATUS </th>
+          <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.status}}</a>
           </td>
         </ng-container>
 
         <ng-container matColumnDef="priority">
-          <th mat-header-cell *matHeaderCellDef> PRIORITY <button mat-button (click)="changeSortBy('priority')">
-              <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
+          <th mat-header-cell *matHeaderCellDef> PRIORITY </th>
           <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.priority
               | titlecase}}</a> </td>
         </ng-container>
@@ -42,39 +38,32 @@
       </table>
     </mat-tab>
 
-    <mat-tab label="Open ({{numberOfTickets.open}})">
+    <mat-tab label="Open ({{numberOfTickets?.open}})">
       <table mat-table [dataSource]="tickets" class="mat-elevation-z8">
 
         <ng-container matColumnDef="subject">
-          <th mat-header-cell *matHeaderCellDef> SUBJECT <button mat-button (click)="changeSortBy('subject')">
-              <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
-          <td mat-cell *matCellDef="let element"> <button type="button" mat-button (click)="onClick(element)">{{element.subject
+          <th mat-header-cell *matHeaderCellDef> SUBJECT </th>
+          <td mat-cell *matCellDef="let element"> <button type="button" mat-button (click)="onClick(element)">{{element.description
               | titlecase}}</button> </td>
         </ng-container>
 
-        <ng-container matColumnDef="source">
+        <!-- <ng-container matColumnDef="source">
           <th mat-header-cell *matHeaderCellDef> SOURCE
             <button mat-button (click)="changeSortBy('source')">
               <mat-icon>arrow_upward</mat-icon>
             </button> </th>
           <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color: #4f5b62" (click)=onClick(element)>
               {{element.source | titlecase}}</a> </td>
-        </ng-container>
+        </ng-container> -->
 
         <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef> STATUS <button mat-button (click)="changeSortBy('status')">
-              <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
-          <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.status
-              == 0 ? 'Open' : element.status == 1 ? 'Closed' : 'Unassigned'}}</a>
+          <th mat-header-cell *matHeaderCellDef> STATUS </th>
+          <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.status}}</a>
           </td>
         </ng-container>
 
         <ng-container matColumnDef="priority">
-          <th mat-header-cell *matHeaderCellDef> PRIORITY <button mat-button (click)="changeSortBy('priority')">
-              <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
+          <th mat-header-cell *matHeaderCellDef> PRIORITY </th>
           <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.priority
               | titlecase}}</a> </td>
         </ng-container>
@@ -84,39 +73,32 @@
       </table>
     </mat-tab>
 
-    <mat-tab label="Closed ({{numberOfTickets.closed}})">
+    <mat-tab label="Closed ({{numberOfTickets?.closed}})">
       <table mat-table [dataSource]="tickets" class="mat-elevation-z8">
 
         <ng-container matColumnDef="subject">
-          <th mat-header-cell *matHeaderCellDef> SUBJECT <button mat-button (click)="changeSortBy('subject')">
-              <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
-          <td mat-cell *matCellDef="let element"> <button type="button" mat-button (click)="onClick(element)">{{element.subject
+          <th mat-header-cell *matHeaderCellDef> SUBJECT </th>
+          <td mat-cell *matCellDef="let element"> <button type="button" mat-button (click)="onClick(element)">{{element.description
               | titlecase}}</button> </td>
         </ng-container>
 
-        <ng-container matColumnDef="source">
+        <!-- <ng-container matColumnDef="source">
           <th mat-header-cell *matHeaderCellDef> SOURCE
             <button mat-button (click)="changeSortBy('source')">
               <mat-icon>arrow_upward</mat-icon>
             </button> </th>
           <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color: #4f5b62" (click)=onClick(element)>
               {{element.source | titlecase}}</a> </td>
-        </ng-container>
+        </ng-container> -->
 
         <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef> STATUS <button mat-button (click)="changeSortBy('status')">
-              <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
-          <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.status
-              == 0 ? 'Open' : element.status == 1 ? 'Closed' : 'Unassigned'}}</a>
+          <th mat-header-cell *matHeaderCellDef> STATUS </th>
+          <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.status}}</a>
           </td>
         </ng-container>
 
         <ng-container matColumnDef="priority">
-          <th mat-header-cell *matHeaderCellDef> PRIORITY <button mat-button (click)="changeSortBy('priority')">
-              <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
+          <th mat-header-cell *matHeaderCellDef> PRIORITY </th>
           <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.priority
               | titlecase}}</a> </td>
         </ng-container>
@@ -126,39 +108,32 @@
       </table>
     </mat-tab>
 
-    <mat-tab label="Unassigned ({{numberOfTickets.due}})">
+    <mat-tab label="Unassigned ({{numberOfTickets?.due}})">
       <table mat-table [dataSource]="tickets" class="mat-elevation-z8">
 
         <ng-container matColumnDef="subject">
-          <th mat-header-cell *matHeaderCellDef> SUBJECT <button mat-button (click)="changeSortBy('subject')">
-              <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
-          <td mat-cell *matCellDef="let element"> <button type="button" mat-button (click)="onClick(element)">{{element.subject
+          <th mat-header-cell *matHeaderCellDef> SUBJECT </th>
+          <td mat-cell *matCellDef="let element"> <button type="button" mat-button (click)="onClick(element)">{{element.description
               | titlecase}}</button> </td>
         </ng-container>
 
-        <ng-container matColumnDef="source">
+        <!-- <ng-container matColumnDef="source">
           <th mat-header-cell *matHeaderCellDef> SOURCE
             <button mat-button (click)="changeSortBy('source')">
               <mat-icon>arrow_upward</mat-icon>
             </button> </th>
           <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color: #4f5b62" (click)=onClick(element)>
               {{element.source | titlecase}}</a> </td>
-        </ng-container>
+        </ng-container> -->
 
         <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef> STATUS <button mat-button (click)="changeSortBy('status')">
-              <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
-          <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.status
-              == 0 ? 'Open' : element.status == 1 ? 'Closed' : 'Unassigned'}}</a>
+          <th mat-header-cell *matHeaderCellDef> STATUS </th>
+          <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.status}}</a>
           </td>
         </ng-container>
 
         <ng-container matColumnDef="priority">
-          <th mat-header-cell *matHeaderCellDef> PRIORITY <button mat-button (click)="changeSortBy('priority')">
-              <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
+          <th mat-header-cell *matHeaderCellDef> PRIORITY </th>
           <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.priority
               | titlecase}}</a> </td>
         </ng-container>
@@ -192,14 +167,6 @@
     </button>
     <mat-menu #menu="matMenu">
       <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
-        <label>
-          Source:
-          <mat-select (click)="$event.stopPropagation()" placeholder="Source" formControlName="sources">
-            <mat-option *ngFor="let source of sources" [value]="source['source']">
-              {{source.source}}
-            </mat-option>
-          </mat-select>
-        </label>
         <label>
           Priority:
           <mat-select (click)="$event.stopPropagation()" placeholder="Priority" formControlName="priorityLevel">

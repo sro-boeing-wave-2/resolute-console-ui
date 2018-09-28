@@ -19,6 +19,11 @@ table {
   background-color: white;
 }
 
+::ng-deep .mat-tab-group .mat-tab-body-content {
+  height: auto;
+  overflow: auto;
+}
+
 td, th {
   color : #263238;
 }
