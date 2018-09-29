@@ -1,7 +1,7 @@
 <div class="fullContent">
   <div class="left-side-content">
     <!-- Chat Module will come here -->
-    <iframe [src]="chatHubUrl | safe" ></iframe>
+    <iframe [src]="chatHubUrl | safe" *ngIf="this.chatHubUrl != null"></iframe>
   </div>
 
 

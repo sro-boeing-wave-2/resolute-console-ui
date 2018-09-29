@@ -39,7 +39,7 @@ export class IndividualTicketComponent implements OnInit {
   commentValue: string;
   TicketById: Ticket;
   UserName;
-  chatHubUrl: string;
+  chatHubUrl: string = null;
   agentDetails:TicketsService;
   userImage;
 
@@ -50,20 +50,17 @@ export class IndividualTicketComponent implements OnInit {
   constructor(private router: Router, private service: TicketsService, private route: ActivatedRoute, public dialog: MatDialog, private localStorage: LocalStorageService) { }
 
   ngOnInit() {
-
+    console.log("Agent Email: " + this.localStorage.retrieve("email"));
     let id = this.route.snapshot.paramMap.get('id');
     console.log(id);
     this.call(id);
+    this.Email = this.localStorage.retrieve("email");
+    this.UserName = this.Email.split("@")[0];
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filter(value))
       );
-
-    this.ConnectionId = "chonnect";
-    this.Type = "agent";
-    this.Email = "emailagentka";
-    this.chatHubUrl = `http://35.221.76.107:4200?connectionId=${this.TicketById.ticketId}&type="agent"`;
     console.log(this.chatHubUrl);
 
   }
@@ -71,7 +68,8 @@ export class IndividualTicketComponent implements OnInit {
   call(id) {
     let u = this.service.getById(id).subscribe(data => {
       this.TicketById = data;
-      console.log(this.TicketById.userEmailId);
+      this.chatHubUrl = `http://172.23.238.235:4200?ticketId=${this.TicketById.ticketId}&type=agent&email=${this.Email}&name=${this.UserName}`;
+      console.log("ChatHub URL: " + this.chatHubUrl);
     });
     console.log(u);
   }
