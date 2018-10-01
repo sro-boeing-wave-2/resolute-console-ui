@@ -8,11 +8,11 @@ th.mat-header-cell {
   text-align: center;
   font-size: 15px;
   color: white;
-  background-color: #263238;
+  background:linear-gradient(135deg, #378b76 0%,#4eba81 100%);
 }
 
 img {
-  border-radius: 35px;
+  border-radius: 50%;
   margin: 10px 0px 9px 80px;
   height: 85px;
   width: 85px;

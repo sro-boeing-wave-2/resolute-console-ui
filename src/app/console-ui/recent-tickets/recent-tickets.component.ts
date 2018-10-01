@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TicketsService } from '../../tickets.service';
 import { queryParams } from '../../queryparams';
+import { Ticket } from '../../ticket';
 
 @Component({
   selector: 'app-recent-tickets',
@@ -9,19 +11,24 @@ import { queryParams } from '../../queryparams';
 })
 export class RecentTicketsComponent implements OnInit {
 
-  agentOpenTickets;
+  agentOpenTickets: Ticket[];
   queryParams: queryParams = {
     status: "open",
     priority: "",
-    page: null,
+    page: 1,
   }
 
-  constructor(private ticketService: TicketsService) { }
+  constructor(private ticketService: TicketsService, private router: Router) { }
 
   ngOnInit() {
-    this.ticketService.getTicketsByFilter(this.queryParams).subscribe(data => {
-      this.agentOpenTickets = data;
+    this.ticketService.getRecentTickets(this.queryParams).subscribe(data => {
+      this.agentOpenTickets = data.tickets;
+      console.log(this.agentOpenTickets);
     })
   }
 
+  routeToTicketDetails(ticket) {
+    console.log(ticket.ticketId);
+    this.router.navigate(['/console/tickets/view', ticket.ticketId]);
+  }
 }

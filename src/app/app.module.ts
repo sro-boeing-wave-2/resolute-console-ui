@@ -35,7 +35,7 @@ import { ToastrModule } from 'ngx-toastr';
     SafePipe,
     IndividualTicketComponent,
     LandingPageComponent,
-    NotificationComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

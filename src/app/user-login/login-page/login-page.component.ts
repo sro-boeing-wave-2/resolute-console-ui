@@ -33,19 +33,19 @@ export class LoginPageComponent implements OnInit {
   get formInputControls() { return this.loginForm.controls; }
 
   get Username() {
-    console.log(this.loginForm.get('Username'));
+    // console.log(this.loginForm.get('Username'));
     return this.loginForm.get('Username');
   }
 
   get Password() {
-    console.log(this.loginForm.get('Password'));
+    // console.log(this.loginForm.get('Password'));
     return this.loginForm.get('Password');
   }
 
   LoginToAccount() {
     this.isSubmitted = true;
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+      // console.log(this.loginForm.value);
       this._loginService.getToken(this.loginForm.value).subscribe(result => {
         this.token = result.toString();
         // console.log(this.token);

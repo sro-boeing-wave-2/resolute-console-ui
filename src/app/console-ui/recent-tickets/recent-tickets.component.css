@@ -19,6 +19,27 @@
   align-content: center;
 }
 
+.headline{
+  padding: 15px;
+  color:#004d40;}
+
+.example-card {
+  background:linear-gradient(135deg, #378b76 0%,#4eba81 100%);
+  width: 30%;
+  float: left;
+  margin: 15px;
+  color: #ffffff;
+}
+
+.example-card mat-card-header mat-card-subtitle {
+  color: #ffffff;
+}
+
+.btn-holder-div{
+  width: 100%;
+  align-content: center;
+}
+
 button{
   border: 0px;
   width: 100%;

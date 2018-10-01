@@ -4,35 +4,37 @@
   color: #ffffff;
   background:linear-gradient(135deg, #184e68 0%,#57ca85 100%);
   padding-top: 30px;
-}
 
-#iconDiv{
+ }
+
+ #iconDiv{
   margin: 0 auto;
   text-align: center;
-}
+ }
 
-.font{
-  padding-top: 50px;
-  font-size: 9ex;
-}
+ .font{
+  padding-top: 40px;
+  font-size: 8ex;
+  font-weight: lighter;
+ }
 
-#chooseFileDiv{
+ #chooseFileDiv{
   margin: 0 auto;
   text-align: center;
   padding: 30px;
-}
+ }
 
-input[type="file"]{
+ input[type="file"]{
   width: 20%;
-}
+ }
 
-.secondaryBtnDiv{
+ .secondaryBtnDiv{
   width: 20%;
   margin: 0 auto;
   padding: 2.5px;
-}
+ }
 
-#uploadbtn{
+ #uploadbtn{
   width: 100%;
   border-radius: .25rem;
   outline: none;
@@ -40,10 +42,9 @@ input[type="file"]{
   color: #f5f5f6;
   padding: 10px 20px 10px 20px;
   border: 2px solid #ffffff;
-}
+ }
 
-
-#uploadbtn:hover{
+ #uploadbtn:hover{
   border:0px;
   background-color: #f5f5f6;
   color:#004d40 ;
@@ -55,4 +56,4 @@ input[type="file"]{
   box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
   transition: all 0.6s ease 0s;
 
-}
+ }

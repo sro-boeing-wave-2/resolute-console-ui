@@ -30,7 +30,7 @@ export class DragDropUserComponent {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', 'http://35.221.88.74/upload', formData, {
+    const uploadReq = new HttpRequest('POST', 'http://13.126.8.255/upload', formData, {
       reportProgress: true,
     });
 
@@ -49,7 +49,7 @@ export class DragDropUserComponent {
     this.UploadMessage = "Upload Successful";
     this.signUpService.postUserCSVtoDB(this.data).subscribe(data => {
       setTimeout(a => {
-        this.router.navigate(['/userlogin/login'])
+        this.router.navigate(['/userlogin/addtrainingdata'])
       }, 1000);
     });
   }

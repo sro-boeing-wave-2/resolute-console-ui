@@ -2,7 +2,21 @@
   <h1>Recent Tickets</h1>
 </div>
 
-  <mat-card class="example-card">
+<mat-card *ngFor="let ticket of agentOpenTickets" class="example-card">
+  <mat-card-header>
+    <mat-card-title>
+      <h3>Description: {{ticket.description}}</h3>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <h6>Priority: {{ticket.priority}}</h6>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <div class="btn-holder-div">
+    <button (click)="routeToTicketDetails">View</button>
+  </div>
+</mat-card>
+
+<!-- <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title><h3>Not able to login</h3></mat-card-title>
       <mat-card-subtitle><h6>This is a new ticket! Good Luck ;p</h6></mat-card-subtitle>
@@ -10,25 +24,4 @@
     <div class="btn-holder-div">
       <button>View</button>
     </div>
-  </mat-card>
-
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title><h3>Not able to login</h3></mat-card-title>
-      <mat-card-subtitle><h6>This is a new ticket! Good Luck ;p</h6></mat-card-subtitle>
-    </mat-card-header>
-    <div class="btn-holder-div">
-      <button>View</button>
-    </div>
-  </mat-card>
-
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title><h3>Not able to login</h3></mat-card-title>
-      <mat-card-subtitle><h6>This is a new ticket! Good Luck ;p</h6></mat-card-subtitle>
-    </mat-card-header>
-    <div class="btn-holder-div">
-      <button>View</button>
-    </div>
-  </mat-card>
-
+  </mat-card> -->

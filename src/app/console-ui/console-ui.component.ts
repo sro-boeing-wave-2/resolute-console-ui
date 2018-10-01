@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Agent } from './agent';
-import { TicketsService } from '../tickets.service';
 import { Router } from '@angular/router';
-import { LoginService } from '../login.service';
+// import { LoginService } from '../login.service';
 import { LocalStorageService } from 'ngx-webstorage';
-import { NotificationService } from './notification.service';
 import { MatDialog } from '@angular/material';
 import { NotificationComponent } from './notification/notification.component';
 import { ToastrService } from 'ngx-toastr';
 import 'ngx-toastr/toastr.css';
 import { NotificationModel } from './notificationModel';
+import { TicketsService } from '../tickets.service';
+import { NotificationService } from './notification.service';
 
 
 @Component({
@@ -24,9 +24,8 @@ export class ConsoleUIComponent implements OnInit {
   httpHeader;
   token;
   notificationCount = 0;
-  notifications: NotificationModel[] = [];
+  // recentNotifications: NotificationModel[] = [];
 
-  mockNotifications = "HELLO";
 
   constructor(
     private service: TicketsService,
@@ -45,8 +44,8 @@ export class ConsoleUIComponent implements OnInit {
     this.notificationService.startHubConnection(this.agentEmail);
     this.notificationService.newNotification().subscribe(data => {
       if(data) {
-        this.notifications.push(data);
-        this.toast.info(data.title);
+        // this.recentNotifications.push(data);
+        // this.toast.info(data.title);
         this.notificationCount += 1;
       }
     })
@@ -57,24 +56,20 @@ export class ConsoleUIComponent implements OnInit {
     });
   }
 
-  resetNotificationCount() {
+  showNotifications() {
     this.notificationCount = 0;
   }
 
-  openDialog(): void {
-    let notifications = this.mockNotifications;
-    console.log(notifications);
-    const dialogRef = this.dialog.open(NotificationComponent, {
-      width: '50%',
-      height: '70%',
-      data: {
-        dataKey: this.mockNotifications
-      }
-    });
+  // openDialog(): void {
+  //   const dialogRef = this.dialog.open(NotificationComponent, {
+  //     width: '50%',
+  //     height: '70%',
+  //     data: { notification: this.mockNotifications }
+  //   });
 
-    dialogRef.afterClosed().subscribe(result => {
-    });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //   });
+  // }
 
   logOut() {
     console.log("Log out");

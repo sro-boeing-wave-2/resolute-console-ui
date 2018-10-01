@@ -14,7 +14,7 @@ export class NotificationService {
   constructor() { }
 
   startHubConnection(email: string) {
-    this._hubConnection = new HubConnectionBuilder().withUrl("http://172.23.238.235:5000/notifications").build();
+    this._hubConnection = new HubConnectionBuilder().withUrl("http://13.126.8.255/notifications").build();
     this._hubConnection
       .start().then(_ => {
         this._hubConnection.invoke('Config', email).then(_ => {
