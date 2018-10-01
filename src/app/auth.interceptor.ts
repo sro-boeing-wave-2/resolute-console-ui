@@ -15,6 +15,7 @@ export class RequestInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.localStorage.retrieve('token');
     console.log(token);
+    console.log(request.url);
     const ignoreUrl = "/login";
     if (request.url.search(ignoreUrl) === -1) {
       if (token) {
@@ -22,6 +23,7 @@ export class RequestInterceptor implements HttpInterceptor {
           headers: request.headers.set('token', token)
         });
         console.log('Token added to HTTP request');
+        console.log(request.headers);
         if (!request.headers.has('Content-Type')) {
           request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
         }

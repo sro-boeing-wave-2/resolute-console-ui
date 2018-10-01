@@ -65,6 +65,10 @@ export class TicketsService {
     }
   }
 
+  getRecentTickets(queryParams) {
+    return this.http.get<modelForGetTicketsByFilter>(this._url + '/filter?status=' + queryParams.status + '&priority=' + queryParams.priority + '&pageNumber=1' + '&pageSize=' + 6);
+  }
+
   getTicketCount() {
     var countOfTickets = this.http.get(`${this._url}/count`)
     return countOfTickets;

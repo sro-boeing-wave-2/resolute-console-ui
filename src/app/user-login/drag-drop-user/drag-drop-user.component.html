@@ -1,4 +1,4 @@
-<div class="container">
+<div class="content">
   <h1 id="headline">Upload User Details File</h1>
   <div id="iconDiv">
     <i class="font far fa-file-alt"></i>
@@ -10,11 +10,12 @@
       {{progress}}%
     </span>
   </div>
-</div>
+
 <div class="secondaryBtnDiv">
   <button id="uploadbtn" (click)="OnPost()">Upload File</button>
   <span style="font-weight:bold;color:green;" *ngIf="UploadMessage">
     <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate">
     </mat-progress-spinner>
   </span>
+</div>
 </div>

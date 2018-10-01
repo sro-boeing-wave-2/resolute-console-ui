@@ -21,7 +21,7 @@ export class RecentTicketsComponent implements OnInit {
   constructor(private ticketService: TicketsService, private router: Router) { }
 
   ngOnInit() {
-    this.ticketService.getTicketsByFilter(this.queryParams).subscribe(data => {
+    this.ticketService.getRecentTickets(this.queryParams).subscribe(data => {
       this.agentOpenTickets = data.tickets;
       console.log(this.agentOpenTickets);
     })

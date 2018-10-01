@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drag-drop-training-data',
@@ -9,10 +10,11 @@ import { HttpClient } from '@angular/common/http';
 export class DragDropTrainingDataComponent implements OnInit {
 
   selectedFile: File = null;
+  headers: HttpHeaders;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onFileSelected(event) {
     this.selectedFile = <File>event.target.files[0];
@@ -21,6 +23,14 @@ export class DragDropTrainingDataComponent implements OnInit {
   onClick() {
     const fd = new FormData();
     fd.append('file', this.selectedFile, this.selectedFile.name);
-    this.http.post('http://35.221.88.74/intent/upload', fd).subscribe(res => {console.log(res)});
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Access': 'Allow_Service' })
+    };
+    this.http.post('http://35.221.88.74/intent/upload', fd, httpOptions).subscribe(res => {
+      console.log(res);
+      setTimeout(a => {
+        this.router.navigate(['/userlogin/login'])
+      }, 1000);
+    });
   }
 }

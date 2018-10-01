@@ -49,7 +49,7 @@ export class DragDropUserComponent {
     this.UploadMessage = "Upload Successful";
     this.signUpService.postUserCSVtoDB(this.data).subscribe(data => {
       setTimeout(a => {
-        this.router.navigate(['/userlogin/login'])
+        this.router.navigate(['/userlogin/addtrainingdata'])
       }, 1000);
     });
   }
