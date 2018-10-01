@@ -23,3 +23,7 @@ body {
   background-color: white !important;
 }
 
+.mat-menu-content{
+  padding: 0px;
+  color: #ffffff;
+}

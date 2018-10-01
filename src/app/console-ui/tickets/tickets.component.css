@@ -1,21 +1,9 @@
-mat-tab-nav-bar{
-}
-
-mat-tab-group{
-}
-
 th {
   color: #004d40;
 }
 
-mat-table{
-}
 #displayLinks {
   color:black;
-}
-
-.mat-menu-panel {
-  background: #263238;
 }
 
 table {
@@ -28,23 +16,15 @@ table {
   overflow: auto;
 }
 
-th.mat-sort-header-sorted {
-  color: black;
+
+::ng-deep .mat-menu-content{
+  border: none;
+  background:linear-gradient(135deg, #184e68 0%,#57ca85 100%);
+  color: #ffffff;
+  width: 250px;
+  text-align: center;
 }
 
-form {
-  padding: 10px 20px;
-  color: black;
-}
-
-label, mat-select {
-  color: black;
-  margin: 20px 0px;
-}
-
-#submit {
-  margin: 0px 0px 20px 0px;
-}
 
 #pagination_nav {
   float: right;
@@ -57,14 +37,28 @@ label, mat-select {
 }
 
 .pagenav {
-  padding: 6px;
+  color: #004d40;
 }
 
-.active {
-  color: red;
+#submit{
+  width: 60%;
+  border-radius: .25rem;
+  outline: none;
+  background-color: transparent;
+  color: #f5f5f6;
+  padding: 5px 20px 5px 20px;
+  border: 2px solid #ffffff;
 }
 
-a {
+#submit:hover{
+  border:0px;
+  background-color: #f5f5f6;
+  color:#004d40 ;
   cursor: pointer;
-  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.6s ease 0s;
 }

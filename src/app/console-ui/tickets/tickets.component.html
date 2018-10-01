@@ -87,15 +87,6 @@
               | titlecase}}</button> </td>
         </ng-container>
 
-        <!-- <ng-container matColumnDef="source">
-          <th mat-header-cell *matHeaderCellDef> SOURCE
-            <button mat-button (click)="changeSortBy('source')">
-              <mat-icon>arrow_upward</mat-icon>
-            </button> </th>
-          <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color: #4f5b62" (click)=onClick(element)>
-              {{element.source | titlecase}}</a> </td>
-        </ng-container> -->
-
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef> STATUS </th>
           <td mat-cell *matCellDef="let element"> <a style="cursor: pointer; color:#4f5b62" (click)=onClick(element)>{{element.status}}</a>
@@ -135,17 +126,21 @@
     <button id="filterButton" type="button" mat-raised-button [matMenuTriggerFor]="menu">
       <mat-icon>filter_list</mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
-      <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
-        <label>
-          Priority:
+    <mat-menu #menu="matMenu" >
+      <form [formGroup]="filterForm"  (ngSubmit)="applyFilters()">
+        <div>
+          <label>
+            Priority:
           <mat-select (click)="$event.stopPropagation()" placeholder="Priority" formControlName="priorityLevel">
             <mat-option *ngFor="let priority of priorityLevel" [value]="priority['priority']">
               {{priority.priority}}
             </mat-option>
           </mat-select>
-        </label>
+          </label>
+        </div>
+        <div>
         <button mat-raised-button type="submit" id="submit">Submit</button>
+      </div>
       </form>
     </mat-menu>
   </span>
