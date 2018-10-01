@@ -1,12 +1,48 @@
-h1, .example-card {
-  margin: auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  max-width: 90%;
-  max-height: 300px;
-}
+.headline{
+  padding: 15px;
+  color:#004d40;}
 
 .example-card {
-  background:linear-gradient(135deg, #c6e6fc 0%,#5cbcf3 100%);
+  background:linear-gradient(135deg, #378b76 0%,#4eba81 100%);
+  width: 30%;
+  float: left;
+  margin: 15px;
+  color: #ffffff;
 }
 
+.example-card mat-card-header mat-card-subtitle {
+  color: #ffffff;
+}
+
+.btn-holder-div{
+  width: 100%;
+  align-content: center;
+}
+
+button{
+  border: 0px;
+  width: 100%;
+  border-radius: .25rem;
+  outline: none;
+  background-color: transparent;
+  color: #f5f5f6;
+  padding: 10px 5px 10px 5px;
+  border: 2px solid #ffffff;
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+}
+
+button:hover{
+  border:0px;
+  background-color: #f5f5f6;
+  color:#004d40 ;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 7px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.4s ease 0s;
+
+}

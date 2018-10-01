@@ -1,10 +1,3 @@
-html{height: 100%;}
-
-body{
-  background-color: #000000;
-  height: 100vh;
-  padding: 10px;
-}
 
 mat-grid-list {
 padding: 0px;
@@ -13,38 +6,37 @@ margin: 30px;
 
 mat-grid-tile {
   border-style: solid;
-  background-color: #263238;
   color: #f5f5f6;
 }
 
 mat-grid-tile{
-  background:linear-gradient(135deg, #622774 0%,#c53364 100%);
+  background:linear-gradient(135deg, #378b76 0%,#4eba81 100%);
 }
+
 mat-grid-tile:hover{
   cursor: pointer;
-  background-color: #000a12;
+  background: #004d40;
+  letter-spacing: 5px;
 }
+
 
 mat-card-content{
   text-align: center;}
 
 .agentTicketsOpen {
   border: none;
-  background:linear-gradient(135deg, #F5515F 0%,#A1051D 100%);
 }
 
 .agentTicketsClosed{
   border: none;
-  background:linear-gradient(135deg, #b1ea4d 0%,#459522 100%);}
-
+}
 
 .departmentTicketsUnassigned {
   border: none;
-  background:linear-gradient(135deg, #fad961 0%,#f76b1c 100%);
   }
 
 
 .departmentTicketsTotal{
   border: none;
-  background:linear-gradient(135deg, #0FF0B3 0%,#036ED9 100%);}
+}
 

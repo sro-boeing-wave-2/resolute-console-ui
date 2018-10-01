@@ -1,11 +1,15 @@
-#tickets {
-  background-color: #263238;
-}
-
 mat-tab-nav-bar{
-  background-color: aliceblue;
 }
 
+mat-tab-group{
+}
+
+th {
+  color: #004d40;
+}
+
+mat-table{
+}
 #displayLinks {
   color:black;
 }
@@ -24,17 +28,7 @@ table {
   overflow: auto;
 }
 
-td, th {
-  color : #263238;
-}
-
 th.mat-sort-header-sorted {
-  color: black;
-}
-
-nav {
-  float: left;
-  width: 700px;
   color: black;
 }
 
@@ -57,8 +51,9 @@ label, mat-select {
 }
 
 #filterButton {
-  margin: 6px 40px;
   float: right;
+  background-color: #004d40;
+  color: #ffffff;
 }
 
 .pagenav {

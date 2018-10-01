@@ -15,19 +15,13 @@ import { EndUser } from './console-ui/enduser';
 
 export class TicketsService {
 
-  private _url: string = "http://35.221.76.107/tickets";
-  // http://35.221.125.153:8083/api/Tickets
+  private _url: string = "http://35.221.88.74/tickets";
+  private UserDetailUrl: string = "http://35.221.88.74/endusers/query?Name=";
+  private _ticketStatusUpdateUrl: string = "http://35.221.88.74/status";
+  private _ticketPriorityUpdateUrl: string = "http://35.221.88.74/priority";
+  private _ticketCommentUpdateUrl: string = "http://35.221.88.74/updateComment";
+  private agentUrl = "http://35.221.88.74/agents/query?Email=";
 
-  private UserDetailUrl: string = "http://35.221.76.107/endusers/query?Name=";
-  private _ticketStatusUpdateUrl: string = "http://35.221.76.107/status";
-  private _ticketPriorityUpdateUrl: string = "http://35.221.76.107/priority";
-  private _ticketCommentUpdateUrl: string = "http://35.221.76.107/updateComment";
-  private agentUrl = "http://35.221.76.107/agents/query?Email=";
-
-  // ----------------LINKS-------------------
-  // http://172.23.238.239:5000/api/Tickets
-  // http://35.189.155.116:8083/
-  // ----------------------------------------
 
   token;
 

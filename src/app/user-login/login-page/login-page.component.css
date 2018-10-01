@@ -84,3 +84,8 @@ input::-webkit-input-placeholder {
 .validation-message{
   color: #F1948A;
 }
+
+#invalid{
+  color:#F1948A;
+  text-align: center;
+}
