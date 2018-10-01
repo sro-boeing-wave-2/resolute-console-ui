@@ -14,11 +14,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   imports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatDividerModule,
-    MatGridListModule, MatCardModule, MatTabsModule, MatTableModule, MatFormFieldModule, MatMenuModule, MatDialogModule, MatExpansionModule, MatSelectModule],
+    MatGridListModule, MatCardModule, MatInputModule, MatTabsModule, MatTableModule, MatFormFieldModule, MatMenuModule, MatDialogModule, MatExpansionModule, MatSelectModule],
   exports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatDividerModule,
-    MatGridListModule, MatCardModule, MatTabsModule, MatTableModule,MatProgressSpinnerModule, MatFormFieldModule, MatMenuModule, MatDialogModule, MatExpansionModule, MatSelectModule],
+    MatGridListModule, MatCardModule, MatInputModule, MatTabsModule, MatTableModule,MatProgressSpinnerModule, MatFormFieldModule, MatMenuModule, MatDialogModule, MatExpansionModule, MatSelectModule],
 })
 export class MaterialModule { }

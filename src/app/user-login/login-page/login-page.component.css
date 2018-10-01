@@ -13,6 +13,9 @@ input::-webkit-input-placeholder {
   padding: 40px;
   background-color: transparent;
 }
+.fa-eye {
+  padding: 10px 5px 0px 10px ;
+}
 
 .fab {
   width: 100%;

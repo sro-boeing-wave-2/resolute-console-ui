@@ -13,6 +13,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class LoginPageComponent implements OnInit {
 
   token;
+  showPassword = false;
   loginForm: FormGroup;
   unauthorized: string = null;
   isSubmitted = false;
@@ -68,6 +69,10 @@ export class LoginPageComponent implements OnInit {
   // for testing
   onSubmit({ Username, Password }) {
     this.submitted.emit({ Username, Password });
+  }
+
+  showHidePassword() {
+    this.showPassword = !this.showPassword;
   }
 
   // viewPassword()
