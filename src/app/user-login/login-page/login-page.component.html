@@ -15,7 +15,7 @@
       <div class="password">
         <input type="password" name="password" formControlName="Password" class="form-control" id="validationCustom04"
           placeholder="Password" required [ngClass]="{ 'is-invalid': isSubmitted && formInputControls.Password.errors }" />
-        <i id="pass-status" class="fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i>
+        <!-- <i id="pass-status" class="fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i> -->
         <div *ngIf="isSubmitted && formInputControls.Password.errors" class="invalid-feedback">
           <div *ngIf="formInputControls.Password.errors.required" class="validation-message">*Password is required</div>
           <div *ngIf="formInputControls.Password.errors.minlength" class="validation-message">*Password must be at
