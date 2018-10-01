@@ -15,12 +15,12 @@ import { EndUser } from './console-ui/enduser';
 
 export class TicketsService {
 
-  private _url: string = "http://13.126.8.255.74/tickets";
-  private UserDetailUrl: string = "http://13.126.8.255/endusers/query?Name=";
-  private _ticketStatusUpdateUrl: string = "http://13.126.8.255/status";
-  private _ticketPriorityUpdateUrl: string = "http://13.126.8.255/priority";
-  private _ticketCommentUpdateUrl: string = "http://13.126.8.255/updateComment";
-  private agentUrl = "http://13.126.8.255/agents/query?Email=";
+  private _url: string = "http://35.221.88.74/tickets";
+  private _UserDetailUrl: string = "http://35.221.88.74/endusers/query?Name=";
+  private _ticketStatusUpdateUrl: string = "http://35.221.88.74/status";
+  private _ticketPriorityUpdateUrl: string = "http://35.221.88.74/priority";
+  private _agentUrl = "http://35.221.88.74/agents/query?Email=";
+  private getIntentUrl = "http://35.221.88.74/intent/getIntent";
 
 
   token;
@@ -38,12 +38,6 @@ export class TicketsService {
     console.log("update successful");
     this.querys.next(queryParams);
   }
-
-  // getUserDetailsById() {
-  //   var a = this.http.get(this.UserDetailUrl);
-  //   // console.log(a);
-  //   return a;
-  // }
 
   getById(id) {
     return this.http.get<Ticket>(`${this._url}/detail/${id}`);
@@ -84,20 +78,15 @@ export class TicketsService {
     return this.http.put(this._ticketPriorityUpdateUrl, ticketPriorityData);
   }
 
-  updateIndividualTicketComment(ticketId, comment, createdBy){
-    console.log("Comment Data: " + comment);
-    var ticketCommentData = {'ticketid': ticketId, 'comment': comment, 'Createdby': createdBy};
-    console.log(ticketCommentData);
-    return this.http.put(this._ticketCommentUpdateUrl, ticketCommentData).subscribe(result => {
-      // console.log('huhu');
-    });
+  getIntentValue(){
+    return this.http.get<string[]>(this.getIntentUrl);
   }
 
   GetAgentDetails(agentEmail) {
-    return this.http.get<Agent>(`${this.agentUrl}%22${agentEmail}%22`);
+    return this.http.get<Agent>(`${this._agentUrl}%22${agentEmail}%22`);
   }
 
   GetUserDetails(username) {
-    return this.http.get<EndUser>(`${this.UserDetailUrl}%22${username}%22`);
+    return this.http.get<EndUser>(`${this._UserDetailUrl}%22${username}%22`);
   }
 }
