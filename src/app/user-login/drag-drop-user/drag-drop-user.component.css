@@ -1,18 +1,9 @@
-body{
-  background-color: #f5f5f6;
-}
-
-.nav{
-  color: #ffffff;
-  background-color: #000a12;
-}
-
-.container{
+.content{
   text-align: center;
-}
-
-#headline{
-  margin: 20px 0px 0px 0px;
+  height: 100vh;
+  color: #ffffff;
+  background:linear-gradient(135deg, #184e68 0%,#57ca85 100%);
+  padding-top: 30px;
 }
 
 #iconDiv{
@@ -36,16 +27,32 @@ input[type="file"]{
 }
 
 .secondaryBtnDiv{
-  width: 10%;
+  width: 20%;
   margin: 0 auto;
   padding: 2.5px;
 }
 
 #uploadbtn{
-  margin: 0 auto;
-  background-color: #263238;
-  color: #ffffff;
-  border: none;
+  width: 100%;
+  border-radius: .25rem;
   outline: none;
+  background-color: transparent;
+  color: #f5f5f6;
   padding: 10px 20px 10px 20px;
+  border: 2px solid #ffffff;
+}
+
+
+#uploadbtn:hover{
+  border:0px;
+  background-color: #f5f5f6;
+  color:#004d40 ;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 5px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.6s ease 0s;
+
 }

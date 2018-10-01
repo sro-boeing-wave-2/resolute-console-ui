@@ -27,35 +27,35 @@ export class RequestInterceptor implements HttpInterceptor {
         }
         console.log(request.headers);
         return next.handle(request)
-          .pipe(tap((event: HttpEvent<any>) => {
-            if (event instanceof HttpResponse) {
-              // console.log("Successful Response");
-            }
-          }, (err: any) => {
-            if (err instanceof HttpErrorResponse) {
-              if (err.status === 401 || err.status === 403) {
-                // console.log("ERROR CHECKED")
-                this.router.navigate(['/userlogin/login']);
-                this.localStorage.store("token", null);
-              }
-            }
-          }));
+          // .pipe(tap((event: HttpEvent<any>) => {
+          //   if (event instanceof HttpResponse) {
+          //     // console.log("Successful Response");
+          //   }
+          // }, (err: any) => {
+          //   if (err instanceof HttpErrorResponse) {
+          //     if (err.status === 401 || err.status === 403) {
+          //       // console.log("ERROR CHECKED")
+          //       this.router.navigate(['/userlogin/login']);
+          //       this.localStorage.store("token", null);
+          //     }
+          //   }
+          // }));
       }
       else {
         return next.handle(request)
-          .pipe(tap((event: HttpEvent<any>) => {
-            if (event instanceof HttpResponse) {
-              // console.log("Successful Response");
-            }
-          }, (err: any) => {
-            if (err instanceof HttpErrorResponse) {
-              if (err.status === 401 || err.status === 403) {
-                // console.log("ERROR CHECKED")
-                this.router.navigate(['/userlogin/login']);
-                this.localStorage.store("token", null);
-              }
-            }
-          }));;
+          // .pipe(tap((event: HttpEvent<any>) => {
+          //   if (event instanceof HttpResponse) {
+          //     // console.log("Successful Response");
+          //   }
+          // }, (err: any) => {
+          //   if (err instanceof HttpErrorResponse) {
+          //     if (err.status === 401 || err.status === 403) {
+          //       // console.log("ERROR CHECKED")
+          //       this.router.navigate(['/userlogin/login']);
+          //       this.localStorage.store("token", null);
+          //     }
+          //   }
+          // }));;
       }
     }
     else {
