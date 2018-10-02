@@ -95,7 +95,7 @@ export class IndividualTicketComponent implements OnInit {
 
   statuses: Options[] = [
     {value: "open", viewValue: 'Open'},
-    {value: "close", viewValue: 'Closed'},
+    {value: "close", viewValue: 'Close'},
     {value: "due", viewValue: 'Due'}
   ];
 
