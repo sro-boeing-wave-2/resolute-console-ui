@@ -68,7 +68,7 @@ export class IndividualTicketComponent implements OnInit {
   call(id) {
     let u = this.service.getById(id).subscribe(data => {
       this.TicketById = data;
-      this.chatHubUrl = `http://172.23.238.235:4200?ticketId=${this.TicketById.ticketId}&type=agent&email=${this.Email}&name=${this.UserName}`;
+      this.chatHubUrl = `http://13.126.8.255/chat?ticketId=${this.TicketById.ticketId}&type=agent&email=${this.Email}&name=${this.UserName}`;
       console.log("ChatHub URL: " + this.chatHubUrl);
     });
     console.log(u);
