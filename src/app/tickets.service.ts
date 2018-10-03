@@ -19,8 +19,9 @@ export class TicketsService {
   // http://35.221.125.153:8083/api/Tickets
 
   private UserDetailUrl: string = "http://13.126.8.255/endusers/query?Name=";
-  private _ticketStatusUpdateUrl: string = "http://13.126.8.255/status";
-  private _ticketPriorityUpdateUrl: string = "http://13.126.8.255/priority";
+  // private _ticketStatusUpdateUrl: string = "http://13.126.8.255/status";
+  // private _ticketPriorityUpdateUrl: string = "http://13.126.8.255/priority";
+  // private updateTicketUrl: string = "http://13.126.8.255/tickets/{id}?status=""&priority="your value"
   private _ticketCommentUpdateUrl: string = "http://13.126.8.255/updateComment";
   private agentUrl = "http://13.126.8.255/agents/query?Email=";
 
@@ -85,13 +86,13 @@ export class TicketsService {
   updateIndividualTicketStatus(ticketId, selectedStatus) {
     var ticketData = { 'TicketId': ticketId, 'Status': selectedStatus };
     console.log(ticketData);
-    return this.http.put(this._ticketStatusUpdateUrl, ticketData);
+    return this.http.put(`${this._url}/${ticketData.TicketId}?status=${ticketData.Status}&priority=`, ticketData);
   }
 
   updateIndividualTicketPriority(ticketId, selectedPriority){
-    var ticketPriorityData = {'TicketId': ticketId, 'Priority': selectedPriority};
-    console.log(ticketPriorityData);
-    return this.http.put(this._ticketPriorityUpdateUrl, ticketPriorityData);
+    var ticketData = {'TicketId': ticketId, 'Priority': selectedPriority};
+    console.log(ticketData);
+    return this.http.put(`${this._url}/${ticketData.TicketId}?status=&priority=${ticketData.Priority}`, ticketId);
   }
 
   updateIndividualTicketComment(ticketId, comment, createdBy){
