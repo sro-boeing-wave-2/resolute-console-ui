@@ -4,8 +4,11 @@ services:
   web:
    build: .
    labels:
-     - "SERVICE_4200_NAME=Consoleui"
-     - "SERVICE_TAG=ConsoleuiTag"
+     - "SERVICE_4200_NAME=console-ui"
+     - "SERVICE_TAG=console-ui"
+   ports:
+     - "4200:4200"
+   container_name: console-ui
 
     # container_name: resolute-console-ui
     # build:
