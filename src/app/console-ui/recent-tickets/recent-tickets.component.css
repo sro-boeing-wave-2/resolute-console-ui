@@ -1,4 +1,140 @@
-h1, .example-card {
+.content{
+  background-color: #EBEDEF;
+  height: 100vh;
+}
+
+.all-tickets-count{
+  background-color: white;
+  padding: 5px 5px 5px 5px;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #D6DBDF;
+}
+
+.ticket-boxes{
+  width: 25%;
+  padding: 10px;
+}
+
+.ticket-card{
+  padding: 10px 20px 10px 15px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  color: white;
+}
+
+.ticket-card:hover{
+  letter-spacing: 2px;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
+}
+
+.ticket-card h6{
+  margin-bottom: 0px;
+}
+
+.ticket-card h1{
+  font-size: 50px;
+}
+
+.open-ticket{
+  background-color: #1ABC9C;
+}
+
+.open-ticket:hover{
+  background-color: #117864;
+}
+
+.close-ticket{
+  background: rgb(33, 150, 243);
+}
+
+.close-ticket:hover{
+  background-color: #21618C;
+}
+.due-ticket{
+  background-color: #9B59B6;
+}
+
+.due-ticket:hover{
+  background-color: #633974;
+}
+
+.total-ticket{
+  background-color: #607a99;
+}
+
+.total-ticket:hover{
+  background-color: #283747;
+}
+
+.recent-tickets{
+  background-color: #EBEDEF;
+  height: auto;
+}
+
+.headline{
+  width: 100%;
+  padding: 15px;
+  color:#5D6D7E;
+}
+
+.recent-ticket-card-container{
+  background-color: #EBEDEF;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+}
+
+.recent-ticket-card{
+  width: 30%;
+  background-color: #ffffff;
+  padding-bottom: 10px;
+  margin: 15px;
+  border-radius: 5px;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.recent-ticket-card-header{
+  background:#607a99;
+  color: white;
+  padding: 15px;
+  letter-spacing: 2px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.recent-ticket-card-description{
+  background-color: #ffffff;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.recent-ticket-card-btn{
+  text-decoration: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px 15px 10px 15px;
+  background: rgb(33, 150, 243);
+  color: #ffffff;
+  border: none;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.recent-ticket-card-btn:hover{
+  background-color: #21618C;
+  cursor: pointer;
+}
+.recent-card-btn-holder{
+  width: 100%;
+  text-align: center;
+}
+
+/* h1, .example-card {
   margin: auto;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -10,9 +146,6 @@ h1, .example-card {
   background:linear-gradient(135deg, #c6e6fc 0%,#5cbcf3 100%);
 }
 
-.headline{
-  padding: 15px;
-  color:#004d40;}
 
 .example-card {
   background:linear-gradient(135deg, #378b76 0%,#4eba81 100%);
@@ -57,4 +190,4 @@ button:hover{
   box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
   transition: all 0.4s ease 0s;
 
-}
+} */

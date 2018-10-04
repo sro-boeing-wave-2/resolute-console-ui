@@ -5,7 +5,7 @@ export class AnalyticsData {
 }
 
 export class Csat {
-  date : Date;
+  date : string;
   csatscore : number;
 }
 

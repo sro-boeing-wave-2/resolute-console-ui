@@ -15,14 +15,17 @@ import { EndUser } from './console-ui/enduser';
 
 export class TicketsService {
 
-  private _url: string = "http://35.221.88.74/tickets";
+  private _url: string = "http://13.126.8.255/tickets";
   // http://35.221.125.153:8083/api/Tickets
 
-  private UserDetailUrl: string = "http://35.221.88.74/endusers/query?Name=";
-  private _ticketStatusUpdateUrl: string = "http://35.221.88.74/status";
-  private _ticketPriorityUpdateUrl: string = "http://35.221.88.74/priority";
-  private _ticketCommentUpdateUrl: string = "http://35.221.88.74/updateComment";
-  private agentUrl = "http://35.221.88.74/agents/query?Email=";
+  private UserDetailUrl: string = "http://13.126.8.255/endusers/query?Name=";
+  // private _ticketStatusUpdateUrl: string = "http://13.126.8.255/status";
+  // private _ticketPriorityUpdateUrl: string = "http://13.126.8.255/priority";
+  // private updateTicketUrl: string = "http://13.126.8.255/tickets/{id}?status=""&priority="your value"
+  private _ticketCommentUpdateUrl: string = "http://13.126.8.255/updateComment";
+  private agentUrl = "http://13.126.8.255/agents/query?Email=";
+  private getIntentUrl = "http://13.126.8.255/intent/getIntent";
+  private postSolutionUrl ="http://13.126.8.255/solution"
 
   // ----------------LINKS-------------------
   // http://172.23.238.239:5000/api/Tickets
@@ -44,12 +47,6 @@ export class TicketsService {
     console.log("update successful");
     this.querys.next(queryParams);
   }
-
-  // getUserDetailsById() {
-  //   var a = this.http.get(this.UserDetailUrl);
-  //   // console.log(a);
-  //   return a;
-  // }
 
   getById(id) {
     return this.http.get<Ticket>(`${this._url}/detail/${id}`);
@@ -85,13 +82,13 @@ export class TicketsService {
   updateIndividualTicketStatus(ticketId, selectedStatus) {
     var ticketData = { 'TicketId': ticketId, 'Status': selectedStatus };
     console.log(ticketData);
-    return this.http.put(this._ticketStatusUpdateUrl, ticketData);
+    return this.http.put(`${this._url}/${ticketData.TicketId}?status=${ticketData.Status}&priority=`, ticketData);
   }
 
   updateIndividualTicketPriority(ticketId, selectedPriority){
-    var ticketPriorityData = {'TicketId': ticketId, 'Priority': selectedPriority};
-    console.log(ticketPriorityData);
-    return this.http.put(this._ticketPriorityUpdateUrl, ticketPriorityData);
+    var ticketData = {'TicketId': ticketId, 'Priority': selectedPriority};
+    console.log(ticketData);
+    return this.http.put(`${this._url}/${ticketData.TicketId}?status=&priority=${ticketData.Priority}`, ticketId);
   }
 
   updateIndividualTicketComment(ticketId, comment, createdBy){
@@ -103,6 +100,10 @@ export class TicketsService {
     });
   }
 
+  getIntentValue(){
+    return this.http.get<string[]>(this.getIntentUrl);
+  }
+
   GetAgentDetails(agentEmail) {
     return this.http.get<Agent>(`${this.agentUrl}%22${agentEmail}%22`);
   }
@@ -110,4 +111,9 @@ export class TicketsService {
   GetUserDetails(username) {
     return this.http.get<EndUser>(`${this.UserDetailUrl}%22${username}%22`);
   }
+
+  postSolution(submittingData) {
+    return this.http.post(this.postSolutionUrl, submittingData);
+  }
+
 }

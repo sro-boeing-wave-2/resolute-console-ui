@@ -1,20 +1,152 @@
-mat-toolbar {
-  background-color: #004d40 ;
-  color: white;
+.my-example-container {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
 }
 
-.mat-drawer{
-  width: 20%;
+.my-example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  background-color: #31475A;
 }
 
-.spacer {
+#agentDetails {
+  padding: 0px;
+  color: #A5B6C3;
+  outline: none;
+  border: none;
+}
+
+#photo-background{
+  height: min-content;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  padding: 0px 30px 0px 30px;
+  margin-top: -150px;
+}
+
+#square-box{
+  text-align: center;
+  overflow: hidden;
+  margin: 0 auto;
   flex: 1 1 auto;
+  height: 100%;
+}
+
+img{
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+::ng-deep mat-divider {
+  background-color: #343C48;
+  height: 3px;
+}
+
+#navigation {
+  padding: 0px;
+}
+
+.link-btn{
+  background-color: transparent;
+  font-size: medium;
+  width: 100%;
+  color: #a5b6c3;
+  border: none;
+  outline: none;
+  padding: 10px 20px 10px 20px;
+  text-align: left;
+}
+
+.link-btn:hover{
+  border:0px;
+  background-color: transparent;
+  color:#ffffff ;
+  cursor: pointer;
+  letter-spacing: 1.5px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.6s ease 0s;
 }
 
 #mainTitle {
   padding-left: 25px;
   letter-spacing: 4px;
 }
+
+#mainTitle a{
+  color: #85929E;
+}
+
+#mainTitle a:hover{
+  text-decoration: none;
+  color: #343C48;
+  cursor: pointer;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.notification-btn{
+  margin-top: 0px;
+  background-color: transparent;
+  padding: 20px 20px 20px 20px;
+  border-radius: 0px;
+  color: #85929E;
+  outline: none;
+  border: none;
+  border-left: 1px solid #D6DBDF;
+}
+
+.notification-btn:hover{
+  color: white;
+  background: rgb(33, 150, 243);
+  text-decoration: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+.mat-toolbar{
+  border-bottom: 1px solid #D6DBDF;
+  border-right: 1px solid #D6DBDF;
+  background: #ffffff;
+}
+
+.mat-toolbar-multiple-rows {
+  min-height: auto;
+}
+
+.mat-toolbar-row {
+  height: auto;
+  padding: 0px;
+}
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+.mat-drawer{
+  width: 20%;
+}
+
 
 .example-sidenav{
   background:linear-gradient(135deg, #184e68 0%,#57ca85 100%);
@@ -23,28 +155,8 @@ mat-toolbar {
 .mat-drawer-content {
   width: 100%;
   height: 87.4%;
-  /* height: 638px; */
   margin: auto;
   background-color: #f5f5f6;
-}
-
-#square-box{
-  position: relative;
-  width: 50%;
-  margin: 0 auto;
-
-}
-
-#square-box::after{
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-}
-
-#photo-background{
-  background-color: transparent;
-  padding: 15px 0px 15px 0px;
-  width: 100%;
 }
 
 #UserImage-box{
@@ -55,75 +167,6 @@ mat-toolbar {
   position: absolute;
 }
 
-#agentDetails {
-  padding: 10px;
-  color: #ffffff;
-  border-width: 5px;
-  /* border-right-style: solid; */
-}
-
-#navigation {
-  padding: 0px;
-
-}
-
-.link-btn{
-  background-color: transparent;
-  font-size: medium;
-  width: 100%;
-  color: #ffffff;
-  border: none;
-  outline: none;
-  padding: 10px;
-  text-align: left;
-}
-
-.link-btn:hover{
-  border:0px;
-  background-color: #f5f5f6;
-  color:#004d40 ;
-  cursor: pointer;
-  font-weight: bold;
-  letter-spacing: 5px;
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
-  transition: all 0.6s ease 0s;
-}
-
-.logout-btn{
-  background-color: transparent;
-  width: 90%;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  outline: none;
-  padding: 10px;
-  margin: 10px;
-  text-align: center;
-}
-
-.logout-btn:hover{
-  border:0px;
-  background-color: #ffffff;
-  color:#004d40 ;
-  cursor: pointer;
-  font-weight: bold;
-  letter-spacing: 5px;
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
-  transition: all 0.6s ease 0s;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
-#createButton{
-  background-color: #f5f5f6;
-}
-
 #footer {
   height: 6%;
 }
@@ -131,4 +174,4 @@ a {
 #footer #copyright {
   margin: auto;
   margin-left: 30px;
-}
+} */

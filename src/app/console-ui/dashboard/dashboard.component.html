@@ -1,15 +1,12 @@
 <section id="dashboard">
-  <mat-grid-list cols="2" rowHeight="1.8:1" gutterSize="15px">
-    <mat-grid-tile>
+  <mat-grid-list cols="2" rowHeight="2:1.1" gutterSize="15px">
+    <mat-grid-tile [colspan]="2" [rowspan]="1" >
       <app-c-sat-score></app-c-sat-score>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1" >
       <app-tickets-piechart></app-tickets-piechart>
     </mat-grid-tile>
-    <mat-grid-tile>
-      <app-resolution-time></app-resolution-time>
-    </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1" >
       <app-gamification></app-gamification>
     </mat-grid-tile>
   </mat-grid-list>

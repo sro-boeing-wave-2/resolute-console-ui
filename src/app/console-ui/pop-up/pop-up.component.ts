@@ -13,6 +13,7 @@ export class TemplateComponent {
 @Component({
   selector: 'app-pop-up',
   templateUrl: './pop-up.component.html',
+
   styleUrls: ['./pop-up.component.css']
 })
 
@@ -22,15 +23,22 @@ export class PopUpComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
-  text : string = "";
+  chosenIntent : string = this.data.intentValue;
+  text:string = "";
+
 
   ngOnInit() {
   }
 
   save(){
-    console.log(this.text);
-    this.dialogRef.close("IT WAS SAVED");
-    console.log("huhu");
+    const submitData = {
+      intent: this.chosenIntent,
+      task: this.text
+    }
+
+    console.log(submitData);
+    this.service.postSolution(submitData).subscribe();
+    this.dialogRef.close(this.text);
   }
 
 }

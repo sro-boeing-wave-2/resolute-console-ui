@@ -4,8 +4,7 @@
     <i class="font far fa-file-alt"></i>
   </div>
   <div id="chooseFileDiv">
-    <input #file type="file" multiple (change)="onFileSelected($event)" />
-    <br/>
+    <input #file name="TrainingData" multiple type="file" (change)="onFileSelected($event)" />
     <span style="font-weight:bold;color:green; padding: 0px;" *ngIf="progress > 0 && progress < 100">
       {{progress}}%
     </span>

@@ -1,30 +1,15 @@
 <section id="gamification">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
     <ng-container matColumnDef="Most Tickets">
-      <th mat-header-cell *matHeaderCellDef> <strong>Top Agents with Most Resolved Tickets</strong> </th>
+      <th mat-header-cell *matHeaderCellDef> <strong>TOP AGENTS</strong> </th>
       <td mat-cell *matCellDef="let element">
         <img src="{{element?.profileImageUrl}}">
         <span>
-          <p>Name : <strong>{{element?.name}}</strong></p>
-          <p>Department : <strong>{{element?.departmentName}}</strong></p>
-          <p>Number of Tickets Resolved : <strong>{{element?.numberOfTicketsResolved}}</strong></p>
+          <h5 style="color: #0077B5; letter-spacing: 1px;"><strong>{{element?.name}}</strong></h5>
+          <h6>Resolved Tickets : <strong>{{element?.numberOfTicketsResolved}}</strong></h6>
         </span>
-        <img id="badge" src="{{element?.BadgeUrl}}">
       </td>
     </ng-container>
-
-    <!-- <ng-container matColumnDef="Least Resolution Time">
-      <th mat-header-cell *matHeaderCellDef> <strong>Least Resolution Time</strong> </th>
-      <td mat-cell *matCellDef="let element">
-        <img src="{{element.leastTime.image_url}}">
-        <span>
-          <p>Name : <strong>{{element.leastTime.agentName}}</strong></p>
-          <p>Department : <strong>{{element.leastTime.department}}</strong></p>
-          <p>Resolution Time : <strong>{{element.leastTime.resolutionTime}} minutes</strong></p>
-        </span>
-      </td>
-    </ng-container> -->
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -17,10 +17,14 @@ export class RecentTicketsComponent implements OnInit {
     priority: "",
     page: 1,
   }
+  numberOfTickets;
+  httpOptions;
+  tabIndex = 0;
 
   constructor(private ticketService: TicketsService, private router: Router) { }
 
   ngOnInit() {
+    this.ticketService.getTicketCount().subscribe(data => {this.numberOfTickets = data});
     this.ticketService.getRecentTickets(this.queryParams).subscribe(data => {
       this.agentOpenTickets = data.tickets;
       console.log(this.agentOpenTickets);

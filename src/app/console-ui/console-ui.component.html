@@ -1,57 +1,47 @@
-<mat-toolbar id="header">
-  <mat-toolbar-row>
-    <button type="button" mat-button (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span id="mainTitle">
-      <a routerLink="/console/home" routerLinkActive="active"><strong>{{agentDetails?.organisationName | uppercase }}</strong></a>
-    </span>
-    <span class="spacer"></span>
-
-    <button mat-button (click)="showNotifications()">
-      <mat-icon class="icon">notifications</mat-icon>
-      {{notificationCount}}
-    </button>
-
-  </mat-toolbar-row>
-</mat-toolbar>
-
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" [mode]="side">
+<mat-sidenav-container class="my-example-container">
+  <mat-sidenav #sidenav mode="side" opened class="my-example-sidenav" [fixedInViewport]>
     <section id="agentDetails">
       <div id="photo-background">
         <div id="square-box">
           <img src="{{agentDetails?.profileImageUrl}}" id="UserImage-box">
+          <!-- <img src="/src/assets/images/profile-pic.jpg" id="UserImage-box"> -->
         </div>
       </div>
       <br>
+      <p style="text-align: center"> {{agentDetails?.name}} </p>
       <mat-divider></mat-divider>
-      <p> Name : {{agentDetails?.name}} </p>
+      <br>
+      <div id="navigation">
+          <button class="link-btn" routerLink="/console/home" routerLinkActive="active">
+            <i class="fas fa-home"></i> <strong> &nbsp; HOME </strong></button>
+
+          <button class="link-btn" routerLink="/console/dashboard" routerLinkActive="active">
+            <i class="far fa-chart-bar"></i> <strong> &nbsp; DASHBOARD </strong> </button>
+
+          <button class="link-btn" [routerLink]="['/console/tickets', 'all']" routerLinkActive="active">
+            <i class="far fa-address-card"></i> <strong> &nbsp; TICKETS </strong> </button>
+          <h3>
+            <button class="logout-btn link-btn" (click)="logOut()">
+                <i class="fas fa-power-off"></i> <strong> &nbsp; LOG OUT </strong>
+            </button>
+          </h3>
+        </div>
     </section>
-    <section id="navigation">
-      <button class="link-btn" routerLink="/console/home" routerLinkActive="active">
-        <i class="fas fa-home"></i> Home </button>
+  </mat-sidenav>
 
-      <button class="link-btn" routerLink="/console/counts" routerLinkActive="active">
-        <i class="fas fa-quidditch"></i> Counts </button>
-
-      <button class="link-btn" routerLink="/console/dashboard" routerLinkActive="active">
-        <i class="far fa-chart-bar"></i> Dashboard </button>
-
-      <button class="link-btn" [routerLink]="['/console/tickets', 'all']" routerLinkActive="active">
-        <i class="far fa-address-card"></i> Tickets </button>
-      <mat-divider></mat-divider>
-      <h3>
-        <button mat-button class="logout-btn" (click)="logOut()">
-          <mat-icon>exit_to_app</mat-icon> Log Out
-        </button>
-      </h3>
-    </section>
-  </mat-drawer>
-  <mat-drawer-content>
+  <mat-sidenav-content>
+    <mat-toolbar id="header">
+        <mat-toolbar-row>
+          <span id="mainTitle">
+            <!-- <a routerLink="/console/home" routerLinkActive="active"><strong>{{agentDetails?.organisationName | uppercase }}</strong></a> -->
+            <a routerLink="/console/home" routerLinkActive="active"><strong>BOEING</strong></a>
+          </span>
+          <span class="spacer"></span>
+          <button class="notification-btn" (click)="showNotifications()">
+              <i class="fas fa-bell"></i><sup> {{notificationCount}} </sup>
+          </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
     <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
-<mat-toolbar id="footer">
-  <p id="copyright">&copy; Resolute</p>
-</mat-toolbar>
+  </mat-sidenav-content>
+

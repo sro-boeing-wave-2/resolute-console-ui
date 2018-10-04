@@ -34,6 +34,7 @@ export class IndividualTicketComponent implements OnInit {
   ConnectionId: string;
   Type: string;
   Email: string;
+  selectedIntentValue: string;
   selectedStatusValue: string ;
   selectedPriorityValue: string ;
   commentValue: string;
@@ -42,9 +43,10 @@ export class IndividualTicketComponent implements OnInit {
   chatHubUrl: string = null;
   agentDetails:TicketsService;
   userImage;
+  ansibleCode:string;
 
   myControl = new FormControl();
-  options: string[] = ['Intent One', 'Intent Two', 'Intent Three'];
+  options: string[] = [];
   filteredOptions: Observable<string[]>;
 
   constructor(private router: Router, private service: TicketsService, private route: ActivatedRoute, public dialog: MatDialog, private localStorage: LocalStorageService) { }
@@ -56,25 +58,36 @@ export class IndividualTicketComponent implements OnInit {
     this.call(id);
     this.Email = this.localStorage.retrieve("email");
     this.UserName = this.Email.split("@")[0];
+
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
+        map(value => {
+          console.log(value);
+          return value;
+        }),
         startWith(''),
         map(value => this._filter(value))
       );
     console.log(this.chatHubUrl);
 
+    this.service.getIntentValue().subscribe(data => {
+      this.options = data;
+      console.log(this.options);
+    });
+    console.log("my intent value is " + this.myControl.value);
   }
 
   call(id) {
     let u = this.service.getById(id).subscribe(data => {
       this.TicketById = data;
-      this.chatHubUrl = `http://172.23.238.235:4200?ticketId=${this.TicketById.ticketId}&type=agent&email=${this.Email}&name=${this.UserName}`;
+      this.chatHubUrl = `http://13.126.8.255/chat?ticketId=${this.TicketById.ticketId}&type=agent&email=${this.Email}&name=${this.UserName}`;
       console.log("ChatHub URL: " + this.chatHubUrl);
     });
     console.log(u);
   }
 
    _filter(value: string): string[] {
+    this.selectedIntentValue = value;
     const filterValue = value.toLowerCase();
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
@@ -95,7 +108,7 @@ export class IndividualTicketComponent implements OnInit {
 
   statuses: Options[] = [
     {value: "open", viewValue: 'Open'},
-    {value: "close", viewValue: 'Closed'},
+    {value: "close", viewValue: 'Close'},
     {value: "due", viewValue: 'Due'}
   ];
 
@@ -111,11 +124,13 @@ export class IndividualTicketComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PopUpComponent, {
+      data: {intentValue: this.selectedIntentValue},
       panelClass: 'my-panel',
       width: '30%',
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.ansibleCode = result;
     });
   }
 }

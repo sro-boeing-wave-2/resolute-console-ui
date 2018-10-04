@@ -1,28 +1,27 @@
 <div class="fullContent">
   <div class="left-side-content">
     <!-- Chat Module will come here -->
-    <iframe [src]="chatHubUrl | safe" *ngIf="this.chatHubUrl != null"></iframe>
+    <iframe [src]="chatHubUrl | safe" *ngIf="this.chatHubUrl != null && this.TicketById?.ticketId != null" ></iframe>
   </div>
-
 
   <div class="right-side-content">
           <div id="square">
-            <img id="UserImage" src="{{userImage?.profileImageUrl}}" alt="UserImage">
+            <img id="UserImage" src="{{TicketById?.userImageUrl}}" alt="UserImage">
           </div>
-          <p> {{TicketById?.userEmailId}}</p>
+          <p> {{TicketById?.userName | titlecase }}</p>
           <p> Ticket ID : {{TicketById?.ticketId}} </p>
-          <p >
-            <b>Issue: </b> {{TicketById?.intent}} </p>
+          <!-- <p >
+            <b>Issue: </b> {{TicketById?.intent}} </p> -->
           <p>
             <b>Description: </b>
           </p>
           <p id="description">
-            {{TicketById?.description}}
+            {{TicketById?.description | titlecase}}
           </p>
           <form class="example-form">
             <mat-form-field class="example-full-width">
               <input type="text" placeholder="Subject" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-              <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
+              <mat-autocomplete #auto="matAutocomplete" >
                 <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                   {{option}}
                 </mat-option>
@@ -49,7 +48,7 @@
           </mat-form-field>
         </form>
         <div class="btn-class">
-          <button (click)="openDialog()" id="suggest-btn">GIVE SOLUTION</button>
+          <button (click)="openDialog()" id="suggest-btn">ADD SOLUTION</button>
           <button (click)="back()" id="back-btn">BACK</button>
         </div>
     </div>

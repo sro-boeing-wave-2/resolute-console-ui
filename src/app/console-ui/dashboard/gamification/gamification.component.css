@@ -1,22 +1,44 @@
 table {
-  width: 99%;
+  width: 100%;
   margin: auto;
   color: white;
+}
+
+#gamification {
+  overflow-y: scroll;
+}
+
+table.mat-table{
+  overflow: scroll;
 }
 
 th.mat-header-cell {
   text-align: center;
   font-size: 15px;
   color: white;
-  background-color: #263238;
+  letter-spacing: 3px;
+  background-color: #0077B5;
+}
+
+td.mat-cell{
+  background: white;
+  padding: 10px;
+
+}
+
+.tickets-container{
+  padding: 0;
+  margin: 0;
+  overflow: scroll;
+  background:red;
 }
 
 img {
-  border-radius: 35px;
-  margin: 10px 0px 9px 80px;
+  border-radius: 50%;
   height: 85px;
   width: 85px;
   float: left;
+  border-color: #0077B5;
   border-style: solid;
   border-width: 3px;
 }
@@ -29,13 +51,6 @@ span {
 p {
   font-size: 13px;
   margin-top: 5px;
-}
-
-#badge {
-  float: right;
-  border: none;
-  margin-top: 10px;
-  margin-right: 80px;
 }
 
 

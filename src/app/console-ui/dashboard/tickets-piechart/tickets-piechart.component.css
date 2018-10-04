@@ -1,3 +1,6 @@
 ::ng-deep #pie {
-  height: 380px;
+  width: 85%;
+  height: 85%;
+  margin: 0;
+
 }

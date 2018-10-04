@@ -25,7 +25,8 @@ export class RequestInterceptor implements HttpInterceptor {
         console.log('Token added to HTTP request');
         console.log(request.headers);
         if (!request.headers.has('Content-Type')) {
-          request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
+          console.log('Setting Content Type Headers');
+          // request = request.clone({ headers: request.headers.set('Content-sType', 'application/json') });
         }
         console.log(request.headers);
         return next.handle(request)

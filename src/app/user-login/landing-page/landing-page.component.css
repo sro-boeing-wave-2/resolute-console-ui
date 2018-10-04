@@ -10,7 +10,7 @@
 }
 .fullBody{
   height: 100vh;
-  background:linear-gradient(135deg, #184e68 0%,#57ca85 100%);
+  background:linear-gradient(135deg, #0470dc 0%,#0bb1ec 100%);
   color: #ffffff;
 }
 
@@ -62,7 +62,7 @@ margin-bottom: 50px;
 .join-btn:hover{
   border:0px;
   background-color: #f5f5f6;
-  color:#184e68;
+  color:#0470dc;
   cursor: pointer;
   font-weight: bold;
   letter-spacing: 5px;
@@ -84,7 +84,7 @@ margin-bottom: 50px;
 .btn:hover{
   border:0px;
   background-color: #f5f5f6;
-  color:#184e68;
+  color:#0470dc;
   cursor: pointer;
   font-weight: bold;
   letter-spacing: 5px;

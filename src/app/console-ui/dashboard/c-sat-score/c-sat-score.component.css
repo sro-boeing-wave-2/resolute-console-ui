@@ -14,7 +14,6 @@
 }
 
 ::ng-deep .option > span {
-  margin-right: 10px;
 }
 
 ::ng-deep .option > .dx-widget {
@@ -23,10 +22,12 @@
 }
 
 #chart-demo{
-width: 720px;
+  width: 85%;
+  height: 85%;
+  padding: 40px;
 }
 
 dxo-title.text {
-  background-color: #263238;
+  background-color: blue;
 }
 

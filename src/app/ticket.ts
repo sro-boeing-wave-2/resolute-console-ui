@@ -16,6 +16,8 @@ export interface Ticket {
   updatedOn: Date;
   updatedBy: string;
   userEmailId: string;
+  userName: string;
+  userImageUrl: string;
 }
 
 // export interface Comment {
