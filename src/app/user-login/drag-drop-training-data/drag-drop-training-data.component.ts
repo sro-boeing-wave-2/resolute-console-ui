@@ -27,7 +27,6 @@ export class DragDropTrainingDataComponent implements OnInit {
     const httpOptions = {
       headers: new HttpHeaders({ 'Access': 'Allow_Service' })
     };
-
     this.http.post('http://13.126.8.255/intent/upload', fd, httpOptions).subscribe(res => {
       console.log(res);
       setTimeout(a => {

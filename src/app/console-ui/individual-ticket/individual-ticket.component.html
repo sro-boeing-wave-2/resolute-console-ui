@@ -30,7 +30,7 @@
           </form>
         <form id="statusAndPriority" style="color: white">
           <mat-form-field>
-            <mat-select class="ticket-status" placeholder="{{TicketById?.status == 0 ? 'Open' : (TicketById?.status == 1 ? 'Closed' : 'Due')}}" [(ngModel)]="selectedStatusValue"
+            <mat-select class="ticket-status" placeholder="{{TicketById?.status | titlecase}}" [(ngModel)]="selectedStatusValue"
               name="status">
               <mat-option (click)="updateStatus()" *ngFor="let status of statuses" [value]="status.value">
                 {{status?.viewValue }}

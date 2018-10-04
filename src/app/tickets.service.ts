@@ -25,7 +25,7 @@ export class TicketsService {
   private _ticketCommentUpdateUrl: string = "http://13.126.8.255/updateComment";
   private agentUrl = "http://13.126.8.255/agents/query?Email=";
   private getIntentUrl = "http://13.126.8.255/intent/getIntent";
-  private postSolutionUrl ="http://13.126.8.255/solution"
+  private postSolutionUrl ="http://13.126.8.255/solution";
 
   // ----------------LINKS-------------------
   // http://172.23.238.239:5000/api/Tickets
