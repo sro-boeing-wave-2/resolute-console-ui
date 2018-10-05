@@ -1,52 +1,7 @@
-<div class="content">
-<div class="all-tickets-count">
-  <div class="ticket-boxes">
-    <button [routerLink]="['/console/tickets', 'open']" class="ticket-card open-ticket">
-      <h6>Open Tickets</h6>
-      <h1>{{numberOfTickets?.open}}</h1>
-    </button>
-  </div>
-  <div class="ticket-boxes">
-    <button [routerLink]="['/console/tickets', 'close']" class="ticket-card close-ticket">
-    <h6>Closed Tickets</h6>
-    <h1>{{numberOfTickets?.closed}}</h1>
-    </button>
-  </div>
-  <div class="ticket-boxes">
-      <button  [routerLink]="['/console/tickets', 'due']"  class="ticket-card due-ticket">
-      <h6>Due Tickets</h6>
-      <h1>{{numberOfTickets?.due}}</h1>
-      </button>
-    </div>
-    <div class="ticket-boxes">
-        <button [routerLink]="['/console/tickets', 'all']" class="ticket-card total-ticket">
-        <h6>Total Tickets</h6>
-        <h1>{{numberOfTickets?.total}}</h1>
-        </button>
-      </div>
-  </div>
-
-<div class="recent-tickets">
   <div class="headline">
-    <h1>Recent Tickets</h1>
-  </div>
-  <div class="recent-ticket-card-container">
-    <div class="recent-ticket-card" *ngFor="let ticket of agentOpenTickets">
-       <div class="recent-ticket-card-header">
-         <strong> PRIORITY: HIGH </strong>
-       </div>
-       <div class="recent-ticket-card-description">
-        <p>  description {{ticket.description}}</p>
-       </div>
-       <div class="recent-card-btn-holder">
-       <button (click)="routeToTicketDetails(ticket)" class="recent-ticket-card-btn"><strong> View Ticket</strong></button>
-      </div>
-    </div>
-  </div>
-</div>
+  <h1>Recent Tickets</h1>
 </div>
 
-<!--
 <mat-card *ngFor="let ticket of agentOpenTickets" class="example-card">
   <mat-card-header>
     <mat-card-title>
@@ -59,5 +14,14 @@
   <div class="btn-holder-div">
     <button (click)="routeToTicketDetails">View</button>
   </div>
-</mat-card> -->
+</mat-card>
 
+<!-- <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title><h3>Not able to login</h3></mat-card-title>
+      <mat-card-subtitle><h6>This is a new ticket! Good Luck ;p</h6></mat-card-subtitle>
+    </mat-card-header>
+    <div class="btn-holder-div">
+      <button>View</button>
+    </div>
+  </mat-card> -->

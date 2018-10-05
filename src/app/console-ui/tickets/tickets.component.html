@@ -5,7 +5,7 @@
       <table mat-table [dataSource]="tickets" class="mat-elevation-z8">
 
         <ng-container matColumnDef="subject">
-          <th mat-header-cell *matHeaderCellDef> SUBJECT  </th>
+          <th mat-header-cell *matHeaderCellDef> SUBJECT </th>
           <!-- <button mat-button (click)="changeSortBy('subject')">
               <mat-icon>arrow_upward</mat-icon>
             </button> -->
@@ -175,6 +175,7 @@
             </mat-option>
           </mat-select>
         </label>
+        <br>
         <!-- <button mat-button (click)="clearFilters()">Clear Filters</button> -->
         <button mat-raised-button type="submit" id="submit">Submit</button>
       </form>
