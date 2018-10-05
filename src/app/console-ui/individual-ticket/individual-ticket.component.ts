@@ -44,6 +44,7 @@ export class IndividualTicketComponent implements OnInit {
   agentDetails:TicketsService;
   userImage;
   ansibleCode:string;
+  intentUpdate: string;
 
   myControl = new FormControl();
   options: string[] = [];
@@ -63,6 +64,7 @@ export class IndividualTicketComponent implements OnInit {
       .pipe(
         map(value => {
           console.log(value);
+          this.intentUpdate = value;
           return value;
         }),
         startWith(''),
@@ -99,7 +101,7 @@ export class IndividualTicketComponent implements OnInit {
 
   updateStatus(){
     console.log(this.selectedStatusValue);
-    this.service.updateIndividualTicketStatus(this.TicketById.ticketId,this.selectedStatusValue).subscribe();
+    this.service.updateIndividualTicketStatus(this.TicketById.ticketId,this.selectedStatusValue, this.intentUpdate).subscribe();
   }
 
   updatePriority(){
