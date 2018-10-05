@@ -27,11 +27,6 @@ export class TicketsService {
   private getIntentUrl = "http://13.126.8.255/intent/getIntent";
   private postSolutionUrl ="http://13.126.8.255/solution";
 
-  // ----------------LINKS-------------------
-  // http://172.23.238.239:5000/api/Tickets
-  // http://35.189.155.116:8083/
-  // ----------------------------------------
-
   token;
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
@@ -88,7 +83,7 @@ export class TicketsService {
   updateIndividualTicketPriority(ticketId, selectedPriority){
     var ticketData = {'TicketId': ticketId, 'Priority': selectedPriority};
     console.log(ticketData);
-    return this.http.put(`${this._url}/${ticketData.TicketId}?status=&priority=${ticketData.Priority}`, ticketId);
+    return this.http.put(`${this._url}/${ticketData.TicketId}?status=&priority=${ticketData.Priority}`, ticketData);
   }
 
   updateIndividualTicketComment(ticketId, comment, createdBy){
