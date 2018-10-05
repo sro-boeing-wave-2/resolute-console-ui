@@ -74,8 +74,8 @@ export class TicketsService {
     return this.http.get(this._url);
   }
 
-  updateIndividualTicketStatus(ticketId, selectedStatus) {
-    var ticketData = { 'TicketId': ticketId, 'Status': selectedStatus };
+  updateIndividualTicketStatus(ticketId, selectedStatus, intent) {
+    var ticketData = { 'TicketId': ticketId, 'Status': selectedStatus, 'intent': intent };
     console.log(ticketData);
     return this.http.put(`${this._url}/${ticketData.TicketId}?status=${ticketData.Status}&priority=`, ticketData);
   }
