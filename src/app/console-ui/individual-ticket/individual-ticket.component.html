@@ -20,7 +20,7 @@
           </p>
           <form class="example-form">
             <mat-form-field class="example-full-width">
-              <input type="text" placeholder="Subject" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <input type="text" placeholder="Subject" [value]="TicketById?.intent" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
               <mat-autocomplete #auto="matAutocomplete" >
                 <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                   {{option}}
