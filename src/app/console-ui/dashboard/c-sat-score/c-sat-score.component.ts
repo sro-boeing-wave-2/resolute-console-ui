@@ -25,7 +25,7 @@ export class CSatScoreComponent implements OnInit {
       this.csatData.forEach(element => {
         element.date = this.datepipe.transform(element.date, 'dd-mm-yy');
       });
-      this.csatData = this.csatData.reverse().slice(-5, -1).reverse();
+      this.csatData = this.csatData.reverse().slice(-8, -1);
       console.log(JSON.stringify( data.analyticscsat));
     })
     // service.getCsatMetaData()
