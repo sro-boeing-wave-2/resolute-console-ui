@@ -32,8 +32,8 @@ export class PopUpComponent implements OnInit {
 
   save(){
     const submitData = {
-      intent: this.chosenIntent,
-      task: this.text
+      Intent: this.chosenIntent,
+      Tasks: this.text
     }
 
     console.log(submitData);
