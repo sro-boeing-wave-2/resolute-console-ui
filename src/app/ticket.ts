@@ -7,6 +7,7 @@ export interface modelForGetTicketsByFilter {
 
 export interface Ticket {
   ticketId: string;
+  title: string;
   intent: string;
   description: string;
   agentEmailId: string;
