@@ -10,7 +10,7 @@ import { Ticket } from '../ticket';
 export class NotificationService {
 
   private _hubConnection: HubConnection;
-  private notificationList: BehaviorSubject<Ticket> = new BehaviorSubject<Ticket>(null);
+  private notificationList: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
   constructor() { }
 
@@ -22,7 +22,7 @@ export class NotificationService {
           console.log(`Configured connection for ${email}`);
         });
       });
-    this._hubConnection.on("ReceiveNotification", (payload: Ticket) => {
+    this._hubConnection.on("ReceiveNotification", (payload: string) => {
       this.notificationList.next(payload);
       console.log(payload);
     });

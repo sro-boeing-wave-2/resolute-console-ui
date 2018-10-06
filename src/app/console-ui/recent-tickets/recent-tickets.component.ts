@@ -38,7 +38,7 @@ export class RecentTicketsComponent implements OnInit {
     this.notificationService.startHubConnection(this.agentEmail);
     this.notificationService.newNotification().subscribe(data => {
       if(data) {
-        this.agentOpenTickets.unshift(data);
+        this.agentOpenTickets.unshift(JSON.parse(data));
         console.log(data);
       }
     })
