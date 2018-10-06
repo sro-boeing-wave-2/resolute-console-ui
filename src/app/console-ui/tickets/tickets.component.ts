@@ -19,7 +19,7 @@ export interface PriorityLevel {
 
 export class TicketsComponent implements OnInit {
 
-  displayedColumns = ['subject', 'status', 'priority'];
+  displayedColumns = ['subject', 'status', 'priority', 'createdOn'];
   navLinks = []; numberOfTickets = {};
   PaginationTicket: PaginationTicketModel;
   TotalPages;
@@ -69,7 +69,8 @@ export class TicketsComponent implements OnInit {
 
   ngOnInit() {
     this.service.getTicketCount().subscribe(data => { this.numberOfTickets = data; });
-
+    this.pageRangeArray.pageNo = [1,2,3,4,5];
+    this.currentPageNo = 1;
     this.index = (this.activatedRoute.snapshot.paramMap.get('index')).toString();
     this.indexValue = this.indexMap[this.index];
     if (this.index != 'all')
@@ -94,7 +95,6 @@ export class TicketsComponent implements OnInit {
     //   this.PaginationTicket = data;
     //   this.Pages = this.PaginationTicket.Pages;
     // })
-    this.pageRangeArray = this.getPageRange(1);
     this.isPreviousDisabled = true;
     if (this.TotalPages == 1)
       this.isNextDisabled = true;
@@ -109,22 +109,16 @@ export class TicketsComponent implements OnInit {
     if (status == 'all') this.queryParams.status = '';
     else this.queryParams.status = status;
     console.log(this.queryParams);
+    this.queryParams.page = 1;
     this.service.updateQueryParamsModel(this.queryParams);
     this.router.navigate(['/console/tickets/', this.queryParams.status])
+    this.getPageRange(this.queryParams.page);
   }
 
   onClick(element) {
     console.log(element.ticketId);
     this.router.navigate(['/console/tickets/view', element.ticketId]);
   }
-
-  // changeSortBy(sortby) {
-  //   console.log("Hi");
-  //   this.queryParams.sortBy = sortby;
-  //   this.queryParams.sortOrder = !this.queryParams.sortOrder;
-  //   console.log(this.queryParams);
-  //   this.service.updateQueryParamsModel(this.queryParams);
-  // }
 
   applyFilters() {
     this.queryParams.priority = this.filterForm.value['priorityLevel'];

@@ -128,7 +128,8 @@ export class IndividualTicketComponent implements OnInit {
     const dialogRef = this.dialog.open(PopUpComponent, {
       data: {intentValue: this.selectedIntentValue},
       panelClass: 'my-panel',
-      width: '30%',
+      height: '90%',
+      width: '80%',
     });
 
     dialogRef.afterClosed().subscribe(result => {

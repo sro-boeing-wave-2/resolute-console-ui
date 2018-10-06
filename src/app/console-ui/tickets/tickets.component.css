@@ -1,8 +1,11 @@
 #tickets {
   background-color: blue;}
 
- mat-tab-nav-bar{
-  background-color: blue;
+  ::ng-deep .mat-tab-labels {
+    display: flex;
+    width: 80%;
+    margin: 0;
+    float: left;
 }
 
 ::ng-deep mat-tab-label{
@@ -58,31 +61,35 @@ nav {
 }
 
 form {
-  padding: 10px 20px;
+  padding: 0px 40px;
   color: black;
-
 }
 
 label, mat-select {
   color: black;
   margin: 20px 0px;
-  background-color: #0077B5;
-
+  background-color:white;
 }
+
 
 #submit {
   margin: 0px 0px 20px 0px;
 }
 
 #pagination_nav {
+  margin-top: 20px;
   float: right;
 }
 
 #filterButton {
-  margin: 6px 40px;
-  float: right;
+  margin: 20px 20px;
+  float: left;
   background-color: #0077B5;
-color: #ffffff;
+  color: #ffffff;
+  position: fixed;
+  right: 0px;
+  top: 5.7%;
+  z-index: 1;
 }
 
 .pagenav {

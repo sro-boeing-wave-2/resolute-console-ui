@@ -24,8 +24,24 @@ export class ConsoleUIComponent implements OnInit {
   httpHeader;
   token;
   notificationCount = 0;
-  // recentNotifications: NotificationModel[] = [];
-
+  recentNotifications: NotificationModel[] = [];
+  // mocknotifications: NotificationModel[] = [
+  //   {
+  //     ticketId: "This is the ticket Id",
+  //     title: "This is the title",
+  //     description: "This is the description"
+  //   },
+  //   {
+  //     ticketId: "This is the ticket Id",
+  //     title: "This is the title",
+  //     description: "This is the description"
+  //   },
+  //   {
+  //     ticketId: "This is the ticket Id",
+  //     title: "This is the title",
+  //     description: "This is the description"
+  //   }
+  // ]
 
   constructor(
     private service: TicketsService,
@@ -39,12 +55,11 @@ export class ConsoleUIComponent implements OnInit {
   { }
 
   ngOnInit() {
-
     this.agentEmail = this.localStorage.retrieve("email");//this.loginService.getAgentEmail();
     this.notificationService.startHubConnection(this.agentEmail);
     this.notificationService.newNotification().subscribe(data => {
       if(data) {
-        // this.recentNotifications.push(data);
+        this.recentNotifications.push(data);
         // this.toast.info(data.title);
         this.notificationCount += 1;
       }
@@ -60,16 +75,18 @@ export class ConsoleUIComponent implements OnInit {
     this.notificationCount = 0;
   }
 
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(NotificationComponent, {
-  //     width: '50%',
-  //     height: '70%',
-  //     data: { notification: this.mockNotifications }
-  //   });
+  openDialog(): void {
+    console.log(this.recentNotifications);
+    const dialogRef = this.dialog.open(NotificationComponent, {
+      width: '50%',
+      height: '70%',
+      data: { dataKey: this.recentNotifications }
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe(result => {
+      this.recentNotifications = [];
+    });
+  }
 
   logOut() {
     console.log("Log out");

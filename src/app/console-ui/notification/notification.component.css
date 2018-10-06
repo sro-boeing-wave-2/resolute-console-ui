@@ -7,6 +7,7 @@
   background:linear-gradient(135deg, #a1daff 0%,#8bd3fd 100%);
 }
 
-#elseBlock {
-  margin: auto;
+h4 {
+  margin-top: 33%;
+  text-align: center;
 }

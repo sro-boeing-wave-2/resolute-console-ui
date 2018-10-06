@@ -8,23 +8,23 @@
     </div>
     <div class="ticket-boxes">
       <button [routerLink]="['/console/tickets', 'close']" class="ticket-card close-ticket">
-      <h6>Closed Tickets</h6>
-      <h1>{{numberOfTickets?.closed}}</h1>
+        <h6>Closed Tickets</h6>
+        <h1>{{numberOfTickets?.closed}}</h1>
       </button>
     </div>
     <div class="ticket-boxes">
-        <button  [routerLink]="['/console/tickets', 'due']"  class="ticket-card due-ticket">
+      <button [routerLink]="['/console/tickets', 'due']" class="ticket-card due-ticket">
         <h6>Due Tickets</h6>
         <h1>{{numberOfTickets?.due}}</h1>
-        </button>
-      </div>
-      <div class="ticket-boxes">
-          <button [routerLink]="['/console/tickets', 'all']" class="ticket-card total-ticket">
-          <h6>Total Tickets</h6>
-          <h1>{{numberOfTickets?.total}}</h1>
-          </button>
-        </div>
+      </button>
     </div>
+    <div class="ticket-boxes">
+      <button [routerLink]="['/console/tickets', 'all']" class="ticket-card total-ticket">
+        <h6>Total Tickets</h6>
+        <h1>{{numberOfTickets?.total}}</h1>
+      </button>
+    </div>
+  </div>
 
   <div class="recent-tickets">
     <div class="headline">
@@ -32,21 +32,22 @@
     </div>
     <div class="recent-ticket-card-container">
       <div class="recent-ticket-card" *ngFor="let ticket of agentOpenTickets">
-         <div class="recent-ticket-card-header">
-           <strong> PRIORITY: HIGH </strong>
-         </div>
-         <div class="recent-ticket-card-description">
-           <p>  <strong>Description</strong> {{ticket.description}}</p>
-         </div>
-         <div class="recent-card-btn-holder">
-         <button (click)="routeToTicketDetails(ticket)" class="recent-ticket-card-btn"><strong> View Ticket</strong></button>
+        <div class="recent-ticket-card-header">
+          <strong> Prioirty : {{ticket.priority}} </strong>
+        </div>
+        <div class="recent-ticket-card-description">
+          <p> <strong>Description</strong> {{ticket.description}}</p>
+          <p> <strong>Created On</strong> {{ticket.createdOn | date: 'short'}}</p>
+        </div>
+        <div class="recent-card-btn-holder">
+          <button (click)="routeToTicketDetails(ticket)" class="recent-ticket-card-btn"><strong> View Ticket</strong></button>
         </div>
       </div>
     </div>
   </div>
-  </div>
+</div>
 
-  <!--
+<!--
   <mat-card *ngFor="let ticket of agentOpenTickets" class="example-card">
     <mat-card-header>
       <mat-card-title>
@@ -60,4 +61,3 @@
       <button (click)="routeToTicketDetails">View</button>
     </div>
   </mat-card> -->
-

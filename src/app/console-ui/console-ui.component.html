@@ -37,7 +37,7 @@
             <a routerLink="/console/home" routerLinkActive="active"><strong>BOEING</strong></a>
           </span>
           <span class="spacer"></span>
-          <button class="notification-btn" (click)="showNotifications()">
+          <button class="notification-btn" (click)="showNotifications()" (click)="openDialog()">
               <i class="fas fa-bell"></i><sup> {{notificationCount}} </sup>
           </button>
       </mat-toolbar-row>
