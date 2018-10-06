@@ -14,7 +14,7 @@ import { NotificationModel } from '../notificationModel';
 })
 export class RecentTicketsComponent implements OnInit {
 
-  agentOpenTickets: NotificationModel[];
+  agentOpenTickets: Ticket[] = [];
   queryParams: queryParams = {
     status: "open",
     priority: "",
@@ -29,25 +29,17 @@ export class RecentTicketsComponent implements OnInit {
 
   ngOnInit() {
     this.ticketService.getTicketCount().subscribe(data => {this.numberOfTickets = data});
-    // this.ticketService.getRecentTickets(this.queryParams).subscribe(data => {
-    //   this.agentOpenTickets = data.tickets;
-    //   console.log(this.agentOpenTickets);
-    // })
+    this.ticketService.getRecentTickets(this.queryParams).subscribe(data => {
+      this.agentOpenTickets = data.tickets;
+      console.log(this.agentOpenTickets);
+    })
 
     this.agentEmail = this.localStorage.retrieve("email");//this.loginService.getAgentEmail();
     this.notificationService.startHubConnection(this.agentEmail);
     this.notificationService.newNotification().subscribe(data => {
       if(data) {
-        if(this.agentOpenTickets.length < 7)
-        {
-          this.agentOpenTickets.unshift(data);
-          console.log(data);
-        }
-        else
-        {
-          this.agentOpenTickets.unshift(data);
-          this.agentOpenTickets.pop();
-        }
+        this.agentOpenTickets.unshift(data);
+        console.log(data);
       }
     })
   }

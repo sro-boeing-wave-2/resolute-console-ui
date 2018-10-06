@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { BehaviorSubject } from 'rxjs';
 import { NotificationModel } from './notificationModel';
+import { Ticket } from '../ticket';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { NotificationModel } from './notificationModel';
 export class NotificationService {
 
   private _hubConnection: HubConnection;
-  private notificationList: BehaviorSubject<NotificationModel> = new BehaviorSubject<NotificationModel>(null);
+  private notificationList: BehaviorSubject<Ticket> = new BehaviorSubject<Ticket>(null);
 
   constructor() { }
 
@@ -21,7 +22,7 @@ export class NotificationService {
           console.log(`Configured connection for ${email}`);
         });
       });
-    this._hubConnection.on("ReceiveNotification", (payload: NotificationModel) => {
+    this._hubConnection.on("ReceiveNotification", (payload: Ticket) => {
       this.notificationList.next(payload);
       console.log(payload);
     });
