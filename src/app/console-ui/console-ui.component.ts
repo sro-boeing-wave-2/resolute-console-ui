@@ -10,6 +10,7 @@ import 'ngx-toastr/toastr.css';
 import { NotificationModel } from './notificationModel';
 import { TicketsService } from '../tickets.service';
 import { NotificationService } from './notification.service';
+import { Ticket } from '../ticket';
 
 
 @Component({
@@ -24,24 +25,7 @@ export class ConsoleUIComponent implements OnInit {
   httpHeader;
   token;
   notificationCount = 0;
-  recentNotifications: NotificationModel[] = [];
-  // mocknotifications: NotificationModel[] = [
-  //   {
-  //     ticketId: "This is the ticket Id",
-  //     title: "This is the title",
-  //     description: "This is the description"
-  //   },
-  //   {
-  //     ticketId: "This is the ticket Id",
-  //     title: "This is the title",
-  //     description: "This is the description"
-  //   },
-  //   {
-  //     ticketId: "This is the ticket Id",
-  //     title: "This is the title",
-  //     description: "This is the description"
-  //   }
-  // ]
+  recentNotifications: Ticket[] = [];
 
   constructor(
     private service: TicketsService,
@@ -59,7 +43,7 @@ export class ConsoleUIComponent implements OnInit {
     this.notificationService.startHubConnection(this.agentEmail);
     this.notificationService.newNotification().subscribe(data => {
       if(data) {
-        this.recentNotifications.push(data);
+        this.recentNotifications.push(JSON.parse(data));
         // this.toast.info(data.title);
         this.notificationCount += 1;
       }
