@@ -33,7 +33,7 @@
     <div class="recent-ticket-card-container">
       <div class="recent-ticket-card" *ngFor="let ticket of agentOpenTickets">
         <div class="recent-ticket-card-header">
-          <strong> Prioirty : {{ticket.priority}} </strong>
+          <strong> {{ticket.ticketId}} </strong>
         </div>
         <div class="recent-ticket-card-description">
           <p> <strong>Description</strong> {{ticket.description}}</p>

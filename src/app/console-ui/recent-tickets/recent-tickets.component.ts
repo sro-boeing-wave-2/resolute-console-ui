@@ -41,6 +41,7 @@ export class RecentTicketsComponent implements OnInit {
         if(this.agentOpenTickets.length < 7)
         {
           this.agentOpenTickets.unshift(data);
+          console.log(data);
         }
         else
         {
