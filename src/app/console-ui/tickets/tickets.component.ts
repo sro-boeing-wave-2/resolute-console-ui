@@ -20,7 +20,7 @@ export interface PriorityLevel {
 export class TicketsComponent implements OnInit {
 
   displayedColumns = ['subject', 'status', 'priority', 'createdOn'];
-  navLinks = []; numberOfTickets = {};
+  navLinks = []; numberOfTickets:any = {};
   PaginationTicket: PaginationTicketModel;
   TotalPages;
   isPreviousDisabled; isNextDisabled;

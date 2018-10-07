@@ -5,13 +5,13 @@
   </div>
   <div id="chooseFileDiv">
     <input #file name="TrainingData" multiple type="file" (change)="onFileSelected($event)" />
-    <span style="font-weight:bold;color:green; padding: 0px;" *ngIf="progress > 0 && progress < 100">
+    <!-- <span style="font-weight:bold;color:green; padding: 0px;" *ngIf="progress > 0 && progress < 100">
       {{progress}}%
-    </span>
+    </span> -->
   </div>
   <div class="secondaryBtnDiv">
     <button id="uploadbtn" (click)="onClick()">Train</button>
-    <span style="font-weight:bold;color:green;" *ngIf="UploadMessage">
+    <span style="font-weight:bold;color:green;">
       <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate">
       </mat-progress-spinner>
     </span>
